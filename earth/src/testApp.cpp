@@ -7,7 +7,7 @@ void testApp::setup()
     ofSetDepthTest(true);
     // mesh.load("lofi-bunny.ply");
 
-	sphere.set(200.0, 5);
+	sphere.set(200.0, 3);
 
     // shape file
     bValidate     = 0;

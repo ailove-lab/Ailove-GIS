@@ -1,167 +1,167 @@
 obj/linux64/Release/src/main.o: src/main.cpp \
- ../../../libs/openFrameworks/ofMain.h \
- ../../../libs/openFrameworks/utils/ofConstants.h \
- ../../../libs/tess2/include/tesselator.h \
- ../../../libs/openFrameworks/utils/ofFileUtils.h \
- ../../../libs/poco/include/Poco/File.h \
- ../../../libs/poco/include/Poco/Foundation.h \
- ../../../libs/poco/include/Poco/Config.h \
- ../../../libs/poco/include/Poco/Platform.h \
- ../../../libs/poco/include/Poco/Platform_POSIX.h \
- ../../../libs/poco/include/Poco/Bugcheck.h \
- ../../../libs/poco/include/Poco/Types.h \
- ../../../libs/poco/include/Poco/Timestamp.h \
- ../../../libs/poco/include/Poco/File_UNIX.h \
- ../../../libs/openFrameworks/utils/ofLog.h \
- ../../../libs/openFrameworks/types/ofTypes.h \
- ../../../libs/openFrameworks/types/ofColor.h \
- ../../../libs/openFrameworks/math/ofMath.h \
- ../../../libs/openFrameworks/types/ofPoint.h \
- ../../../libs/openFrameworks/math/ofVec3f.h \
- ../../../libs/openFrameworks/math/ofVec2f.h \
- ../../../libs/openFrameworks/math/ofVec4f.h \
- ../../../libs/poco/include/Poco/Mutex.h \
- ../../../libs/poco/include/Poco/Exception.h \
- ../../../libs/poco/include/Poco/ScopedLock.h \
- ../../../libs/poco/include/Poco/Mutex_POSIX.h \
- ../../../libs/openFrameworks/utils/ofSystemUtils.h \
- ../../../libs/openFrameworks/utils/ofThread.h \
- ../../../libs/poco/include/Poco/Thread.h \
- ../../../libs/poco/include/Poco/Thread_POSIX.h \
- ../../../libs/poco/include/Poco/Runnable.h \
- ../../../libs/poco/include/Poco/SignalHandler.h \
- ../../../libs/poco/include/Poco/Event.h \
- ../../../libs/poco/include/Poco/Event_POSIX.h \
- ../../../libs/poco/include/Poco/RefCountedObject.h \
- ../../../libs/poco/include/Poco/AtomicCounter.h \
- ../../../libs/poco/include/Poco/AutoPtr.h \
- ../../../libs/openFrameworks/utils/ofURLFileLoader.h \
- ../../../libs/openFrameworks/events/ofEvents.h \
- ../../../libs/openFrameworks/events/ofEventUtils.h \
- ../../../libs/poco/include/Poco/PriorityEvent.h \
- ../../../libs/poco/include/Poco/AbstractEvent.h \
- ../../../libs/poco/include/Poco/SingletonHolder.h \
- ../../../libs/poco/include/Poco/SharedPtr.h \
- ../../../libs/poco/include/Poco/ActiveResult.h \
- ../../../libs/poco/include/Poco/ActiveMethod.h \
- ../../../libs/poco/include/Poco/ActiveRunnable.h \
- ../../../libs/poco/include/Poco/ActiveStarter.h \
- ../../../libs/poco/include/Poco/ThreadPool.h \
- ../../../libs/poco/include/Poco/PriorityStrategy.h \
- ../../../libs/poco/include/Poco/NotificationStrategy.h \
- ../../../libs/poco/include/Poco/AbstractPriorityDelegate.h \
- ../../../libs/poco/include/Poco/AbstractDelegate.h \
- ../../../libs/poco/include/Poco/PriorityDelegate.h \
- ../../../libs/poco/include/Poco/PriorityExpire.h \
- ../../../libs/poco/include/Poco/FunctionPriorityDelegate.h \
- ../../../libs/openFrameworks/events/ofDelegate.h \
- ../../../libs/poco/include/Poco/Condition.h \
- ../../../libs/poco/include/Poco/ScopedUnlock.h \
- ../../../libs/openFrameworks/utils/ofUtils.h \
- ../../../libs/poco/include/Poco/Path.h \
- ../../../libs/openFrameworks/types/ofBaseTypes.h \
- ../../../libs/openFrameworks/types/ofRectangle.h \
- ../../../libs/openFrameworks/3d/ofMesh.h \
- ../../../libs/openFrameworks/gl/ofGLUtils.h \
- ../../../libs/openFrameworks/graphics/ofPixels.h \
- ../../../libs/openFrameworks/math/ofMatrix4x4.h \
- ../../../libs/openFrameworks/math/ofQuaternion.h \
- ../../../libs/openFrameworks/utils/ofXml.h \
- ../../../libs/poco/include/Poco/DOM/Document.h \
- ../../../libs/poco/include/Poco/XML/XML.h \
- ../../../libs/poco/include/Poco/DOM/AbstractContainerNode.h \
- ../../../libs/poco/include/Poco/DOM/AbstractNode.h \
- ../../../libs/poco/include/Poco/DOM/Node.h \
- ../../../libs/poco/include/Poco/DOM/EventTarget.h \
- ../../../libs/poco/include/Poco/DOM/DOMObject.h \
- ../../../libs/poco/include/Poco/XML/XMLString.h \
- ../../../libs/poco/include/Poco/SAX/NamespaceSupport.h \
- ../../../libs/poco/include/Poco/DOM/MutationEvent.h \
- ../../../libs/poco/include/Poco/DOM/Event.h \
- ../../../libs/poco/include/Poco/DOM/DocumentEvent.h \
- ../../../libs/poco/include/Poco/DOM/Element.h \
- ../../../libs/poco/include/Poco/XML/Name.h \
- ../../../libs/poco/include/Poco/XML/NamePool.h \
- ../../../libs/poco/include/Poco/AutoReleasePool.h \
- ../../../libs/poco/include/Poco/DOM/DocumentFragment.h \
- ../../../libs/poco/include/Poco/DOM/DOMParser.h \
- ../../../libs/poco/include/Poco/SAX/SAXParser.h \
- ../../../libs/poco/include/Poco/SAX/XMLReader.h \
- ../../../libs/poco/include/Poco/XML/ParserEngine.h \
- ../../../libs/poco/include/Poco/XML/expat.h \
- ../../../libs/poco/include/Poco/XML/expat_external.h \
- ../../../libs/poco/include/Poco/XML/XMLStream.h \
- ../../../libs/poco/include/Poco/SAX/Locator.h \
- ../../../libs/poco/include/Poco/TextEncoding.h \
- ../../../libs/poco/include/Poco/DOM/DOMException.h \
- ../../../libs/poco/include/Poco/XML/XMLException.h \
- ../../../libs/poco/include/Poco/SAX/SAXException.h \
- ../../../libs/poco/include/Poco/XML/XMLWriter.h \
- ../../../libs/poco/include/Poco/SAX/ContentHandler.h \
- ../../../libs/poco/include/Poco/SAX/LexicalHandler.h \
- ../../../libs/poco/include/Poco/SAX/DTDHandler.h \
- ../../../libs/poco/include/Poco/StreamConverter.h \
- ../../../libs/poco/include/Poco/UnbufferedStreamBuf.h \
- ../../../libs/poco/include/Poco/StreamUtil.h \
- ../../../libs/poco/include/Poco/DOM/DOMWriter.h \
- ../../../libs/poco/include/Poco/DOM/Attr.h \
- ../../../libs/poco/include/Poco/DOM/Text.h \
- ../../../libs/poco/include/Poco/DOM/CharacterData.h \
- ../../../libs/poco/include/Poco/DOM/NodeIterator.h \
- ../../../libs/poco/include/Poco/DOM/NodeFilter.h \
- ../../../libs/poco/include/Poco/DOM/NamedNodeMap.h \
- ../../../libs/poco/include/Poco/DOM/ChildNodesList.h \
- ../../../libs/poco/include/Poco/DOM/NodeList.h \
- ../../../libs/openFrameworks/types/ofParameter.h \
- ../../../libs/openFrameworks/types/ofParameterGroup.h \
- ../../../libs/poco/include/Poco/Any.h \
- ../../../libs/openFrameworks/math/ofVectorMath.h \
- ../../../libs/openFrameworks/math/ofMatrix3x3.h \
- ../../../libs/openFrameworks/communication/ofSerial.h \
- ../../../libs/openFrameworks/communication/ofArduino.h \
- ../../../libs/openFrameworks/gl/ofFbo.h \
- ../../../libs/openFrameworks/gl/ofTexture.h \
- ../../../libs/openFrameworks/gl/ofVboMesh.h \
- ../../../libs/openFrameworks/gl/ofVbo.h \
- ../../../libs/openFrameworks/gl/ofGLUtils.h \
- ../../../libs/openFrameworks/gl/ofGLRenderer.h \
- ../../../libs/openFrameworks/graphics/ofPolyline.h \
- ../../../libs/openFrameworks/graphics/ofGraphics.h \
- ../../../libs/openFrameworks/utils/ofMatrixStack.h \
- ../../../libs/openFrameworks/gl/ofLight.h \
- ../../../libs/openFrameworks/3d/ofNode.h \
- ../../../libs/openFrameworks/3d/of3dUtils.h \
- ../../../libs/openFrameworks/graphics/of3dGraphics.h \
- ../../../libs/openFrameworks/3d/of3dPrimitives.h \
- ../../../libs/openFrameworks/gl/ofMaterial.h \
- ../../../libs/openFrameworks/gl/ofShader.h \
- ../../../libs/openFrameworks/app/ofAppBaseWindow.h \
- ../../../libs/openFrameworks/gl/ofGLProgrammableRenderer.h \
- ../../../libs/openFrameworks/graphics/ofCairoRenderer.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/ofMain.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/utils/ofConstants.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/tess2/include/tesselator.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/utils/ofFileUtils.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/File.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/Foundation.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/Config.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/Platform.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/Platform_POSIX.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/Bugcheck.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/Types.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/Timestamp.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/File_UNIX.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/utils/ofLog.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/types/ofTypes.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/types/ofColor.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/math/ofMath.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/types/ofPoint.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/math/ofVec3f.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/math/ofVec2f.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/math/ofVec4f.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/Mutex.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/Exception.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/ScopedLock.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/Mutex_POSIX.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/utils/ofSystemUtils.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/utils/ofThread.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/Thread.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/Thread_POSIX.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/Runnable.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/SignalHandler.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/Event.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/Event_POSIX.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/RefCountedObject.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/AtomicCounter.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/AutoPtr.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/utils/ofURLFileLoader.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/events/ofEvents.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/events/ofEventUtils.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/PriorityEvent.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/AbstractEvent.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/SingletonHolder.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/SharedPtr.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/ActiveResult.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/ActiveMethod.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/ActiveRunnable.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/ActiveStarter.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/ThreadPool.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/PriorityStrategy.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/NotificationStrategy.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/AbstractPriorityDelegate.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/AbstractDelegate.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/PriorityDelegate.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/PriorityExpire.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/FunctionPriorityDelegate.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/events/ofDelegate.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/Condition.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/ScopedUnlock.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/utils/ofUtils.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/Path.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/types/ofBaseTypes.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/types/ofRectangle.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/3d/ofMesh.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/gl/ofGLUtils.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/graphics/ofPixels.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/math/ofMatrix4x4.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/math/ofQuaternion.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/utils/ofXml.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/DOM/Document.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/XML/XML.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/DOM/AbstractContainerNode.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/DOM/AbstractNode.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/DOM/Node.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/DOM/EventTarget.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/DOM/DOMObject.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/XML/XMLString.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/SAX/NamespaceSupport.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/DOM/MutationEvent.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/DOM/Event.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/DOM/DocumentEvent.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/DOM/Element.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/XML/Name.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/XML/NamePool.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/AutoReleasePool.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/DOM/DocumentFragment.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/DOM/DOMParser.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/SAX/SAXParser.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/SAX/XMLReader.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/XML/ParserEngine.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/XML/expat.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/XML/expat_external.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/XML/XMLStream.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/SAX/Locator.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/TextEncoding.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/DOM/DOMException.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/XML/XMLException.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/SAX/SAXException.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/XML/XMLWriter.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/SAX/ContentHandler.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/SAX/LexicalHandler.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/SAX/DTDHandler.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/StreamConverter.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/UnbufferedStreamBuf.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/StreamUtil.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/DOM/DOMWriter.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/DOM/Attr.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/DOM/Text.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/DOM/CharacterData.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/DOM/NodeIterator.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/DOM/NodeFilter.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/DOM/NamedNodeMap.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/DOM/ChildNodesList.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/DOM/NodeList.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/types/ofParameter.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/types/ofParameterGroup.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/Any.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/math/ofVectorMath.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/math/ofMatrix3x3.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/communication/ofSerial.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/communication/ofArduino.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/gl/ofFbo.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/gl/ofTexture.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/gl/ofVboMesh.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/gl/ofVbo.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/gl/ofGLUtils.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/gl/ofGLRenderer.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/graphics/ofPolyline.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/graphics/ofGraphics.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/utils/ofMatrixStack.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/gl/ofLight.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/3d/ofNode.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/3d/of3dUtils.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/graphics/of3dGraphics.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/3d/of3dPrimitives.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/gl/ofMaterial.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/gl/ofShader.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/app/ofAppBaseWindow.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/gl/ofGLProgrammableRenderer.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/graphics/ofCairoRenderer.h \
  /usr/include/cairo/cairo-features.h /usr/include/cairo/cairo-pdf.h \
  /usr/include/cairo/cairo.h /usr/include/cairo/cairo-version.h \
  /usr/include/cairo/cairo-features.h \
  /usr/include/cairo/cairo-deprecated.h /usr/include/cairo/cairo-svg.h \
  /usr/include/cairo/cairo.h \
- ../../../libs/openFrameworks/graphics/ofPath.h \
- ../../../libs/openFrameworks/graphics/ofTessellator.h \
- ../../../libs/openFrameworks/graphics/ofImage.h \
- ../../../libs/openFrameworks/graphics/ofRendererCollection.h \
- ../../../libs/openFrameworks/graphics/ofTrueTypeFont.h \
- ../../../libs/openFrameworks/app/ofBaseApp.h \
- ../../../libs/openFrameworks/app/ofAppRunner.h \
- ../../../libs/openFrameworks/sound/ofSoundStream.h \
- ../../../libs/openFrameworks/sound/ofBaseSoundStream.h \
- ../../../libs/openFrameworks/sound/ofRtAudioSoundStream.h \
- ../../../libs/openFrameworks/sound/ofSoundPlayer.h \
- ../../../libs/openFrameworks/sound/ofBaseSoundPlayer.h \
- ../../../libs/openFrameworks/sound/ofOpenALSoundPlayer.h \
- ../../../libs/kiss/include/kiss_fft.h \
- ../../../libs/kiss/include/kiss_fftr.h \
- ../../../libs/kiss/include/kiss_fft.h \
- ../../../libs/openFrameworks/video/ofVideoGrabber.h \
- ../../../libs/openFrameworks/video/ofGstVideoGrabber.h \
- ../../../libs/openFrameworks/video/ofGstUtils.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/graphics/ofPath.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/graphics/ofTessellator.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/graphics/ofImage.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/graphics/ofRendererCollection.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/graphics/ofTrueTypeFont.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/app/ofBaseApp.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/app/ofAppRunner.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/sound/ofSoundStream.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/sound/ofBaseSoundStream.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/sound/ofRtAudioSoundStream.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/sound/ofSoundPlayer.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/sound/ofBaseSoundPlayer.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/sound/ofOpenALSoundPlayer.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/kiss/include/kiss_fft.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/kiss/include/kiss_fftr.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/kiss/include/kiss_fft.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/video/ofVideoGrabber.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/video/ofGstVideoGrabber.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/video/ofGstUtils.h \
  /usr/include/gstreamer-0.10/gst/gst.h /usr/include/glib-2.0/glib.h \
  /usr/include/glib-2.0/glib/galloca.h /usr/include/glib-2.0/glib/gtypes.h \
  /usr/lib/x86_64-linux-gnu/glib-2.0/include/glibconfig.h \
@@ -301,288 +301,289 @@ obj/linux64/Release/src/main.o: src/main.cpp \
  /usr/include/gstreamer-0.10/gst/gstparse.h \
  /usr/include/gstreamer-0.10/gst/gstxml.h \
  /usr/include/gstreamer-0.10/gst/gstcompat.h \
- ../../../libs/openFrameworks/video/ofVideoPlayer.h \
- ../../../libs/openFrameworks/video/ofGstVideoPlayer.h \
- ../../../libs/openFrameworks/3d/ofCamera.h \
- ../../../libs/openFrameworks/3d/ofEasyCam.h src/testApp.h
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/video/ofVideoPlayer.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/video/ofGstVideoPlayer.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/3d/ofCamera.h \
+ /home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/3d/ofEasyCam.h \
+ src/testApp.h src/shapefil.h
 
-../../../libs/openFrameworks/ofMain.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/ofMain.h:
 
-../../../libs/openFrameworks/utils/ofConstants.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/utils/ofConstants.h:
 
-../../../libs/tess2/include/tesselator.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/tess2/include/tesselator.h:
 
-../../../libs/openFrameworks/utils/ofFileUtils.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/utils/ofFileUtils.h:
 
-../../../libs/poco/include/Poco/File.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/File.h:
 
-../../../libs/poco/include/Poco/Foundation.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/Foundation.h:
 
-../../../libs/poco/include/Poco/Config.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/Config.h:
 
-../../../libs/poco/include/Poco/Platform.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/Platform.h:
 
-../../../libs/poco/include/Poco/Platform_POSIX.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/Platform_POSIX.h:
 
-../../../libs/poco/include/Poco/Bugcheck.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/Bugcheck.h:
 
-../../../libs/poco/include/Poco/Types.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/Types.h:
 
-../../../libs/poco/include/Poco/Timestamp.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/Timestamp.h:
 
-../../../libs/poco/include/Poco/File_UNIX.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/File_UNIX.h:
 
-../../../libs/openFrameworks/utils/ofLog.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/utils/ofLog.h:
 
-../../../libs/openFrameworks/types/ofTypes.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/types/ofTypes.h:
 
-../../../libs/openFrameworks/types/ofColor.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/types/ofColor.h:
 
-../../../libs/openFrameworks/math/ofMath.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/math/ofMath.h:
 
-../../../libs/openFrameworks/types/ofPoint.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/types/ofPoint.h:
 
-../../../libs/openFrameworks/math/ofVec3f.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/math/ofVec3f.h:
 
-../../../libs/openFrameworks/math/ofVec2f.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/math/ofVec2f.h:
 
-../../../libs/openFrameworks/math/ofVec4f.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/math/ofVec4f.h:
 
-../../../libs/poco/include/Poco/Mutex.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/Mutex.h:
 
-../../../libs/poco/include/Poco/Exception.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/Exception.h:
 
-../../../libs/poco/include/Poco/ScopedLock.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/ScopedLock.h:
 
-../../../libs/poco/include/Poco/Mutex_POSIX.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/Mutex_POSIX.h:
 
-../../../libs/openFrameworks/utils/ofSystemUtils.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/utils/ofSystemUtils.h:
 
-../../../libs/openFrameworks/utils/ofThread.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/utils/ofThread.h:
 
-../../../libs/poco/include/Poco/Thread.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/Thread.h:
 
-../../../libs/poco/include/Poco/Thread_POSIX.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/Thread_POSIX.h:
 
-../../../libs/poco/include/Poco/Runnable.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/Runnable.h:
 
-../../../libs/poco/include/Poco/SignalHandler.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/SignalHandler.h:
 
-../../../libs/poco/include/Poco/Event.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/Event.h:
 
-../../../libs/poco/include/Poco/Event_POSIX.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/Event_POSIX.h:
 
-../../../libs/poco/include/Poco/RefCountedObject.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/RefCountedObject.h:
 
-../../../libs/poco/include/Poco/AtomicCounter.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/AtomicCounter.h:
 
-../../../libs/poco/include/Poco/AutoPtr.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/AutoPtr.h:
 
-../../../libs/openFrameworks/utils/ofURLFileLoader.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/utils/ofURLFileLoader.h:
 
-../../../libs/openFrameworks/events/ofEvents.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/events/ofEvents.h:
 
-../../../libs/openFrameworks/events/ofEventUtils.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/events/ofEventUtils.h:
 
-../../../libs/poco/include/Poco/PriorityEvent.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/PriorityEvent.h:
 
-../../../libs/poco/include/Poco/AbstractEvent.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/AbstractEvent.h:
 
-../../../libs/poco/include/Poco/SingletonHolder.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/SingletonHolder.h:
 
-../../../libs/poco/include/Poco/SharedPtr.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/SharedPtr.h:
 
-../../../libs/poco/include/Poco/ActiveResult.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/ActiveResult.h:
 
-../../../libs/poco/include/Poco/ActiveMethod.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/ActiveMethod.h:
 
-../../../libs/poco/include/Poco/ActiveRunnable.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/ActiveRunnable.h:
 
-../../../libs/poco/include/Poco/ActiveStarter.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/ActiveStarter.h:
 
-../../../libs/poco/include/Poco/ThreadPool.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/ThreadPool.h:
 
-../../../libs/poco/include/Poco/PriorityStrategy.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/PriorityStrategy.h:
 
-../../../libs/poco/include/Poco/NotificationStrategy.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/NotificationStrategy.h:
 
-../../../libs/poco/include/Poco/AbstractPriorityDelegate.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/AbstractPriorityDelegate.h:
 
-../../../libs/poco/include/Poco/AbstractDelegate.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/AbstractDelegate.h:
 
-../../../libs/poco/include/Poco/PriorityDelegate.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/PriorityDelegate.h:
 
-../../../libs/poco/include/Poco/PriorityExpire.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/PriorityExpire.h:
 
-../../../libs/poco/include/Poco/FunctionPriorityDelegate.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/FunctionPriorityDelegate.h:
 
-../../../libs/openFrameworks/events/ofDelegate.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/events/ofDelegate.h:
 
-../../../libs/poco/include/Poco/Condition.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/Condition.h:
 
-../../../libs/poco/include/Poco/ScopedUnlock.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/ScopedUnlock.h:
 
-../../../libs/openFrameworks/utils/ofUtils.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/utils/ofUtils.h:
 
-../../../libs/poco/include/Poco/Path.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/Path.h:
 
-../../../libs/openFrameworks/types/ofBaseTypes.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/types/ofBaseTypes.h:
 
-../../../libs/openFrameworks/types/ofRectangle.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/types/ofRectangle.h:
 
-../../../libs/openFrameworks/3d/ofMesh.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/3d/ofMesh.h:
 
-../../../libs/openFrameworks/gl/ofGLUtils.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/gl/ofGLUtils.h:
 
-../../../libs/openFrameworks/graphics/ofPixels.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/graphics/ofPixels.h:
 
-../../../libs/openFrameworks/math/ofMatrix4x4.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/math/ofMatrix4x4.h:
 
-../../../libs/openFrameworks/math/ofQuaternion.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/math/ofQuaternion.h:
 
-../../../libs/openFrameworks/utils/ofXml.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/utils/ofXml.h:
 
-../../../libs/poco/include/Poco/DOM/Document.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/DOM/Document.h:
 
-../../../libs/poco/include/Poco/XML/XML.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/XML/XML.h:
 
-../../../libs/poco/include/Poco/DOM/AbstractContainerNode.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/DOM/AbstractContainerNode.h:
 
-../../../libs/poco/include/Poco/DOM/AbstractNode.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/DOM/AbstractNode.h:
 
-../../../libs/poco/include/Poco/DOM/Node.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/DOM/Node.h:
 
-../../../libs/poco/include/Poco/DOM/EventTarget.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/DOM/EventTarget.h:
 
-../../../libs/poco/include/Poco/DOM/DOMObject.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/DOM/DOMObject.h:
 
-../../../libs/poco/include/Poco/XML/XMLString.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/XML/XMLString.h:
 
-../../../libs/poco/include/Poco/SAX/NamespaceSupport.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/SAX/NamespaceSupport.h:
 
-../../../libs/poco/include/Poco/DOM/MutationEvent.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/DOM/MutationEvent.h:
 
-../../../libs/poco/include/Poco/DOM/Event.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/DOM/Event.h:
 
-../../../libs/poco/include/Poco/DOM/DocumentEvent.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/DOM/DocumentEvent.h:
 
-../../../libs/poco/include/Poco/DOM/Element.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/DOM/Element.h:
 
-../../../libs/poco/include/Poco/XML/Name.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/XML/Name.h:
 
-../../../libs/poco/include/Poco/XML/NamePool.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/XML/NamePool.h:
 
-../../../libs/poco/include/Poco/AutoReleasePool.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/AutoReleasePool.h:
 
-../../../libs/poco/include/Poco/DOM/DocumentFragment.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/DOM/DocumentFragment.h:
 
-../../../libs/poco/include/Poco/DOM/DOMParser.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/DOM/DOMParser.h:
 
-../../../libs/poco/include/Poco/SAX/SAXParser.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/SAX/SAXParser.h:
 
-../../../libs/poco/include/Poco/SAX/XMLReader.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/SAX/XMLReader.h:
 
-../../../libs/poco/include/Poco/XML/ParserEngine.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/XML/ParserEngine.h:
 
-../../../libs/poco/include/Poco/XML/expat.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/XML/expat.h:
 
-../../../libs/poco/include/Poco/XML/expat_external.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/XML/expat_external.h:
 
-../../../libs/poco/include/Poco/XML/XMLStream.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/XML/XMLStream.h:
 
-../../../libs/poco/include/Poco/SAX/Locator.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/SAX/Locator.h:
 
-../../../libs/poco/include/Poco/TextEncoding.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/TextEncoding.h:
 
-../../../libs/poco/include/Poco/DOM/DOMException.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/DOM/DOMException.h:
 
-../../../libs/poco/include/Poco/XML/XMLException.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/XML/XMLException.h:
 
-../../../libs/poco/include/Poco/SAX/SAXException.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/SAX/SAXException.h:
 
-../../../libs/poco/include/Poco/XML/XMLWriter.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/XML/XMLWriter.h:
 
-../../../libs/poco/include/Poco/SAX/ContentHandler.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/SAX/ContentHandler.h:
 
-../../../libs/poco/include/Poco/SAX/LexicalHandler.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/SAX/LexicalHandler.h:
 
-../../../libs/poco/include/Poco/SAX/DTDHandler.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/SAX/DTDHandler.h:
 
-../../../libs/poco/include/Poco/StreamConverter.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/StreamConverter.h:
 
-../../../libs/poco/include/Poco/UnbufferedStreamBuf.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/UnbufferedStreamBuf.h:
 
-../../../libs/poco/include/Poco/StreamUtil.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/StreamUtil.h:
 
-../../../libs/poco/include/Poco/DOM/DOMWriter.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/DOM/DOMWriter.h:
 
-../../../libs/poco/include/Poco/DOM/Attr.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/DOM/Attr.h:
 
-../../../libs/poco/include/Poco/DOM/Text.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/DOM/Text.h:
 
-../../../libs/poco/include/Poco/DOM/CharacterData.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/DOM/CharacterData.h:
 
-../../../libs/poco/include/Poco/DOM/NodeIterator.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/DOM/NodeIterator.h:
 
-../../../libs/poco/include/Poco/DOM/NodeFilter.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/DOM/NodeFilter.h:
 
-../../../libs/poco/include/Poco/DOM/NamedNodeMap.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/DOM/NamedNodeMap.h:
 
-../../../libs/poco/include/Poco/DOM/ChildNodesList.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/DOM/ChildNodesList.h:
 
-../../../libs/poco/include/Poco/DOM/NodeList.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/DOM/NodeList.h:
 
-../../../libs/openFrameworks/types/ofParameter.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/types/ofParameter.h:
 
-../../../libs/openFrameworks/types/ofParameterGroup.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/types/ofParameterGroup.h:
 
-../../../libs/poco/include/Poco/Any.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/poco/include/Poco/Any.h:
 
-../../../libs/openFrameworks/math/ofVectorMath.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/math/ofVectorMath.h:
 
-../../../libs/openFrameworks/math/ofMatrix3x3.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/math/ofMatrix3x3.h:
 
-../../../libs/openFrameworks/communication/ofSerial.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/communication/ofSerial.h:
 
-../../../libs/openFrameworks/communication/ofArduino.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/communication/ofArduino.h:
 
-../../../libs/openFrameworks/gl/ofFbo.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/gl/ofFbo.h:
 
-../../../libs/openFrameworks/gl/ofTexture.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/gl/ofTexture.h:
 
-../../../libs/openFrameworks/gl/ofVboMesh.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/gl/ofVboMesh.h:
 
-../../../libs/openFrameworks/gl/ofVbo.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/gl/ofVbo.h:
 
-../../../libs/openFrameworks/gl/ofGLUtils.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/gl/ofGLUtils.h:
 
-../../../libs/openFrameworks/gl/ofGLRenderer.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/gl/ofGLRenderer.h:
 
-../../../libs/openFrameworks/graphics/ofPolyline.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/graphics/ofPolyline.h:
 
-../../../libs/openFrameworks/graphics/ofGraphics.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/graphics/ofGraphics.h:
 
-../../../libs/openFrameworks/utils/ofMatrixStack.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/utils/ofMatrixStack.h:
 
-../../../libs/openFrameworks/gl/ofLight.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/gl/ofLight.h:
 
-../../../libs/openFrameworks/3d/ofNode.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/3d/ofNode.h:
 
-../../../libs/openFrameworks/3d/of3dUtils.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/3d/of3dUtils.h:
 
-../../../libs/openFrameworks/graphics/of3dGraphics.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/graphics/of3dGraphics.h:
 
-../../../libs/openFrameworks/3d/of3dPrimitives.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/3d/of3dPrimitives.h:
 
-../../../libs/openFrameworks/gl/ofMaterial.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/gl/ofMaterial.h:
 
-../../../libs/openFrameworks/gl/ofShader.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/gl/ofShader.h:
 
-../../../libs/openFrameworks/app/ofAppBaseWindow.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/app/ofAppBaseWindow.h:
 
-../../../libs/openFrameworks/gl/ofGLProgrammableRenderer.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/gl/ofGLProgrammableRenderer.h:
 
-../../../libs/openFrameworks/graphics/ofCairoRenderer.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/graphics/ofCairoRenderer.h:
 
 /usr/include/cairo/cairo-features.h:
 
@@ -600,43 +601,43 @@ obj/linux64/Release/src/main.o: src/main.cpp \
 
 /usr/include/cairo/cairo.h:
 
-../../../libs/openFrameworks/graphics/ofPath.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/graphics/ofPath.h:
 
-../../../libs/openFrameworks/graphics/ofTessellator.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/graphics/ofTessellator.h:
 
-../../../libs/openFrameworks/graphics/ofImage.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/graphics/ofImage.h:
 
-../../../libs/openFrameworks/graphics/ofRendererCollection.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/graphics/ofRendererCollection.h:
 
-../../../libs/openFrameworks/graphics/ofTrueTypeFont.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/graphics/ofTrueTypeFont.h:
 
-../../../libs/openFrameworks/app/ofBaseApp.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/app/ofBaseApp.h:
 
-../../../libs/openFrameworks/app/ofAppRunner.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/app/ofAppRunner.h:
 
-../../../libs/openFrameworks/sound/ofSoundStream.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/sound/ofSoundStream.h:
 
-../../../libs/openFrameworks/sound/ofBaseSoundStream.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/sound/ofBaseSoundStream.h:
 
-../../../libs/openFrameworks/sound/ofRtAudioSoundStream.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/sound/ofRtAudioSoundStream.h:
 
-../../../libs/openFrameworks/sound/ofSoundPlayer.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/sound/ofSoundPlayer.h:
 
-../../../libs/openFrameworks/sound/ofBaseSoundPlayer.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/sound/ofBaseSoundPlayer.h:
 
-../../../libs/openFrameworks/sound/ofOpenALSoundPlayer.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/sound/ofOpenALSoundPlayer.h:
 
-../../../libs/kiss/include/kiss_fft.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/kiss/include/kiss_fft.h:
 
-../../../libs/kiss/include/kiss_fftr.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/kiss/include/kiss_fftr.h:
 
-../../../libs/kiss/include/kiss_fft.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/kiss/include/kiss_fft.h:
 
-../../../libs/openFrameworks/video/ofVideoGrabber.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/video/ofVideoGrabber.h:
 
-../../../libs/openFrameworks/video/ofGstVideoGrabber.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/video/ofGstVideoGrabber.h:
 
-../../../libs/openFrameworks/video/ofGstUtils.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/video/ofGstUtils.h:
 
 /usr/include/gstreamer-0.10/gst/gst.h:
 
@@ -942,12 +943,14 @@ obj/linux64/Release/src/main.o: src/main.cpp \
 
 /usr/include/gstreamer-0.10/gst/gstcompat.h:
 
-../../../libs/openFrameworks/video/ofVideoPlayer.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/video/ofVideoPlayer.h:
 
-../../../libs/openFrameworks/video/ofGstVideoPlayer.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/video/ofGstVideoPlayer.h:
 
-../../../libs/openFrameworks/3d/ofCamera.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/3d/ofCamera.h:
 
-../../../libs/openFrameworks/3d/ofEasyCam.h:
+/home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/3d/ofEasyCam.h:
 
 src/testApp.h:
+
+src/shapefil.h:

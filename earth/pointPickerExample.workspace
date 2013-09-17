@@ -2,8 +2,8 @@
 <CodeBlocks_workspace_file>
 	<Workspace title="pointPickerExample">
 		<Project filename="pointPickerExample.cbp" active="1">
-			<Depends filename="../../../libs/openFrameworksCompiled/project/linux64/libopenFrameworks.cbp" />
+			<Depends filename="~/Libraries/of_v0.8.0_linux64_release/libs/openFrameworksCompiled/project/linux64/libopenFrameworks.cbp" />
 		</Project>
-		<Project filename="../../../libs/openFrameworksCompiled/project/linux64/libopenFrameworks.cbp" />
+		<Project filename="~/Libraries/of_v0.8.0_linux64_release/libs/openFrameworksCompiled/project/linux64/libopenFrameworks.cbp" />
 	</Workspace>
 </CodeBlocks_workspace_file>
