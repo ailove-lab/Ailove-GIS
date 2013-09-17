@@ -5,7 +5,16 @@ void testApp::setup()
 {
     ofSetVerticalSync(true);
     ofSetDepthTest(true);
+
+    pjFromStr = "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs";
+    pjToStr   = "+proj=laea +lat_0=90 +lon_0=90 +x_0=0 +y_0=0 +ellps=WGS84 +datum=WGS84 +units=m +no_defs";
     // mesh.load("lofi-bunny.ply");
+
+    // projections
+    if (!(pjFrom = pj_init_plus(pjFromStr.c_str())) )
+       ofExit(1);
+    if (!(pjTo = pj_init_plus(pjToStr.c_str())) )
+       ofExit(1);
 
 	sphere.set(200.0, 3);
 
@@ -35,6 +44,12 @@ void testApp::setup()
             adfMaxBound[1],
             adfMaxBound[2],
             adfMaxBound[3] );
+
+    mbrXmin = adfMinBound[0];
+    mbrYmin = adfMinBound[1];
+    mbrXmax = adfMaxBound[0];
+    mbrYmax = adfMaxBound[1];
+
 
     for( i = 0; i < nEntities && !bHeaderOnly; i++ ) {
 
@@ -84,8 +99,13 @@ void testApp::setup()
         }
 
 		ofPath* path = new ofPath();
+		ofPath* projectedPath = new ofPath();
 		//path->setFilled(false);
+		projectedPath->setFilled(false);
 		path->setFillColor(ofColor(rand()/2.0+0.5, rand()/2.0+0.5, rand()/2.0+0.5, 224));
+        projectedPath->setFillColor(ofColor(rand()/2.0+0.5, rand()/2.0+0.5, rand()/2.0+0.5, 224));
+
+
 		int oldiPart=-1;
         for( j = 0, iPart = 1; j < psShape->nVertices; j++ ) {
             const char	*pszPartType = "";
@@ -121,12 +141,32 @@ void testApp::setup()
                        pszPartType );
 				*/
 				float R = 200.0;
-				float lng = psShape->padfX[j];
-				float lat = psShape->padfY[j];
-				float x = R*cos(lat*3.14159/180.0)*cos(lng*3.14159/180.0);
-				float y = R*cos(lat*3.14159/180.0)*sin(lng*3.14159/180.0);
-				float z = R*sin(lat*3.14159/180.0);
-				if(oldiPart == iPart) path->lineTo(x,y,z); else path->moveTo(x,y,z);
+				double lng = psShape->padfX[j]*DEG_TO_RAD;
+				double lat = psShape->padfY[j]*DEG_TO_RAD;
+				float x = R*cos(lat)*cos(lng);
+				float y = R*cos(lat)*sin(lng);
+				float z = R*sin(lat);
+
+				int p = pj_transform(pjFrom, pjTo, 1, 1, &lng, &lat, NULL);
+
+                if(mbrXmin>lng) mbrXmin = lng;
+                if(mbrYmin>lat) mbrYmin = lat;
+                if(mbrXmax<lng) mbrXmax = lng;
+                if(mbrYmax<lat) mbrYmax = lat;
+
+                if(p)
+                    printf("%s\nlng: %f, lat: %f\n",pj_strerrno(p), lng, lat);
+                //else
+                //    printf("lng: %f, lat: %f\n", lng, lat);
+
+				if(oldiPart == iPart) {
+                    path->lineTo(x,y,z);
+                    projectedPath->lineTo(lng, lat);
+                } else {
+                    path->moveTo(x,y,z);
+                    projectedPath->moveTo(lng, lat);
+                }
+
 				oldiPart = iPart;
             }
         }
@@ -143,10 +183,15 @@ void testApp::setup()
         }
 
         path->close();
+        projectedPath->close();
+
         shapes.push_back(path);
+        projectedShapes.push_back(projectedPath);
 
         SHPDestroyObject( psShape );
     }
+
+    printf("MBR\n   min: %f, %f;\n   max: %f, %f\n", mbrXmin, mbrYmin, mbrXmax, mbrYmax);
 
     SHPClose( hSHP );
 
@@ -171,6 +216,19 @@ void testApp::draw()
     ofBackgroundGradient(ofColor(64), ofColor(0));
 
     ofSetColor(255);
+
+    ofDrawBitmapString(pjFromStr,10,20);
+    ofDrawBitmapString(pjToStr  ,10,40);
+
+
+	double s=-768.0/abs(mbrYmax-mbrYmin);
+    ofTranslate(1024/2, 768/2, 0);
+    ofScale(-s,s,1.0);
+
+    for(vector< ofPath* >::iterator shape = projectedShapes.begin(); shape != projectedShapes.end(); ++shape) {
+		(*shape)->draw();
+	}
+
     cam.begin();
 
     ofSetColor(255,255,255,20);
@@ -181,10 +239,11 @@ void testApp::draw()
     //ofSetColor(ofColor::white);
     //mesh.drawVertices();
 
-	for(vector< ofPath* >::iterator shape = shapes.begin(); shape != shapes.end(); ++shape) {
-		(*shape)->draw();
-	}
+	//for(vector< ofPath* >::iterator shape = shapes.begin(); shape != shapes.end(); ++shape) {
+	//	(*shape)->draw();
+	//}
 	cam.end();
+
 
 	/*
     int n = mesh.getNumVertices();

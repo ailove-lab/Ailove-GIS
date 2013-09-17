@@ -76,7 +76,7 @@ OF_ROOT = /home/peko/Libraries/of_v0.8.0_linux64_release
 # add a runtime path to search for those shared libraries, since they aren't
 # incorporated directly into the final executable application binary.
 ################################################################################
-# PROJECT_LDFLAGS=-Wl,-rpath=./libs
+PROJECT_LDFLAGS=-Wl,-rpath=./libs -lproj
 
 ################################################################################
 # PROJECT DEFINES
@@ -104,7 +104,7 @@ OF_ROOT = /home/peko/Libraries/of_v0.8.0_linux64_release
 #
 #   Note: Leave a leading space when adding list items with the += operator
 ################################################################################
-PROJECT_CFLAGS = -I~/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks
+PROJECT_CFLAGS = -I$(OF_ROOT)/libs/openFrameworks
 
 ################################################################################
 # PROJECT OPTIMIZATION CFLAGS

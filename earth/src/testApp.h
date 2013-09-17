@@ -2,6 +2,7 @@
 
 #include "ofMain.h"
 #include "shapefil.h"
+#include "proj_api.h"
 
 class testApp : public ofBaseApp
 {
@@ -27,9 +28,20 @@ public:
     const char 	*pszPlus;
     double 	adfMinBound[4], adfMaxBound[4];
     vector<ofPath*> shapes;
+    vector<ofPath*> projectedShapes;
 
 	ofIcoSpherePrimitive sphere;
 
     ofMesh mesh;
     ofEasyCam cam;
+
+    double mbrXmin;
+    double mbrYmin;
+    double mbrXmax;
+    double mbrYmax;
+
+    projPJ pjFrom, pjTo;
+
+    string pjFromStr, pjToStr;
+
 };

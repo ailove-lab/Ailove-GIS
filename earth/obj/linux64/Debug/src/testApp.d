@@ -305,7 +305,7 @@ obj/linux64/Debug/src/testApp.o: src/testApp.cpp src/testApp.h \
  /home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/video/ofGstVideoPlayer.h \
  /home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/3d/ofCamera.h \
  /home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/3d/ofEasyCam.h \
- src/shapefil.h
+ src/shapefil.h src/proj_api.h
 
 src/testApp.h:
 
@@ -954,3 +954,5 @@ src/testApp.h:
 /home/peko/Libraries/of_v0.8.0_linux64_release/libs/openFrameworks/3d/ofEasyCam.h:
 
 src/shapefil.h:
+
+src/proj_api.h:
