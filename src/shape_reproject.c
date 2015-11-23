@@ -7,6 +7,7 @@
 #include "shapefil.h"
 #include "shpgeo.h"
 #include "proj_api.h"
+#include "stb_easy_font.h"
 
 static void error_callback(int error, const char* description) {
     fputs(description, stderr);
