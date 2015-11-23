@@ -22,7 +22,7 @@ double lng, lat;
 static void cursorpos_callback(GLFWwindow* window, double x, double y) {
     int width, height;
     glfwGetWindowSize(window, &width, &height);
-    lng =-(x/width  - 0.5)*360.0;
+    lng =90.0-(x/width  - 0.5)*360.0;
     lat = (y/height - 0.5)*180.0;
 }
 
@@ -231,8 +231,8 @@ void drawShapes() {
 
             } else {
                 glColor3f(1.0f,1.0f,1.0f); 
-                glVertex3f(psShape->padfX[j]/8e6,
-                           psShape->padfY[j]/8e6,
+                glVertex3f(psShape->padfX[j]/1.3e7,
+                           psShape->padfY[j]/1.3e7,
                            psShape->padfZ[j]);
 
                 // printf("   %s (%.15g,%.15g, %.15g) %s \n",
