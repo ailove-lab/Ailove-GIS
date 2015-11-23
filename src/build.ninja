@@ -7,7 +7,7 @@ shp = ../lib/shapelib-1.3.0
 tri = ../lib/triangle
 
 rule cc
-    command = $cc -I$shp -I$shp/contrib $in $lf -o $out
+    command = $cc -I$shp -I$tri -I$shp/contrib $in $lf -o $out
 
 rule ccl
     command = $cc -I$shp -I$shp/contrib -DPROJ4 -c $in -Wall -o $out
@@ -15,10 +15,10 @@ rule ccl
 rule cct
     command = $cc -I$tri -DTRILIBRARY -O -c $in -o $out
 
-build main: cc main.c safileio.o shpopen.o
-build shape_load: cc shape_load.c safileio.o shpopen.o
+build main           : cc main.c safileio.o shpopen.o
+build shape_load     : cc shape_load.c safileio.o shpopen.o
 build shape_reproject: cc shape_reproject.c safileio.o shpopen.o shpgeo.o
-build shape_mesh: cc shape_mesh.c safileio.o shpopen.o shpgeo.o triangle.o
+build shape_mesh     : cc shape_mesh.c shapes.c safileio.o shpopen.o shpgeo.o triangle.o
 
 build safileio.o : ccl $shp/safileio.c
 build shpopen.o  : ccl $shp/shpopen.c 

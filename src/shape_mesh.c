@@ -4,39 +4,28 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#include "shapefil.h"
-#include "shpgeo.h"
-#include "proj_api.h"
+#include "shapes.h"
 
-static void error_callback(int error, const char* description) {
-    fputs(description, stderr);
-}
+static void error_callback(int error, const char* description);
+static void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods);
+static void cursorpos_callback(GLFWwindow* window, double x, double y);
 
-static void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods) {
-    if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
-        glfwSetWindowShouldClose(window, GL_TRUE);
-}
+static void draw_shapes();
+static void draw_grid();
 
+#define SCALE 1.3e7
 
-double lng, lat;
-static void cursorpos_callback(GLFWwindow* window, double x, double y) {
-    int width, height;
-    glfwGetWindowSize(window, &width, &height);
-    lng =90.0-(x/width  - 0.5)*360.0;
-    lat =90.0+(y/height - 0.5)*180.0;
-}
-
-void openShapeFile(char* filename);
-void shapeReproject();
-void drawShapes();
-void freeShapes();
+double lat, lng;
 
 int main(void) {
 
     GLFWwindow* window;
 
-    openShapeFile("../data/russia_110m");
-    shapeReproject();
+    // load_shapes("../data/russia_110m");
+    load_shapes("../data/earth_110m");
+    init_grid(10,10);
+    project_shapes(90, 90);
+    project_grid(90, 90);
 
     glfwSetErrorCallback(error_callback);
 
@@ -75,7 +64,8 @@ int main(void) {
         glLoadIdentity();
         float t = (float) glfwGetTime();
 
-        drawShapes();
+        draw_grid();
+        draw_shapes();
 
         glfwSwapBuffers(window);
         glfwPollEvents();
@@ -84,173 +74,85 @@ int main(void) {
     glfwDestroyWindow(window);
 
     glfwTerminate();
-    freeShapes();
+
+    // clear shapes
+    free_grid();
+    free_shapes();
 
     exit(EXIT_SUCCESS);
 }
 
-
-// shape loader
-SHPHandle hSHP;
-int nEntities;
-double  adfMinBound[4], adfMaxBound[4];
-
-void openShapeFile(char* filename){
-    
-
-    int nShapeType;
-    // Read file 
-    hSHP = SHPOpen( filename, "rb" );
-
-    if( hSHP == NULL ) {
-        printf( "Unable to open:%s\n", filename );
-        return;
-    }
-
-        
-    // Print shape bounds
-    SHPGetInfo( hSHP, &nEntities, &nShapeType, adfMinBound, adfMaxBound );
-    
-
-    printf( "Shapefile Type: %s   # of Shapes: %d\n\n",
-            SHPTypeName( nShapeType ), nEntities );
-    
-    printf( "File Bounds: (%.15g,%.15g,%.15g,%.15g)\n"
-            "         to  (%.15g,%.15g,%.15g,%.15g)\n",
-            adfMinBound[0], 
-            adfMinBound[1], 
-            adfMinBound[2], 
-            adfMinBound[3], 
-            adfMaxBound[0], 
-            adfMaxBound[1], 
-            adfMaxBound[2], 
-            adfMaxBound[3] );
-
-    return;
-}
-
-
-void shapeReproject() {
-
-
-    // for( int i = 0; i < nEntities; i++ ) {
-
-    //     int j, iPart;
-
-    //     SHPObject *psShape = SHPReadObject( hSHP, i );
-    //     SHPProject( psShape, old_prj, new_prj );
-
-
-    //     SHPDestroyObject( psShape );
-    // }
-}
-
-void drawShapes() {
-
-    // Iterate through entries
-    const char  *pszPlus;
-    
-    projPJ old_prj, new_prj;
-    
-    char* pj_old_str = "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs";
-    char pj_new_str[256];
-    sprintf(pj_new_str, "+proj=laea +lat_0=%f +lon_0=%f +x_0=0 +y_0=0 +ellps=WGS84 +datum=WGS84 +units=m +no_defs",lat,lng);
-    
-    old_prj = pj_init_plus(pj_old_str);
-    new_prj = pj_init_plus(pj_new_str);
-
-    for( int i = 0; i < nEntities; i++ ) {
-
-        int j, iPart;
-        SHPObject   *psShape;
-
-        psShape = SHPReadObject( hSHP, i );
-        SHPProject( psShape, old_prj, new_prj );
-
-        if( psShape == NULL ) {
-            fprintf( stderr,
-                     "Unable to read shape %d, terminating object reading.\n",
-                    i );
-            break;
-        }
-
-        // if( psShape->bMeasureIsUsed )
-        //     printf( "\nShape:%d (%s)  nVertices=%d, nParts=%d\n"
-        //             "  Bounds:(%.15g,%.15g, %.15g, %.15g)\n"
-        //             "      to (%.15g,%.15g, %.15g, %.15g)\n",
-        //             i, SHPTypeName(psShape->nSHPType),
-        //             psShape->nVertices, psShape->nParts,
-        //             psShape->dfXMin, psShape->dfYMin,
-        //             psShape->dfZMin, psShape->dfMMin,
-        //             psShape->dfXMax, psShape->dfYMax,
-        //             psShape->dfZMax, psShape->dfMMax );
-        // else
-        //     printf( "\nShape:%d (%s)  nVertices=%d, nParts=%d\n"
-        //             "  Bounds:(%.15g,%.15g, %.15g)\n"
-        //             "      to (%.15g,%.15g, %.15g)\n",
-        //             i, SHPTypeName(psShape->nSHPType),
-        //             psShape->nVertices, psShape->nParts,
-        //             psShape->dfXMin, psShape->dfYMin,
-        //             psShape->dfZMin,
-        //             psShape->dfXMax, psShape->dfYMax,
-        //             psShape->dfZMax );
-
-        if( psShape->nParts > 0 && psShape->panPartStart[0] != 0 ) {
-            fprintf( stderr, "panPartStart[0] = %d, not zero as expected.\n",
-                     psShape->panPartStart[0] );
-        }
-        
+static void draw_shapes(){
+    for(int i=0; i<shapesCount; i++) {
         glBegin(GL_LINE_LOOP);
-
-        for( j = 0, iPart = 1; j < psShape->nVertices; j++ ) {
-
-            const char  *pszPartType = "";
-
-            if( j == 0 && psShape->nParts > 0 )
-                pszPartType = SHPPartTypeName( psShape->panPartType[0] );
-            
-            if( iPart < psShape->nParts
-                && psShape->panPartStart[iPart] == j ) {
-                pszPartType = SHPPartTypeName( psShape->panPartType[iPart] );
-                iPart++;
+        for (int j=0, sp=1; j<shapeLengths[i]; j++) {
+            if(shapeParts[i][sp]==j){
                 glEnd();
                 glBegin(GL_LINE_LOOP);
-                
-            } else
-                pszPlus = " ";
-
-            if( psShape->bMeasureIsUsed ) {
-
-                printf("   %s (%.15g,%.15g, %.15g, %.15g) %s \n",
-                       pszPlus,
-                       psShape->padfX[j],
-                       psShape->padfY[j],
-                       psShape->padfZ[j],
-                       psShape->padfM[j],
-                       pszPartType );
-
-            } else {
-                glColor3f(1.0f,1.0f,1.0f); 
-                glVertex3f(psShape->padfX[j]/4e6,
-                           psShape->padfY[j]/4e6,
-                           psShape->padfZ[j]);
-
-                // printf("   %s (%.15g,%.15g, %.15g) %s \n",
-                //        pszPlus,
-                //        psShape->padfX[j],
-                //        psShape->padfY[j],
-                //        psShape->padfZ[j],
-                //        pszPartType );
+                sp++;
             }
+
+            // glColor3f(1.0f,1.0f,1.0f); 
+            // glVertex3f(shapesX[i][j]/180.0,
+            //            shapesY[i][j]/ 90.0,
+            //            shapesZ[i][j]);
+
+            glColor3f(1.0f,1.0f,1.0f); 
+            glVertex3f(pr_shapesX[i][j]/SCALE,
+                       pr_shapesY[i][j]/SCALE,
+                       pr_shapesZ[i][j]);
+
         }
         glEnd();
-
-        SHPDestroyObject( psShape );
     }
-    pj_free(new_prj);
-    pj_free(old_prj);
 }
 
-void freeShapes() {
-    SHPClose( hSHP );
+static void draw_grid(){
+
+    for (int i=0; i<horizontalCount; i++) {
+        glBegin(GL_LINE_STRIP);
+        for (int j=1; j<verticalCount; j++) {
+            
+            if(i%2) glColor3f(0.05f, 0.05f, 0.05f);
+            else    glColor3f(0.20f, 0.20f, 0.20f);
+            
+            glVertex3f(
+                vertical_gridX[i][j]/SCALE,
+                vertical_gridY[i][j]/SCALE,
+                0);
+        }
+        glEnd();
+    }
+
+    for (int i=0; i<verticalCount; i++) {
+        glBegin(GL_LINE_LOOP);
+        for (int j=0; j<horizontalCount; j++) {
+            if(i%2) glColor3f(0.05f, 0.05f, 0.05f);
+            else    glColor3f(0.20f, 0.20f, 0.20f);
+            glVertex3f(
+                horizontal_gridX[i][j]/SCALE,
+                horizontal_gridY[i][j]/SCALE,
+                0);
+        }
+        glEnd();
+    }
+}
+
+static void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods) {
+    if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
+        glfwSetWindowShouldClose(window, GL_TRUE);
+}
+
+static void error_callback(int error, const char* description) {
+    fputs(description, stderr);
+}
+
+static void cursorpos_callback(GLFWwindow* window, double x, double y) {
+    double lng, lat;
+    int width, height;
+    glfwGetWindowSize(window, &width, &height);
+    lng =-(x/width  - 0.5)*360.0;
+    lat =+(y/height - 0.5)*180.0;
+    project_shapes(lng, lat);
+    project_grid(lng, lat);
 }
