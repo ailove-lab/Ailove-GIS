@@ -163,10 +163,9 @@ static void * SfRealloc( void * pMem, int nNewSize )
  * 
  * **************************************************************************/ 
 int SHPProject ( SHPObject *psCShape, projPJ inproj, projPJ outproj ) {
-#ifdef	PROJ4
+#ifdef  PROJ4
 
     int    j;
-
     if ( pj_is_latlong(inproj) ) {
         for(j=0; j < psCShape->nVertices; j++) {
             psCShape->padfX[j] *= DEG_TO_RAD;
@@ -174,7 +173,8 @@ int SHPProject ( SHPObject *psCShape, projPJ inproj, projPJ outproj ) {
         }
     }   
 
-    pj_transform(inproj, outproj, psCShape->nVertices, 0, psCShape->padfX,
+    pj_transform(inproj, outproj, psCShape->nVertices, 0, 
+                 psCShape->padfX,
                  psCShape->padfY, NULL);
 
     if ( pj_is_latlong(outproj) ) {

@@ -1,19 +1,22 @@
 
 cc = clang
 ll = safileio.o shpopen.o 
-lf = -lglfw3 -lGLU -lGL -lm -lrt -lX11 -lpthread -lXrandr -lXinerama -lXi -lXxf86vm -lXcursor -ldl -lGL -lm
+lf = -lglfw3 -lGLU -lGL -lm -lrt -lX11 -lpthread -lXrandr -lXinerama -lXi -lXxf86vm -lXcursor -ldl -lGL -lm -lproj
 
 shp = ../lib/shapelib-1.3.0
 
 rule cc
-    command = $cc -I$shp $in $lf -o $out
+    command = $cc -I$shp -I$shp/contrib $in $lf -o $out
 
 rule ccl
-    command = $cc -I$shp -c $in -Wall -o $out
+    command = $cc -I$shp -I$shp/contrib -DPROJ4 -c $in -Wall -o $out
 
 build main: cc main.c safileio.o shpopen.o
+build shape_load: cc shape_load.c safileio.o shpopen.o
+build shape_reproject: cc shape_reproject.c safileio.o shpopen.o shpgeo.o
 
 build safileio.o : ccl $shp/safileio.c
 build shpopen.o  : ccl $shp/shpopen.c 
+build shpgeo.o   : ccl $shp/contrib/shpgeo.c 
 
-default main
+default shape_reproject

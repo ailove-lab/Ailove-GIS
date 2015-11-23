@@ -3,15 +3,11 @@ Ailove-GIS
 
 Some GIS experiments
 
-Shape loader
-------------
+Shape loader & reprojecting
+--------------------------
 
-OpenFrameworks based shape file loader
+Based on shapelib proj4 & GLFW
 
-![Screenshoot](https://raw.github.com/ailove-lab/Ailove-GIS/shape-loader/screenshoot.png)
-
-Proj4 reporjection
-------------------
-
-![Screenshoot](https://raw.github.com/ailove-lab/Ailove-GIS/proj4/screenshoot.png)
+![Screenshoot](https://raw.github.com/ailove-lab/Ailove-GIS/reproject/001.png)
+![Screenshoot](https://raw.github.com/ailove-lab/Ailove-GIS/reproject/002.png)
 
