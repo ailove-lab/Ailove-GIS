@@ -1,0 +1,19 @@
+
+cc = clang
+ll = safileio.o shpopen.o 
+lf = -lglfw3 -lGLU -lGL -lm -lrt -lX11 -lpthread -lXrandr -lXinerama -lXi -lXxf86vm -lXcursor -ldl -lGL -lm
+
+shp = ../lib/shapelib-1.3.0
+
+rule cc
+    command = $cc -I$shp $in $lf -o $out
+
+rule ccl
+    command = $cc -I$shp -c $in -Wall -o $out
+
+build main: cc main.c safileio.o shpopen.o
+
+build safileio.o : ccl $shp/safileio.c
+build shpopen.o  : ccl $shp/shpopen.c 
+
+default main
