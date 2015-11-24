@@ -249,6 +249,7 @@ int main()
   free(in.pointattributelist);
   free(in.pointmarkerlist);
   free(in.regionlist);
+
   free(mid.pointlist);
   free(mid.pointattributelist);
   free(mid.pointmarkerlist);
@@ -260,10 +261,12 @@ int main()
   free(mid.segmentmarkerlist);
   free(mid.edgelist);
   free(mid.edgemarkerlist);
+  
   free(vorout.pointlist);
   free(vorout.pointattributelist);
   free(vorout.edgelist);
   free(vorout.normlist);
+  
   free(out.pointlist);
   free(out.pointattributelist);
   free(out.trianglelist);

@@ -13,16 +13,16 @@ static void cursorpos_callback(GLFWwindow* window, double x, double y);
 static void draw_shapes();
 static void draw_grid();
 
-#define SCALE 1.3e7
+double zoom = 1.3e7;
 
-double lat, lng;
+double lat = 90.0, lng = 90.0;
 
 int main(void) {
 
     GLFWwindow* window;
 
-    // load_shapes("../data/russia_110m");
-    load_shapes("../data/earth_110m");
+    load_shapes("../data/russia_110m");
+    // load_shapes("../data/earth_110m");
     init_grid(10,10);
     project_shapes(90, 90);
     project_grid(90, 90);
@@ -98,8 +98,8 @@ static void draw_shapes(){
             //            shapesZ[i][j]);
 
             glColor3f(1.0f,1.0f,1.0f); 
-            glVertex3f(pr_shapesX[i][j]/SCALE,
-                       pr_shapesY[i][j]/SCALE,
+            glVertex3f(pr_shapesX[i][j]/zoom,
+                       pr_shapesY[i][j]/zoom,
                        pr_shapesZ[i][j]);
 
         }
@@ -117,8 +117,8 @@ static void draw_grid(){
             else    glColor3f(0.20f, 0.20f, 0.20f);
             
             glVertex3f(
-                vertical_gridX[i][j]/SCALE,
-                vertical_gridY[i][j]/SCALE,
+                vertical_gridX[i][j]/zoom,
+                vertical_gridY[i][j]/zoom,
                 0);
         }
         glEnd();
@@ -130,8 +130,8 @@ static void draw_grid(){
             if(i%2) glColor3f(0.05f, 0.05f, 0.05f);
             else    glColor3f(0.20f, 0.20f, 0.20f);
             glVertex3f(
-                horizontal_gridX[i][j]/SCALE,
-                horizontal_gridY[i][j]/SCALE,
+                horizontal_gridX[i][j]/zoom,
+                horizontal_gridY[i][j]/zoom,
                 0);
         }
         glEnd();
@@ -141,6 +141,17 @@ static void draw_grid(){
 static void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods) {
     if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
         glfwSetWindowShouldClose(window, GL_TRUE);
+    if (key == GLFW_KEY_KP_ADD      && action == GLFW_PRESS) zoom/=1.2;
+    if (key == GLFW_KEY_KP_SUBTRACT && action == GLFW_PRESS) zoom*=1.2;
+    
+    if (key == GLFW_KEY_KP_6 && action == GLFW_PRESS) lng+=5.0f;
+    if (key == GLFW_KEY_KP_4 && action == GLFW_PRESS) lng-=5.0f;
+    if (key == GLFW_KEY_KP_8 && action == GLFW_PRESS) lat+=5.0f;
+    if (key == GLFW_KEY_KP_2 && action == GLFW_PRESS) lat-=5.0f;
+
+    project_shapes(lng, lat);
+    project_grid(lng, lat);
+
 }
 
 static void error_callback(int error, const char* description) {
@@ -148,11 +159,11 @@ static void error_callback(int error, const char* description) {
 }
 
 static void cursorpos_callback(GLFWwindow* window, double x, double y) {
-    double lng, lat;
-    int width, height;
-    glfwGetWindowSize(window, &width, &height);
-    lng =-(x/width  - 0.5)*360.0;
-    lat =+(y/height - 0.5)*180.0;
-    project_shapes(lng, lat);
-    project_grid(lng, lat);
+    // int width, height;
+    // glfwGetWindowSize(window, &width, &height);
+    // lng =-(x/width  - 0.5)*360.0;
+    // lat =+(y/height - 0.5)*180.0;
+    // project_shapes(lng, lat);
+    // project_grid(lng, lat);
 }
+
