@@ -26,7 +26,7 @@ int main(void) {
 
     // load_shapes("../data/russia_110m");
     load_shapes("../data/earth_110m");
-    init_grid(10,10);
+    init_grid(10, 10);
     project_shapes(90, 90);
     project_grid(90, 90);
 
@@ -88,7 +88,13 @@ int main(void) {
 }
 
 static void draw_shapes(){
+
+    static int cnt = 0;
+
     for(int i=0; i<shapesCount; i++) {
+        
+        if (i!=135) continue;
+
         glBegin(GL_LINE_LOOP);
         for (int j=0, sp=1; j<shapeLengths[i]; j++) {
             if(shapeParts[i][sp]==j){
@@ -118,8 +124,10 @@ static void draw_grid(){
         glBegin(GL_LINE_STRIP);
         for (int j=1; j<verticalCount; j++) {
             
-            if(i%2) glColor3f(0.10f, 0.10f, 0.10f);
-            else    glColor3f(0.20f, 0.20f, 0.20f);
+            if(i%2) 
+                glColor3f(0.20f, 0.20f, 0.20f);
+            else    
+                glColor3f(0.10f, 0.10f, 0.10f);
             
             glVertex3f(
                 vertical_gridX[i][j]/zoom,
@@ -132,8 +140,10 @@ static void draw_grid(){
     for (int i=0; i<verticalCount; i++) {
         glBegin(GL_LINE_LOOP);
         for (int j=0; j<horizontalCount; j++) {
-            if(i%2) glColor3f(0.10f, 0.10f, 0.10f);
-            else    glColor3f(0.20f, 0.20f, 0.20f);
+            if(i%2) 
+                glColor3f(0.20f, 0.20f, 0.20f);
+            else    
+                glColor3f(0.10f, 0.10f, 0.10f);
             glVertex3f(
                 horizontal_gridX[i][j]/zoom,
                 horizontal_gridY[i][j]/zoom,
@@ -175,11 +185,17 @@ static void cursorpos_callback(GLFWwindow* window, double x, double y) {
 
         lng -= dx/10.0;
         lat += dy/10.0;
+        
+        if(lat> 90) lat =  90;
+        if(lat<-90) lat = -90;
+
         start_x = x;
         start_y = y;
 
         project_shapes(lng, lat);
         project_grid(lng, lat);
+        // printf("lng: %f\tlat:%f\n", lng, lat);
+
     }
 }
 

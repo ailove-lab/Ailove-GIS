@@ -48,8 +48,6 @@ void init_grid(int lng_s, int lat_s) {
             horizontal_gridY[i][j] = lat;
         }
     }
-
-
 }
 
 void project_grid(double lng, double lat) {
