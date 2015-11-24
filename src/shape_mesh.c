@@ -9,6 +9,8 @@
 static void error_callback(int error, const char* description);
 static void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods);
 static void cursorpos_callback(GLFWwindow* window, double x, double y);
+static void scroll_callback(GLFWwindow* window, double x, double y);
+static void mouse_button_callback(GLFWwindow* window, int button, int action, int mods);
 
 static void draw_shapes();
 static void draw_grid();
@@ -17,12 +19,13 @@ double zoom = 1.3e7;
 
 double lat = 90.0, lng = 90.0;
 
+
 int main(void) {
 
     GLFWwindow* window;
 
-    load_shapes("../data/russia_110m");
-    // load_shapes("../data/earth_110m");
+    // load_shapes("../data/russia_110m");
+    load_shapes("../data/earth_110m");
     init_grid(10,10);
     project_shapes(90, 90);
     project_grid(90, 90);
@@ -43,6 +46,8 @@ int main(void) {
 
     glfwSetKeyCallback(window, key_callback);
     glfwSetCursorPosCallback(window, cursorpos_callback);
+    glfwSetScrollCallback(window, scroll_callback);
+    glfwSetMouseButtonCallback(window, mouse_button_callback);
 
     while (!glfwWindowShouldClose(window)) {
         
@@ -113,7 +118,7 @@ static void draw_grid(){
         glBegin(GL_LINE_STRIP);
         for (int j=1; j<verticalCount; j++) {
             
-            if(i%2) glColor3f(0.05f, 0.05f, 0.05f);
+            if(i%2) glColor3f(0.10f, 0.10f, 0.10f);
             else    glColor3f(0.20f, 0.20f, 0.20f);
             
             glVertex3f(
@@ -127,7 +132,7 @@ static void draw_grid(){
     for (int i=0; i<verticalCount; i++) {
         glBegin(GL_LINE_LOOP);
         for (int j=0; j<horizontalCount; j++) {
-            if(i%2) glColor3f(0.05f, 0.05f, 0.05f);
+            if(i%2) glColor3f(0.10f, 0.10f, 0.10f);
             else    glColor3f(0.20f, 0.20f, 0.20f);
             glVertex3f(
                 horizontal_gridX[i][j]/zoom,
@@ -149,6 +154,7 @@ static void key_callback(GLFWwindow* window, int key, int scancode, int action, 
     if (key == GLFW_KEY_KP_8 && action == GLFW_PRESS) lat+=5.0f;
     if (key == GLFW_KEY_KP_2 && action == GLFW_PRESS) lat-=5.0f;
 
+    printf("lng: %f\tlat:%f\n", lng, lat);
     project_shapes(lng, lat);
     project_grid(lng, lat);
 
@@ -158,12 +164,35 @@ static void error_callback(int error, const char* description) {
     fputs(description, stderr);
 }
 
+double start_x, start_y;
+char dragging=0;
+
 static void cursorpos_callback(GLFWwindow* window, double x, double y) {
-    // int width, height;
-    // glfwGetWindowSize(window, &width, &height);
-    // lng =-(x/width  - 0.5)*360.0;
-    // lat =+(y/height - 0.5)*180.0;
-    // project_shapes(lng, lat);
-    // project_grid(lng, lat);
+
+    if (dragging) {
+        double dx = x-start_x;
+        double dy = y-start_y;
+
+        lng -= dx/10.0;
+        lat += dy/10.0;
+        start_x = x;
+        start_y = y;
+
+        project_shapes(lng, lat);
+        project_grid(lng, lat);
+    }
 }
 
+static void scroll_callback(GLFWwindow* window, double x, double y) {
+    // printf("%f, %f\n", x, y); 
+    if (y>0) zoom/=1.2; else zoom*=1.2;
+    // if (key == GLFW_KEY_KP_SUBTRACT && action == GLFW_PRESS) zoom*=1.2;
+}
+
+static void mouse_button_callback(GLFWwindow* window, int button, int action, int mods) {
+    if (button == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_PRESS)   {
+        glfwGetCursorPos(window, &start_x, &start_y);
+        dragging = 1;
+    }
+    if (button == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_RELEASE) dragging = 0;
+}
