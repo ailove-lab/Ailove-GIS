@@ -5,6 +5,7 @@
 #include <stdio.h>
 
 #include "shapes.h"
+#include "mesh.h"
 
 static void error_callback(int error, const char* description);
 static void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods);
@@ -154,8 +155,10 @@ static void draw_grid(){
 }
 
 static void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods) {
-    if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
+    
+    if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS) 
         glfwSetWindowShouldClose(window, GL_TRUE);
+    
     if (key == GLFW_KEY_KP_ADD      && action == GLFW_PRESS) zoom/=1.2;
     if (key == GLFW_KEY_KP_SUBTRACT && action == GLFW_PRESS) zoom*=1.2;
     

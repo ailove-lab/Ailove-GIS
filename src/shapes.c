@@ -9,10 +9,6 @@
 #include "shpgeo.h"
 #include "proj_api.h"
 
-#define REAL double
-#include "triangle.h"
-
-
 SHPHandle hSHP;
 double  adfMinBound[4], adfMaxBound[4];
 

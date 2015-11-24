@@ -23,7 +23,6 @@ void load_shapes(char*);
 void project_shapes(double lng, double lat);
 void free_shapes();
 
-
 int verticalCount, horizontalCount;
 double ** vertical_gridX;
 double ** vertical_gridY;
