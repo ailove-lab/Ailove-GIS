@@ -1,0 +1,150 @@
+<head>
+<title>Triangle:  Command line switches</title>
+</head>
+<body bgcolor='e8e8e8'>
+
+<font size=6 color='009000'>
+Command line switches</font>
+<p>
+
+To run Triangle, the command line syntax is
+
+<pre>
+triangle [-prq__a__uAcDjevngBPNEIOXzo_YS__iFlsCQVh] input_file
+</pre>
+
+Underscores indicate that numbers may optionally follow certain switches.
+Do <b>not</b> put a space between a switch and its numeric parameter.
+<tt>input_file</tt> must be a file with extension
+<a href="triangle.node.html">.node</a>, or extension
+<a href="triangle.poly.html">.poly</a> if the
+<a href="triangle.p.html">-p</a> switch is used.  If
+<a href="triangle.r.html">-r</a> is used, you must supply
+<a href="triangle.node.html">.node</a> and
+<a href="triangle.ele.html">.ele</a> files, and possibly a
+<a href="triangle.poly.html">.poly</a> file and an
+<a href="triangle.area.html">.area</a> file as well.
+<hr>
+For some of the command line switches described below, you may click
+on the switch for detailed information.
+<ul>
+<li> <b><a href="triangle.p.html">-p</a></b>
+  Triangulates a
+  <a href="triangle.defs.html#pslg">Planar Straight Line Graph</a>
+  (<a href="triangle.poly.html">.poly</a> file).
+<li> <b><a href="triangle.r.html">-r</a></b>
+  Refines a previously generated mesh.
+<li> <b><a href="triangle.q.html">-q</a></b>
+  Quality mesh generation with no angles smaller than 20 degrees.
+  An alternate minimum angle may be specified after the `q'.
+<li> <b><a href="triangle.a.html">-a</a></b>
+  Imposes a maximum triangle area constraint.
+  A fixed area constraint (that applies to every triangle) may be specified
+  after the `a', or varying area constraints may be read from a
+  <a href="triangle.poly.html">.poly</a> file or
+  <a href="triangle.area.html">.area</a> file.
+<li> <b><a href="triangle.u.html">-u</a></b>
+  Imposes a user-defined constraint on triangle size.
+<li> <b><a href="triangle.A.html">-A</a></b>
+  Assigns a regional attribute to each triangle that identifies what
+  segment-bounded region it belongs to.
+<li> <b><a href="triangle.c.html">-c</a></b>
+  Encloses the convex hull with segments.
+<li> <b>-D</b>  Conforming Delaunay:  use this switch if you want all triangles
+  in the mesh to be Delaunay, and not just constrained Delaunay; or if you want
+  to ensure that all Voronoi vertices lie within the triangulation.
+<li> <b>-j</b>
+  Jettisons vertices that are not part of the final triangulation
+  from the output .node file (including duplicate input vertices and
+  vertices ``eaten'' by holes).
+<li> <b>-e</b>
+  Outputs (to an <a href="triangle.edge.html">.edge</a> file)
+  a list of edges of the triangulation.
+<li> <b>-v</b>
+  Outputs the <a href="triangle.defs.html#voronoi">Voronoi diagram</a>
+  associated with the triangulation.  Does not attempt to detect degeneracies,
+  so some Voronoi vertices may be duplicated.
+<li> <b>-n</b>
+  Outputs (to a <a href="triangle.neigh.html">.neigh</a> file)
+  a list of triangles neighboring each triangle.
+<li> <b>-g</b>
+  Outputs the mesh to an Object File Format (.off) file, suitable for
+  viewing with
+  <a href="http://www.geom.umn.edu/">the Geometry Center's</a>
+  <a href="http://www.geom.umn.edu/software/download/geomview.html">
+  Geomview</a> package.
+<li> <b>-B</b>
+  Suppresses <a href="triangle.markers.html">boundary markers</a> in the output
+  <a href="triangle.node.html">.node</a>,
+  <a href="triangle.poly.html">.poly</a>, and
+  <a href="triangle.edge.html">.edge</a> output files.
+<li> <b>-P</b>
+  Suppresses the output <a href="triangle.poly.html">.poly</a> file.
+  Saves disk space, but you lose the ability
+  to maintain constraining <a href="triangle.defs.html#segment">segments</a>
+  on later refinements of the mesh.
+<li> <b>-N</b>
+  Suppresses the output <a href="triangle.node.html">.node</a> file.
+<li> <b>-E</b>
+  Suppresses the output <a href="triangle.ele.html">.ele</a> file.
+<li> <b><a href="triangle.I.html">-I</a></b>
+  Suppresses mesh <a href="triangle.iteration.html">iteration numbers</a>.
+<li> <b>-O</b>
+  Suppresses holes:  ignores the holes in the
+  <a href="triangle.poly.html">.poly</a> file.
+<li> <b>-X</b> Suppresses <a href="triangle.exact.html">exact arithmetic</a>.
+<li> <b>-z</b> Numbers all items starting from zero (rather than one).
+  Note that this switch is normally overrided by the value used to number the
+  first vertex of the input <a href="triangle.node.html">.node</a> or
+  <a href="triangle.poly.html">.poly</a> file.  However, this switch
+  is useful when calling Triangle from another program.
+<li> <b>-o2</b>
+  Generates <a href="triangle.highorder.html">second-order subparametric
+  elements</a> with six nodes each.
+<li> <b><a href="triangle.Y.html">-Y</a></b>
+  Prohibits the insertion of
+  <a href="triangle.defs.html#steiner">Steiner points</a> on the mesh boundary.
+  If specified twice (-YY), it prohibits the insertion of Steiner points
+  on any segment, including internal segments.
+<li> <b><a href="triangle.S.html">-S</a></b>
+  Specifies the maximum number of added
+  <a href="triangle.defs.html#steiner">Steiner points</a>.
+<li> <b>-i</b>
+  Uses the incremental algorithm for Delaunay triangulation,
+  rather than the divide-and-conquer algorithm.
+<li> <b>-F</b>
+  Uses Steven Fortune's sweepline algorithm for Delaunay triangulation,
+  rather than the divide-and-conquer algorithm.
+<li> <b>-l</b>
+  Uses only vertical cuts in the divide-and-conquer algorithm.  By
+  default, Triangle uses alternating vertical and horizontal cuts,
+  which usually improve the speed except with vertex sets that are
+  small or short and wide.  This switch is primarily of theoretical
+  interest.
+<li> <b>-s</b>
+  Specifies that segments should be forced into the triangulation by
+  recursively splitting them at their midpoints, rather than by
+  generating a constrained Delaunay triangulation.  Segment splitting
+  is true to Ruppert's original algorithm, but can create needlessly
+  small triangles.  This switch is primarily of theoretical interest.
+<li> <b>-C</b>
+  Check the consistency of the final mesh.  Uses exact arithmetic for
+  checking, even if the -X switch is used.  Useful if you suspect
+  Triangle is buggy.
+<li> <b>-Q</b>
+  Quiet:  Suppresses all explanation of what Triangle is doing, unless
+  an error occurs.
+<li> <b><a href="triangle.V.html">-V</a></b>
+  Verbose:  Gives detailed information about what Triangle is doing.
+  Add more `V's for increasing amount of detail.  `-V' gives
+  information on algorithmic progress and
+  <a href="triangle.stats.html">detailed statistics</a>.
+<li> <b>-h</b>
+  Help:  Displays <a href="triangle.help.html">complete instructions</a>.
+</ul>
+<hr>
+<a href="triangle.html">Return to Triangle home page.</a>
+<hr>
+<address>
+<img src="sig.gif" width=151 height=21>
+</address>
