@@ -1,13 +1,14 @@
 
 cc = clang
 ll = safileio.o shpopen.o 
+cf = -fcolor-diagnostics
 lf = -lglfw3 -lGLU -lGL -lm -lrt -lX11 -lpthread -lXrandr -lXinerama -lXi -lXxf86vm -lXcursor -ldl -lGL -lm -lproj
 
 shp = ../lib/shapelib-1.3.0
 tri = ../lib/triangle
 
 rule cc
-    command = $cc -I$shp -I$tri -I$shp/contrib $in $lf -o $out
+    command = $cc $cf -I$shp -I$tri -I$shp/contrib $in $lf -o $out
 
 rule ccl
     command = $cc -I$shp -I$shp/contrib -DPROJ4 -c $in -Wall -o $out
