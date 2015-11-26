@@ -149,14 +149,12 @@ static void draw_mesh() {
 static void draw_shapes(){
 
     static int cnt = 0;
+    
+    glEnable (GL_BLEND);
+    glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
     for(int i=0; i<shapesCount; i++) {
         
-<<<<<<< HEAD
-        // if (i!=135) continue;
-=======
-        if (i!=shape_id) continue;
->>>>>>> e5158b77b243366138bb2803dfd08497110dacf0
 
         glBegin(GL_LINE_LOOP);
         for (int j=0, sp=1; j<shapeLengths[i]; j++) {
@@ -171,7 +169,11 @@ static void draw_shapes(){
             //            shapesY[i][j]/ 90.0,
             //            shapesZ[i][j]);
 
-            glColor3f(0.8f,0.8f,0.8f); 
+            if (i==shape_id)
+                glColor4f(1.0f,1.0f,1.0f,0.5f); 
+            else 
+                glColor4f(1.0f,1.0f,1.0f,0.2f); 
+
             glVertex3f(pr_shapesX[i][j]/zoom,
                        pr_shapesY[i][j]/zoom,
                        pr_shapesZ[i][j]);
@@ -184,7 +186,9 @@ static void draw_shapes(){
 static void draw_grid(){
 
     for (int i=0; i<horizontalCount; i++) {
+
         glBegin(GL_LINE_STRIP);
+        
         for (int j=1; j<verticalCount; j++) {
             
             if(i%2) 
