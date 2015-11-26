@@ -34,10 +34,13 @@ void mesh_shape(int shape_id) {
 
         // next point is start of new contour
         if(shapeParts[shape_id][sp] = i+1) {
+            in.segmentlist[i*2+1] = i+1;
+            
             sp++;
+        }else {
+            in.segmentlist[i*2+1] = i+1;
         }
 
-        in.segmentlist[i*2+1] = i+1;
     }
 
 }

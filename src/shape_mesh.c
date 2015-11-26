@@ -94,7 +94,7 @@ static void draw_shapes(){
 
     for(int i=0; i<shapesCount; i++) {
         
-        if (i!=135) continue;
+        // if (i!=135) continue;
 
         glBegin(GL_LINE_LOOP);
         for (int j=0, sp=1; j<shapeLengths[i]; j++) {
