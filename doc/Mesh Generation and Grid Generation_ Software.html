@@ -1,0 +1,1361 @@
+<TITLE>
+Mesh Generation and Grid Generation: Software 
+</TITLE>
+<!-- Changed by: Robert Schneiders,  5-Apr-1998 -->
+
+<META NAME="description" CONTENT="Software for mesh generation, grid generation, meshing and triangulation">
+<META NAME="keywords" CONTENT="mesh generation, grid generation, software, meshing, triangulation, mesh generator, grid generator, maillage, netzgenerierung">
+<META NAME="E-Mail" CONTENT="robert.schneiders@informatik.rwth-aachen.de">
+<META NAME="distribution" CONTENT="global">
+<META NAME="Resource-Type" CONTENT="DOCUMENT">
+<META NAME="author" CONTENT="Robert Schneiders">
+<META NAME="revisit-after" CONTENT="4 weeks">
+<META NAME="generator" CONTENT="xemacs">
+<META NAME="Admin-Handle" CONTENT="robert.schneiders@informatik.RWTH-Aachen.DE">
+<META name="robots" content="follow">
+
+<body background="http://www.informatik.rwth-aachen.de/Iconsammlung/Backgrounds/yellow_paper.gif">
+
+
+<br>
+<H1>
+<p>
+<A NAME="Clas">Software</A> 
+</H1>
+
+
+<p>
+This is a list of <a href="#public_domain">public domain</a> and <a href="#Commercial">commercial</a>
+mesh generators (click here for <a href="#Other_sources">other sources
+of interest</a>). I have listened only programs for which online information
+exists. There is also a <a href="#Review">section</a> on papers that review
+mesh generators.
+
+<p>
+If you are interested in special programs, the following links might
+guide you directly to interesting places:
+
+<menu>
+<li>
+Triangular: <a href="#ADMesh">Tri></a>
+
+<li>
+Quadrilateral: <a href="#automesh2d">Qua></a>
+
+<li>
+Tetrahedral: <a href="#CAMINO">Tet></a>
+
+<li>
+Unstructured hexahedral: <a href="#Cart3D">Hex></a>
+
+<li>
+2D structured: <a href="#gridgen_sakov">2str></a>
+
+<li>
+3D structured: <a href="#chimera">3str></a>
+
+<li>
+Surface meshes: <a href="#ADMesh">Sur></a>
+</menu>
+
+
+<p>
+<LI>
+<B>A <A NAME="public_domain">list</A> of 
+public domain, downloadable and university codes:</B> 
+
+<menu>
+
+<p><li>
+<a href="https://sites.google.com/a/varlog.com/www/admesh-htm">ADMesh</a> (<a href="people/martin.html">Anthony
+D. Martin</a>)<a NAME="ADMesh"></a>: A program for processing triangulated
+solid meshes in STL format. 
+<a href="#angener">Tri></a>
+<a href="#Cart3D">Sur></a>
+
+<P><LI> 
+<A HREF="http://www.karlin.mff.cuni.cz/~dolejsi/angen/angen.htm">ANGENER</A> 
+(<A HREF="http://www.mff.cuni.cz/fakulta/struktura/lide/992.htm">Vit Dolejsi</A>)<A NAME="angener">:</A> 2D triangulation using anisotropic 
+mesh adaptation. 
+<a href="#CAF2DGENMESH">Tri></a>
+
+<P><LI> 
+<A HREF="http://www.automesh2d.com/default.htm">AUTOMESH2D</A> 
+(<A HREF="http://www.automesh2d.com/Contact.html">Shandong 
+University</A>)<A NAME="automesh2d">:</A> 
+a fully automatic adaptive quad mesh generator, especially suited for
+metal forming simulation.
+<a href="#cqmesh">Qua></a>
+
+<p><li>
+<a href="http://www-tcad.stanford.edu/tcad/bios/tchen.html#page a">CAMINO</a>
+(<a href="http://www-tcad.stanford.edu/tcad/bios/tchen.html">Tao Chen</a>)<a NAME="CAMINO"></a>:
+3D/2D meshing program using a generalized octree/quadtree approach. 
+<a href="#cgal">Tri></a>
+<a href="#cgal">Tet></a>
+
+<p><li>
+<a href="http://people.nas.nasa.gov/~aftosmis/cart3d/">Cart3D</a> (<a href="http://people.nas.nasa.gov/~aftosmis/">Michael
+J. Aftosmis</a>)<a NAME="Cart3D"></a>: Pre-processing tools and mesh generator
+"cubes" for cartesian mesh generation. 
+<a href="#cgal">Sur></a>
+<a href="#CUBIT_sw">Hex></a>
+
+<P><LI> 
+<A HREF="http://www.cgal.org/Manual/latest/doc_html/cgal_manual/packages.html#part_XI">CGAL mesh generation</A> 
+(<A HREF="http://www.cgal.org/">CGAL</A>)<A NAME="cgal">:</A> Various 
+packages for triangle and tetrahedral mesh generation. Distributed 
+under a dual license.
+<a href="#COG">Tri></a>
+<a href="#deliso">Sur></a>
+<a href="#COG">Tet></a>
+
+<P><LI> 
+<A HREF="http://trac.mcs.anl.gov/projects/ITAPS/wiki/CGM">CGM</A> 
+(<A HREF="http://www-unix.mcs.anl.gov/~tautges/">Tim Tautges</A>)<A NAME="cgm">:</A> a code library which
+provides geometry functionality used for mesh generation and
+other applications. 
+
+<P><LI> 
+<A HREF="http://people.nas.nasa.gov/~wchan/cgt/doc/man.html">Chimera 
+Grid Tools</A> 
+(<A HREF="http://people.nas.nasa.gov/~wchan/home.html">William M. Chan</A>)<A NAME="chimera">:</A> A 
+software package containing a variety of tools for the Chimera overset grid approach for
+solving complex configuration problems.
+<a href="#CSCMDO">3str></a>
+
+<p><li>
+<a href="http://www.wias-berlin.de/software/cog/">COG 2.0</a> (<a href="http://www.ilja-schmelzer.de/">Ilja
+Schmelzer</a>)<a NAME="COG"></a>: A grid generation package for 2D an 3D grid generation. An essential
+part is public domain. It's aim is to create Delaunay grids with few nodes for
+complex geometries.
+<a href="#delaundo">Tri></a>
+<a href="#delpsc">Tet></a>
+
+<P><LI> 
+<A HREF="http://www.dimap.ufrn.br/~mfsiqueira/Marcelo_Siqueiras_Web_Spot/cqmesh.html">CQMesh</A> 
+(<A HREF="http://www.dimap.ufrn.br/~mfsiqueira/Marcelo_Siqueiras_Web_Spot/Home.html">Marcelo Siqueira</A>)<A NAME="cqmesh">:</A> 
+AC++ program for generating convex quadrilateral meshes of arbitrary polygonal domains.
+<a href="#CUBIT_sw">Qua></a>
+
+<p><li>
+<a href="http://geolab.larc.nasa.gov/CSCMDO/">CSCMDO</a> (from Bill
+Jones)<a NAME="CSCMDO"></a>: A general purpose multi-block three-dimensional
+volume grid generator which is suitable for Multi-disciplinary Design Optimization.
+<a href="#discretizer">3str></a>
+
+<p><li>
+<a href="http://cubit.sandia.gov/">CUBIT</a> (<a href="http://www.sandia.gov/">SANDIA</a>,
+<a href="http://www.et.byu.edu/">BYU</a>)<a NAME="CUBIT_sw"></a>:
+a two- and three-dimensional finite element mesh generation tool which
+is being developed to pursue the goal of robust and unattended mesh generation
+(quadrilateral and hexahedral element meshes). 
+<a href="#ez4u">Qua></a>
+<a href="#lbie">Hex></a>
+
+<p><li>
+<a href="http://www.cerfacs.fr/~muller/delaundo.html">delaundo</a> 
+(Jens-Dominik M&uuml;ller)<a NAME="delaundo"></a>: A 2-D Delaunay mesh generator
+delaundo that produces high quality triangular grids. 
+<a href="#delos">Tri></a>
+
+<P><LI> 
+<A HREF="http://www.cse.ohio-state.edu/~tamaldey/deliso.html">DelIso</A> 
+(<A HREF="http://www.cse.ohio-state.edu/~tamaldey/">Tamal K. Dey</A>)<A NAME="deliso">:</A> 
+can mesh an Iso-surface from volume data with Delaunay triangles that have bounded aspect ratio.
+<a href="#delpsc">Sur></a>
+
+<P><LI>
+<A HREF="http://www.mines-paristech.fr/~stab/delos/frames_gb.html">Delos</A>
+(<A HREF="http://www.mines-paristech.fr/~stab/">Olivier Stab</A>)<A NAME="delos">:</A>
+An automatic 2D mesh generator for "almost flat surfaces".
+<a href="#diamesh2d">Tri></a>
+
+<P><LI> 
+<A HREF="http://www.cse.ohio-state.edu/~tamaldey/delpsc.html">DelPSC</A> 
+(<A HREF="http://www.cse.ohio-state.edu/~tamaldey/">Tamal K. Dey</A>)<A NAME="delpsc">:</A> Can produce 
+a quality Delaunay mesh(weighted) for a large class of three dimensional domains.
+The algorithm guarantees that almost all triangles and  tetrahedra have bounded radius-edge ratio 
+except a few ones in the vicinity of small input angles or near the boundary.
+<a href="#diamesh2d">Sur></a>
+<a href="#diamesh2d">Tet></a>
+
+<P><LI> 
+<A HREF="http://www.utc.fr/~rassineu/software.html">DIAMESH</A> 
+(<A HREF="http://www.utc.fr/~rassineu/">Alain Rassineux</A>)<A NAME="diamesh2d">:</A> 2D triangular 
+mesh generation, 3D tet meshing and surface remeshing. 
+<a href="#distmesh">Tri></a>
+<a href="#distmesh">Tet></a>
+<a href="#FIST">Sur></a>
+
+<P><LI> 
+<A HREF="http://www.discretizer.org/">Discretizer</A> 
+(<A HREF="http://www.linkedin.com/in/discretizer">Björn Bergqvist</A>)<A NAME="discretizer">:</A> 
+An interactive mesh creation tool, block-structured meshes for cfd applications.
+<a href="#GENIE++">3str></a>
+
+<P><LI> 
+<A HREF="http://persson.berkeley.edu/distmesh/">DistMesh</A> 
+(<A HREF="http://persson.berkeley.edu/">Per-Olof Perrson</A>)<A NAME="distmesh">:</A> A simple MATLAB code for generation of unstructured triangular and 
+tetrahedral meshes.
+<a href="#felicity">Tri></a>
+<a href="#engrid">Tet></a>
+
+<P><LI> 
+<A HREF="http://engits.eu/en/engrid">enGrid</A> 
+(<A HREF="http://engits.eu/">enGits</A>)<A NAME="engrid">:</A> Tetrahedral grid 
+generation with prismatic boundary layers.
+<a href="#felicity">Tet></a>
+
+<P><LI>
+<A HREF="http://www.lacan.upc.edu/ez4u.htm">EZ4U</A>
+(<A HREF="http://www.lacan.upc.edu/">LACAN</A>)<A NAME="ez4u">:</A> 
+Quadrilateral unstructured mesh generation, with graphical user interface.
+<a href="#FIST">Qua></a>
+
+<P><LI>
+<A HREF="https://code.google.com/p/felicity-finite-element-toolbox/wiki/Mesh_Generation_with_TIGER_1">felicity</A>
+(<A HREF="https://www.math.lsu.edu/~walker/">Shawn Walker</A>)<A NAME="felicity">:</A> An algorithm for generating 
+unstructured (triangle and tetrahedral) meshes with guaranteed angle bounds. 
+<a href="#femmesh">Tri></a>
+<a href="#GEOMPACK">Tet></a>
+
+<p><li>
+<a href="http://www.medphys.ucl.ac.uk/~martins/toast/manual/femmesh.html">femmesh</a>
+(<a href="http://www.ucl.ac.uk/medphys/">Medical Physics, UCL</a>)<a NAME="femmesh"></a>:
+A UNIX/OpenWindows program designed to interactively generate 2D FEM meshes
+composed of 3-noded triangular elements.
+<a href="#FIST">Tri></a>
+
+<p><li>
+<a href="http://www.andrew.cmu.edu/user/sowen/software/FIST.html">FIST</a>
+(<a href="http://www.cosy.sbg.ac.at/~held/held.html">Martin Held</a>)<a NAME="FIST"></a>:
+A robust polygon triangulation code (ear clipping), can handle many kinds
+of degenerate data. 
+<a href="#GEOMPACK">Tri></a>
+<a href="#GEOMPACK">Qua>Sur></a>
+
+<p><li>
+<a href="http://www.eng.uab.edu/me/Faculty/bsoni/Research/genie++/index.html">GENIE++</a>
+(<a href="http://www.eng.uab.edu/me/Faculty/bsoni/">Bharat Soni</a>)<a NAME="GENIE++"></a>:
+A collection of software packages that GENerate computational grids for
+Internal-External flow configurations. GENIE++ generates three-dimensional,
+structured, multi-block grids.
+<a href="#gridex">3str></a>
+
+<p><li>
+<a href="http://members.shaw.ca/bjoe/">Geompack++</a> 
+(<a href="http://members.shaw.ca/bjoe/">Barry
+Joe</a>)<a NAME="GEOMPACK"></a>: A mathematical software package written
+in standard Fortran 77 for the GEneration Of 2-D and 3-D triangular/tetrahedral
+finite element Meshes using GEOMetric algorithms. <a href="http://members.shaw.ca/bjoe/">GEOMPACK90</a>,
+the substantially enhanced successor of GEOMPACK, is a comprehensive software
+package for finite element mesh generation (triangular, quadrilateral,
+surface, tetrahedral, hexahedral-dominant). 
+<a href="#GMSH">Tri></a>
+<a href="#lbie">Qua></a>
+<a href="#GTS">Sur></a>
+<a href="#GMSH">Tet></a>
+
+<P><LI> 
+<A HREF="http://vortex.atgteam.com/docs/globegen/">Globegen</A> 
+(<A HREF="http://tuvalu.santafe.edu/events/workshops/index.php/Nash'at_Ahmad">Nash'at Ahmad</A>)<A NAME="globegen">:</A> An unstructured prismatic grid-generator for creating meshes for the 
+entire globe. 
+
+<p><li>
+<a href="http://www.geuz.org/gmsh/">GMSH</a> (<a href="http://www.scorec.rpi.edu/~remacle/">Jean-Francois
+Remacle</a>, <a href="http://www.geuz.org/gmsh/">Christophe
+Geuzaine</a>)<a NAME="GMSH"></a>: A Delaunay-based mesh generator, generates
+adapted meshes for lines, surfaces and volumes. 
+<a href="#GTS">Tri></a>
+<a href="#gridex">Tet></a>
+
+<P><LI> 
+<A HREF="http://gts.sourceforge.net/index.html">GNU Triangulated Surface Library</A> 
+(<A HREF="http://sourceforge.net/">Source forge</A>)<A NAME="GTS">:</A> 
+Intended to provide a set of useful functions to deal with 3D surfaces
+meshed with interconnected triangles. Contains 2D 
+Delaunay and constrained Delaunay triangulation, surface refinement and 
+coarsening and much more. 
+<a href="#GridTool">Tri>
+<a href="#gridex">Sur></a>
+
+<P><LI> 
+<A HREF="http://gral.berlios.de/">GrAL</A> 
+(<A HREF="http://gral.berlios.de/guntram/index.html">Guntram Berti</A>)<A NAME="gral">:</A> A  generic library for grid data 
+structures and algorithms operating on them. 
+
+<P><LI> 
+<A HREF="http://geolab.larc.nasa.gov/GridEx/">GridEx</A> 
+(<A HREF="http://geolab.larc.nasa.gov/">GEOLAB</A>)<A NAME="gridex">:</A> 
+An interactive software system developed by
+GEOLAB of the NASA Langley Research Center for the
+generation of unstructured meshes.  The software
+integrates native CAD geometry access, multiple
+unstructured meshing algorithms, and interactive 3D
+computer graphics through a Graphical User Interface
+GUI) resulting in a package that is both powerful and
+easy to use. 
+<a href="#GridTool">Sur></a>
+</a><a href="#GridTool">Tet></a>
+<a href="#nasagridgen">3str></a>
+ 
+<P><LI> 
+<A HREF="http://www.openchannelfoundation.org/projects/GRIDGEN/">GRIDGEN</A> 
+(NASA)<A NAME="nasagridgen">:</A> A software system for the generation 
+of 3D, multiple block, structured grids. GRIDGEN is a visually-oriented,
+graphics-based interactive code used to decompose a 3D
+domain into blocks, distribute grid points on curves, initialize
+and refine grid points on surfaces and initialize volume grid points. 
+<a href="#g3d">3str></a>
+
+<P><LI> 
+<A HREF="http://code.google.com/p/gridgen-c/">gridgen</A> 
+(<A HREF="http://www.nersc.no/main/index2.php?display=staffdetails&EmpNo=289">Pavel 
+Sakov</A>)<A NAME="gridgen_sakov">:</A> 
+An orthogonal grid generator. It is based on the CRDT
+algorithm and can easily handle elongated regions with a few hundred boundary 
+points (and probably more). 
+<a href="#gridgen_usgs">2str></a>
+
+<P><LI> 
+<A HREF="http://woodshole.er.usgs.gov/operations/modeling/gridgen/">Gridgen</A> 
+(<A HREF="http://geology.usgs.gov/index.shtml">USGS</A>)<A NAME="gridgen_usgs">:</A> A MATLAB-based tool to construct orthongonal curvilinear grids 
+for of NetCDF files for ECOM and SCRUM ocean circulation models.
+<a href="#gridpack">2str></a>
+
+<p><li>
+<a href="http://marine.rutgers.edu/po/gridpak.html">gridpak</a> (from <a href="http://marine.rutgers.edu/">IMCS</a>)<a NAME="gridpack"></a>:
+2D orthogonal grid generation for coastal engineering. 
+<a href="#Mefisto">2str></a>
+
+<p><li>
+<a href="http://geolab.larc.nasa.gov/GridTool/">GridTool</a> 
+(<a href="http://geolab.larc.nasa.gov/GridTool/">NASA 
+Langley</a>)<a NAME="GridTool"></a>: Surface Modeling and Grid
+Generation Tool. <a href="#GRUMMP">Tri>Tet></a>
+<a href="#iso2mesh">Sur></a>
+
+<p><li>
+<a href="http://tetra.mech.ubc.ca/GRUMMP/">GRUMMP</a> (<a href="http://tetra.mech.ubc.ca/ANSLab/">ANSLab</a>)<a NAME="GRUMMP"></a>: 
+Quality generation and refinement of unstructured
+mixed-element meshes (also in parallel).
+<a href="#gts">Tri></a>
+<a href="#gts">Tet></a>
+
+<P><LI> 
+<A HREF="http://gts.sourceforge.net/">GTS</A> 
+(<A HREF="http://sourceforge.net/">SourceForge</A>)<A NAME="gts">:</A> 
+GTS stands for the GNU Triangulated Surface Library. It is an Open
+Source Free Software Library intended to provide a set of useful
+functions to deal with 3D surfaces meshed with interconnected
+triangles. 
+<a href="#jmesh">Tri></a>
+<a href="#iso2mesh">Tet></a>
+
+<P><LI> 
+<A HREF="http://adams.patriot.net/~bjustice/g3d.html">G3D</A> 
+(IMI)<A NAME="g3d">:</A> 
+A C, X/Motif, and OpenGl application which generates 3D grids used 
+in groundwater simulations.
+<a href="#hypgrid">3str></a>
+
+<P><LI> 
+<A HREF="http://www.risoe.dk/research/sustainable_energy/wind_energy/projects/numwind/hypgrid.aspx?lang=en">HypGrid</A> 
+(<A HREF="http://www.risoe.dk/vea/">Riso Wind Energy Department</A>)<A NAME="hypgrid">:</A> 
+a grid generator based on hyperbolic equations for orthogonality and cell
+area for both two-dimensional and three-dimensional domains. 
+<a href="#lbg">3str></a>
+
+<P><LI> 
+<A HREF="http://www.imtek.uni-freiburg.de/simulation/mathematica/IMSweb/">IMTEK Mathematica Supplement</A>
+(<A HREF="http://www.imtek.uni-freiburg.de/">Freiburg Chair for Simulation</A>)<A NAME="ims">:</A> 
+A Matematica interface to to various mesh generators.
+
+<P><LI> 
+<A HREF="http://iso2mesh.sourceforge.net/cgi-bin/index.cgi">iso2mesh</A> 
+(<A HREF=""></A>)<A NAME="iso2mesh">:</A> A free matlab/octave-based mesh generation and processing toolbox. 
+It can create 3D tetrahedral finite element (FE) mesh from surfaces, 3D binary and gray-scale volumetric 
+images such as segmented MRI/CT scans. 
+<a href="#jmesh">Sur></a>
+<a href="#lagrit">Tet></a>
+
+<P><LI> 
+<A HREF="http://archive.msri.org/about/sgp/jim/software/jmesh/">JMesh</A> 
+(<A HREF="http://archive.msri.org/about/sgp/jim/">James T. Hoffman</A>)<A NAME="jmesh">:</A> 
+A tool for generating approximations of minimal surfaces given by the Weierstrass Formula.
+<a href="#lbie">Tri></a>
+<a href="#lbie">Sur></a>
+
+<p><li>
+<a href="http://meshing.lanl.gov/">LaGriT</a> (<a href="http://www.lanl.gov/">Los
+Alamos National Laboratory</a>)<a NAME="lagrit"></a>: An unstructured grid
+generation and optimization software package used for semiconductor device
+modeling, computational fluid dynamics,and porous flow modeling.
+This software is especially useful for 3D moving surface type applications.
+<a href="#lbie">Tet></a>
+
+<P><LI>
+<A HREF="http://www.wias-berlin.de/software/pdelib/">LBG</A>
+(<A HREF="http://www.wias-berlin.de/">WIAS</A>)<A NAME="lbg">:</A>
+A layer based 3D structured (cartesian) grid generator.
+<a href="#Mefisto">3str></a>
+
+<P><LI> 
+<A HREF="http://ccvweb.csres.utexas.edu/ccv/projects/project.php?proID=10">LBIE-Mesher</A> 
+(<A HREF="http://www.ices.utexas.edu/ccv/">Austin CCV</A>)<A NAME="lbie">:</A> 
+Level Set Boundary Interior and Exterior Mesher,
+can extract adaptive and quality 2D (triangular
+or quadrilateral) meshes over isosurfaces and 3D (tetrahedral or hexahedral) meshes with 
+isosurfaces as boundary surfaces directly from volumetric imaging data. LBIE-Mesher can 
+generate 3D meshes for the volume interior to an
+isosurface, the volume exterior to an isosurface, or an interval volume between two 
+isosurfaces. 
+<a href="#madlib">Tri></a>
+<a href="#makros">Qua></a>
+<a href="#makros">Sur></a>
+<a href="#madlib">Tet></a>
+<a href="#pamgen">Hex></a>
+
+<P><LI> 
+<A HREF="http://perso.uclouvain.be/gaetan.compere/">Gaëtan Compère</A> 
+(<A HREF="http://sites.uclouvain.be/madlib/">MAdLib</A>)<A NAME="madlib">:</A> 
+An open source Mesh Adaptation Library that performs global node repositioning and mesh 
+adaptation by local mesh modifications on tetrahedral or triangular meshes. 
+<a href="#Mefisto">Tri></a>
+<a href="#Mefisto">Tet></a>
+
+<P><LI> 
+<A HREF="http://www.g-boege.de/english/makrosae/index.html">MAKROS-A</A> 
+(<A HREF="http://www.g-boege.de/index.html">Guenther Boege</A>)<A NAME="makros">:</A> Quadrilateral surface meshing for 
+AutoCad data. 
+<a href="#pamgen">Qua></a>
+<a href="#meshmakerpro">Sur></a>
+
+<p><li>
+<a href="http://www.ann.jussieu.fr/~perronnet/mefistoa.gene.html">M&eacute;fisto-maillages</a>
+(<a href="http://www.ann.jussieu.fr/~perronnet/">Alain Perronnet</a>)<a NAME="Mefisto"></a>:
+Structured or non-structered generation of 2D and 3D meshes, part of the
+Mefisto finite element program. 
+<a href="#meshlab">Tri></a>
+<a href="#MegaCads">2str></a>
+<a href="#meshgenc++">Tet></a>
+<a href="#MegaCads">3str></a>
+
+<p><li>
+<a href="http://www.megacads.dlr.de/">MegaCads</a> (<a href="http://www.dlr.de/">DLR
+Institute for Design Aerodynamics</a>)<a NAME="MegaCads"></a>: Multiblock
+elliptic grid generation and Computer aided design system. 
+<a href="#MG">2str>3str></a>
+
+<P><LI> 
+<A HREF="http://www.ann.jussieu.fr/~frey/software.html">Meshing tools</A> 
+(<A HREF="http://www.ann.jussieu.fr/~frey/">Pasal Frey</A>)<A NAME="medit">:</A> 
+Medit is an interactive 3D viewing program. It has been designed to allow easy and
+interactive manipulation of unstructured (2D, 3D and surface) meshes. 
+
+<P><LI>
+<A HREF="http://meshlab.sourceforge.net/">MeshLab</A><A NAME="meshlab">:</A>
+An open source, portable, and extensible system for the processing and 
+editing of unstructured 3D triangular meshes. 
+<a href="#giraldo">Tri></a>
+
+<P><LI> 
+<A HREF="http://dpkeller.awardspace.com/mmp/NewPage2.htm">Mesh Maker Pro</A> 
+(Dan Keller)<A NAME="meshmakerpro">:</A> A
+tool for anyone who needs to create 3D models for graphics programming. 
+<a href="#MG">Sur></a>
+
+<p><li>
+<a href="http://www.nrlmry.navy.mil/~giraldo/mesh2d.html">Mesh2D</a> (<a href="http://faculty.nps.edu/fxgirald/">Francis
+X. Giraldo</a>)<a NAME="giraldo"></a>: An adaptive triangular mesh generator
+for unstructured cfd computations.
+<a href="#meshgenc++">Tri></a>
+
+<P><LI>
+<A HREF="http://www.dogpack-code.org/MeshGenC++/">MeshGenC++</A>
+(<A HREF="http://www.public.iastate.edu/~rossmani/">James Rossmanith</A>)<A NAME="meshgenc++">:</A>
+A software package for generating unstructured meshes in 2D (via triangles) and 3D (via tetrahedrals).
+<a href="#MG">Tri></a>
+<a href="#MG">Tet></a>
+
+<P><LI> 
+<A HREF="http://www.cs.sandia.gov/optimization/knupp/Mesquite.html">MESQUITE</A> 
+(<A HREF="http://www.tstt-scidac.org/">TSTT</A>)<A NAME="mesquite">:</A> A linkable software library that lets users 
+improve the quality of their meshes. Mesquite uses advanced smoothing, optimization, 
+and local swapping/splitting operations.
+
+<p><li>
+<a href="http://www.tecgraf.puc-rio.br/~lula/manual/mg.pdf">MG</a> (<a href="http://www.tecgraf.puc-rio.br/~lula/">Luiz
+Cristovao Gomes Coelho</a>)<a NAME="MG"></a>: A system for the generation
+of 3D finite element meshes with interactive graphics capabilities. 
+<a href="#schoeberl">Tri></a>
+<a href="#Overture">2str></a>
+<a href="#schoeberl">Sur></a>
+<a href="#schoeberl">Tet></a>
+<a href="#Overture">3str></a>
+
+<P><LI> 
+<A HREF="http://www.hpfem.jku.at/netgen/">NETGEN</A> 
+(<A HREF="http://www.sfb013.uni-linz.ac.at/~joachim/">Joachim Sch&ouml;berl</A>)<A NAME="schoeberl">:</A> 
+A 2D/3D mesh generator for CSG geometries (Advancing Front and Delaunay
+methods, hierarchical mesh refinement).
+<a href="#nwgrid">Tri></a>
+<a href="#nwgrid">Sur></a>
+<a href="#nwgrid">Tet></a>
+
+<P><LI> 
+<A HREF="http://mmesh3d.wikispaces.com/">MMESH3d</A> 
+(<A HREF="http://upc.academia.edu/SimoneMarras">Simone Marras</A>)<A NAME="mmesh3d">:</A> 
+A semi-structured multiblock (2 blocks in Z) 2D/3D mesh generator for Hexahedrons and Prisms 
+--wedges of triangular base-- in 3d, and Quads and Tri in 2d thought, 
+mostly for topography-based domains. (Will be openMP parallel soon).
+
+<P><LI> 
+<A HREF="http://www.emsl.pnl.gov/nwgrid/index_nwgrid.html">NWGrid</A> 
+(<A HREF="http://www.pnl.gov/">PNL</A>)<A NAME="nwgrid">:</A> Integrates automated grid 
+generation, time-dependent adaptivity, applied
+mathematics, and numerical analysis for hybrid grids on distributed
+parallel computing systems.
+<a href="#openmesh">Tri></a>
+<a href="#openmesh">Sur></a>
+<a href="#qualmesh">Tet></a>
+
+<P><LI> 
+<A HREF="http://www-i8.informatik.rwth-aachen.de/OpenMesh/">OpenMesh</A> 
+(<A HREF="http://www-i8.informatik.rwth-aachen.de/">Computer 
+Graphics Group, RWTH Aachen</A>)<A NAME="openmesh">:</A> 
+Ageneric and efficient data structure for representing and 
+manipulating polygonal meshes.
+<a href="#openmesh">Tri></a>
+<a href="#QMG">Sur></a>
+
+<P><LI>
+<A HREF="http://www.openvolumemesh.org/">OpenVolumeMesh</A>
+(<A HREF="http://www-i8.informatik.rwth-aachen.de/">Computer 
+Graphics Group, RWTH Aachen</A>)<A NAME="openvolumemesh">:</A>
+A Generic and Versatile Index-Based Data Structure for Polytopal Meshes.
+
+<p><li>
+<a href="https://computation.llnl.gov/casc/Overture/">Overture</a> 
+(<a href="https://computation.llnl.gov/casc/">Center
+for Applied Scientific Computing</a>)<a NAME="Overture"></a>: A library
+of C++ classes for the solution of partial differential equations on complicated
+domains based on multiblock-structured and overlapping grid technology.
+Also useful for grid generation. 
+<a href="#QUIKGRID">2str></a>
+<a href="#tcgrid">3str></a>
+
+<P><LI>
+<A HREF="http://trilinos.sandia.gov/packages/pamgen/index.html">PAMGEN</A>
+(<A HREF="http://trilinos.sandia.gov/">Sandia</A>)<A NAME="pamgen">:</A>
+Hexahedral or quadrilateral (in 2D) finite element meshes of simple shapes (cubes and cylinders) 
+in parallel.
+<a href="#adina">Qua></a>
+<a href="#ALGOR">Hex></a>
+
+<P><LI> 
+<A HREF="http://www-users.cs.umn.edu/~moulitsa/software.html">PARMGRIDGEN</A> 
+(<A HREF="http://www-users.cs.umn.edu/~moulitsa/">Irene Moulitsas</A>)<A NAME="parmgridgen">:</A> 
+A serial library written entirely in ANSI C that implements (serial)
+algorithms for obtaining a sequence of successive coarse grids 
+that are well-suited for geometric multigrid methods. 
+
+<P><LI> 
+<A HREF="http://www.cse.ohio-state.edu/~tamaldey/qualmesh.html">QualMesh</A> 
+(<A HREF="http://www.cse.ohio-state.edu/~tamaldey/">Tamal K. Dey</A>)<A NAME="qualmesh">:</A> 
+A software that can produce a 
+quality volume mesh of a polyhedral domain. The mesh is a Delaunay mesh.
+<a href="#QMG">Tet></a>
+
+<p><li>
+<a href="http://www.qhull.org">Qhull</a> (<a href="http://www.geom.uiuc.edu/about/people/home/bradb.html">Brad
+Barber</a>)<a NAME="Qhull"></a>: A general dimension code for computing
+convex hulls, Delaunay triangulations, Voronoi vertices, and halfspace
+intersections.
+<a href="#QMG">Tri></a>
+
+<p><li>
+<a href="http://www.cs.cornell.edu/home/vavasis/qmg-home.html">QMG</a>
+(<a href="http://www.cs.cornell.edu/Info/People/vavasis/vavasis.html">Stephen
+Vavasis</a>)<a NAME="QMG"></a>: Finite element mesh generation in two and
+three dimensions (triangles/tetrahedra), integrated into MATLAB. 
+<a href="#Simlab">Tri></a>
+<a href="#SolidMesh">Sur></a>
+<a href="#snappyhexmesh">Tet></a>
+
+<p><li>
+<a href="http://www.perspectiveedge.com/index.html">QUIKGRID</a>
+(<a href="http://www.galiander.ca/">John Coulthard</a>)<a NAME="QUIKGRID"></a>:
+A scattered data surface (grid) generator and viewer. 
+<a href="#UGRID">2str></a>
+
+<p><li>
+<a href="http://www.cs.cornell.edu/Info/Projects/SimLab/releases/release-1-0.html">SimLab</a>
+(<a href="http://www.cs.cornell.edu/Info/People/chew/chew.html">Paul Chew</a>)<a NAME="Simlab"></a>:
+A tool for creating guaranteed-quality triangulations of planar areas.
+<a href="#SolidMesh">Tri></a>
+
+<P><LI> 
+<A HREF="http://www.openfoam.com/docs/user/snappyHexMesh.php">snappyHexMesh</A> 
+(<A HREF="http://www.openfoam.com/">OpenCFD</A>)<A NAME="snappyhexmesh">:</A> 
+Generates 3-dimensional meshes containing hexahedra (hex) and split-hexahedra (split-hex) 
+automatically from triangulated surface geometries in Stereolithography (STL) format. 
+<a href="#SolidMesh">Tet></a>
+
+<p><li>
+<a href="http://www.simcenter.msstate.edu/docs/solidmesh/">SolidMesh</a>
+(<a href="http://www.simcenter.msstate.edu/">MSU-ERC</a>,
+MSU)<a NAME="SolidMesh"></a>: This unstructured grid generation system
+enables the user to create both 2D and 3D unstructured grids. Surface grids
+can be created in parametric space on the NURBS or by using a 3D point
+insertion method iterating between parametric space and physical space.
+<a href="#surfremesh">Tri></a>
+<a href="#surfremesh">Sur></a>
+<a href="#stellar">Tet></a>
+
+<P><LI> 
+<A HREF="http://www.cs.berkeley.edu/~jrs/stellar/">Stellar</A> 
+(<A HREF="http://www.cs.berkeley.edu/~klingner/">Bryan Klingner</A>)<A NAME="stellar">:</A> 
+A tetrehedral mesh improvement program.
+<a href="#sus">Tet></a>
+
+<P><LI> 
+<A HREF="http://www.cse.ohio-state.edu/~tamaldey/surfremesh.html">SurfRemesh</A> 
+(<A HREF="http://www.cse.ohio-state.edu/~tamaldey/">Tamal K. Dey</A>)<A NAME="surfremesh">:</A> 
+can remesh a polygonal surface with Delaunay triangles that have bounded aspect ratio. 
+It maintains the topology and approximates the geometry  of the original surface.
+<a href="#T3D">Tri></a>
+<a href="#VGRID">Sur></a>
+
+<P><LI> 
+<A HREF="http://www.dca.iusiani.ulpgc.es/proyecto2008-2011/html/Software.html">SUS</A> 
+(<A HREF="http://www.dca.iusiani.ulpgc.es/">ULPGC IUSIANI</A>)<A NAME="sus">:</A> 
+Simultaneous untangling and smoothing of tetrahedral meshes.
+<a href="#T3D">Tet></a>
+
+<P><LI> 
+<A HREF="http://ksm.fsv.cvut.cz/~dr/t3d.html">T3D</A> 
+(<A HREF="http://ksm.fsv.cvut.cz/~dr/dr.html">Daniel Rypl</A>)<A NAME="T3D">:</A> A
+powerfull mesh generator capable to discretize complex 3D domains into triangular and 
+tetrahedral meshes of high quality. 
+<a href="#TMG_sw">Tri></a>
+<a href="#tetgen_sihang">Tet></a>
+ 
+<P><LI> 
+<A HREF="http://www.grc.nasa.gov/WWW/5810/rvc/tcgrid.htm">TCGRID</A> 
+(<A HREF="http://www.nasa.gov/centers/glenn/home/index.html">NASA 
+Glenn Research Center</A>)<A NAME="tcgrid">:</A>   
+A three-dimensional grid generation code for turbomachinery blades. 
+<a href="#volume_geolab">3str></a>
+
+<P><LI> 
+<A HREF="http://tetgen.berlios.de/">Tetgen</A> 
+(<A HREF="http://tetgen.berlios.de/sihang/">Si Hang</A>)<A NAME="tetgen_sihang">:</A> 
+ Generates exact Delaunay tetrahedralizations, constrained (conforming) 
+Delaunay tetrahedralizations, and quality conforming Delaunay 
+tetrahedralizations. 
+<a href="#vcad">Tet></a>
+
+<p><li>
+<a href="http://www.dmf.bs.unicatt.it/~paolini/tmg/">TMG</a> (<a href="http://www.dmf.bs.unicatt.it/~paolini/welcome.html.en">Maurizio
+Paolini</a>)<a NAME="TMG_sw"></a>: 2D automatic triangular mesh generator
+(advancing front). <a href="#Triangle">Tri></a>
+
+<p><li>
+<a href="http://www-2.cs.cmu.edu/~quake/triangle.html">Triangle</a> (<a href="http://www-2.cs.cmu.edu/~jrs/">Jonathan
+Shewchuk</a>)<a NAME="Triangle"></a>: Generates exact, constrained and
+quality conforming Delaunay triangulations (2D).
+<a href="#UGRID">Tri></a>
+
+<p><li>
+<a href="http://www.telusplanet.net/public/djhawken/ugrid.htm">UGRID</a> 
+(<a href="http://www.telusplanet.net/public/djhawken/index.htm">Donald
+Hawken</a>)<a NAME="UGRID"></a>: Rapid generation of smooth unstructured,
+structured, or hybrid 2D-grids about an airfoil or cylinder.
+<a href="#VGRID">Tri></a><a href="#Unamalla">2str></a>
+
+<p><li>
+<a href="http://www.matematicas.unam.mx/unamalla/">Unamalla</a>
+(<a href="people/barrera-sanchez.html">Pablo Barrera-Sanchez</a>)<a NAME="Unamalla"></a>:
+An easy to use grid generator designed to solve the grid generation problem
+over very irregular planar regions using rectangular structured meshes.
+<a href="#Ansys">2str></a>
+
+<P><LI> 
+<A HREF="http://vcad-hpsv.riken.jp/en/release_software/vcat2tets/">Vcat2tets</A> 
+(<A HREF=""></A>)<A NAME="vcad">:</A> This software generates multi-material 
+tetrahedral meshes from segmented 3D images. 
+<a href="#VGRID">Tet></a>
+
+<P><LI> 
+<A HREF="http://cubit.sandia.gov/verdict/">VERDICT</A> 
+(<A HREF="http://www.sandia.gov/Main.html">Sandia National 
+Laboratories</A>)<A NAME="verdict">:</A> A library for computing the 
+quality metrics of a finite element mesh.
+
+<p><li>
+<a href="http://tetruss.larc.nasa.gov/vgrid/">VGRID</a>
+(<a href="http://tetruss.larc.nasa.gov/team.html">Shahyar Pirzadeh</a>)<a NAME="VGRID"></a>:
+A robust, user-friendly computer program for the generation of three-dimensional
+unstructured (triangular surface and tetrahedral volume) grids in geometrically
+complex domains.
+<a href="#xgen">Tri></a>
+<a href="#adina">Tet></a>
+<a href="#yams">Sur></a>
+
+<P><LI> 
+<A HREF="http://aaac.larc.nasa.gov/VGM/">VGM</A> 
+(Stephen J. Alter)<A NAME="vgm">:</A> A powerful grid 
+generation/manipulation tool for 1D, 2D, and 3D structured grids.
+
+<P><LI> 
+<A HREF="http://viennagrid.sourceforge.net/">ViennaGrid</A> 
+(<A HREF="http://viennagrid.sourceforge.net/viennagrid-contact.html">Karl 
+Rupp</A>)<A NAME="viennagrid">:</A> A C++ library designed for the handling 
+of structured and unstructured meshes in arbitrary spatial dimensions 
+using different coordinate systems.  
+
+<P><LI> 
+<A HREF="http://geolab.larc.nasa.gov/Volume/">Volume</A> 
+(<A HREF="http://geolab.larc.nasa.gov/">NASA Geometry Lab</A>)<A NAME="volume_geolab">:</A> 
+an interactive program written for SGI workstations
+to generate multi-block structured volume grids. 
+<a href="#3DMAGGS_sw">3str></a>
+
+<P><LI> 
+<A HREF="http://math.lbl.gov/voro++/about.html">Voro++</A> 
+(<A HREF="http://math.berkeley.edu/~chr/">Chris Rycroft</A>)<A NAME="voropp">:</A> 
+An open source software library for the computation of the Voronoi diagram.
+
+<p><li>
+<a href="http://hpfem.org/xgen/">XGEN</a> 
+(<a href="http://hpfem.org/~pavel/">Pavel
+Solin</a>)<a NAME="xgen"></a>: A moving particle scheme for 2D unstructured
+triangle grid generation. 
+<a href="#xprob">Tri></a>
+
+<p><li>
+<a href="http://elecmag3.ucd.ie/e3-magsolve/e3-magsolve-pre-processing.html">xprob</a>
+(<a href="http://elecmag3.ucd.ie/index.html">UCD magnetics and machines
+group</a>)<a NAME="xprob"></a>: Automatic triangular mesh generation for
+finite element solution of static magnetic field problems. 
+<a href="#adina">Tri></a>
+
+<P><LI> 
+<A HREF="http://www.distene.com/build/optimesh.html">Yams</A> 
+(<A HREF="http://www.ann.jussieu.fr/~frey/">Pascal Frey</A>)<A NAME="yams">:</A> 
+Given a surface triangulation, 
+Yams allows the user to easily create a geometric mesh, a
+curvature-based mesh or to adapt the mesh to a desired size map. 
+<a href="#adina">Sur></a>
+
+<p><li>
+<a href="http://aaac.larc.nasa.gov/3DMAGGS/">3DMAGGS</a>
+(from Stephen J. Alter)<a NAME="3DMAGGS_sw"></a>:
+An elliptic volume grid generator (multiblock structured grids), used to
+generate computational domains for Computational Fluid Dynamics (CFD) analyses
+of aerodynamic vehicles.
+<a href="#Ansys">3str></a>
+
+<br>&nbsp;
+<p>&nbsp;</menu>
+
+<p><li>
+<a NAME="Commercial"></a><b>Companies offering mesh generation software:</b>
+
+<menu>
+
+<P><LI> 
+<A HREF="http://www.adina.com/">ADINA</A><A NAME="adina">:</A> 
+<A HREF="http://www.adina.com/meshing/meshing.shtml">ADINA User Interface</A> 
+is ADINA's mesh generator, capable of generating 
+surface and volume meshes (tetrahedra) from CAD data. 
+<a href="#ALGOR">Tri></a>
+<a href="#ALGOR">Qua></a>
+<a href="#ALGOR">Sur></a>
+<a href="#ALGOR">Tet></a>
+
+<p><li>
+<a href="http://www.ansys.com/">Ansys<a NAME="Ansys"></a></a>:
+<a href="http://www.cfx-berlin.de/de/software/cfx/modellerstellung/cfx-mesh.html">CFX-Mesh</a>, highly
+automated surface and volume meshing; 
+<a href="http://www.ansys.com/products/turbogrid.asp">TurboGrid</a>,
+a lightning fast, application-specific, interactive grid generation tool
+designed for the creation of the highest quality, CFD meshes.
+<a href="#anamet">2str></a>
+<a href="#Altair">3str></a>
+
+<p><li>
+<a href="http://www.algor.com/">Algor<a NAME="ALGOR"></a></a>: Houdini
+is an unstructured hex meshing code for mechanical engineering and cfd.
+There are also modules for 2D, surface and tetrahedral meshing. <a href="#Altair">Tri></a><a href="#ANSYS">Qua></a><a href="#Altair">Sur>Tet></a>
+<a href="#amps">Hex></a>
+
+<p><li>
+<a href="http://www.altair.com">Altair<a NAME="Altair"></a></a>: 
+Hypermesh,
+<!-- <a href="http://www.altairhyperworks.com/Product,7,HyperMesh.aspx">Hypermesh</a>, -->
+a high performance finite element pre- and post- processing system for
+engineering simulation and analysis. 
+<a href="#ANSYS">Tri></a>
+<a href="#amps">Sur></a>
+<a href="#anamet">3str></a>
+<a href="#amps">Tet></a>
+
+<P><LI>
+<A HREF="http://www.ampstech.com/ampstech/Asp/Index.asp">AMPS Technologies</A><A NAME="amps">:</A>
+<A HREF="http://www.ampstech.com/ampstech/Asp/Solid.asp">AMPSolid</A>, a semi-automatic mesh
+generator. It is based on integrating the ACIS solid modeler and uses an
+overlay algorithm to generate mostly structured hexahedral meshes. The
+surface and tetrahedral elements are generated automatically.
+<a href="#ansa">Hex></a>
+<a href="#anamet">Sur></a>
+<a href="#ANSYS">Tet></a>
+
+<P><LI> 
+<A HREF="http://www.am-inc.com/">Analytical Methods Inc.</A><A NAME="anamet">:</A> 
+<A HREF="http://www.am-inc.com/SURFGEN.shtml">SURFGEN</A>, 
+<A HREF="http://www.am-inc.com/PEP.shtml">PEP</A>, surface and volume
+gridding for cfd simulations. 
+<a href="#ANSYS">Sur></a>
+<a href="#Argus">2str></a>
+<a href="#ANSYS">3str></a>
+
+<p><li>
+<a href="http://www.ansys.com/">ANSYS Inc.<a NAME="ANSYS"></a></a>: 
+ANSYS has many tools for
+model generation and postprocessing for the ANSYS product line. 
+<a href="#Argus">Tri></a>
+<a href="#ansa">Sur></a>
+<a href="#Argus">Qua></a>
+<a href="#NetCad">Tet>3str></a>
+
+<p><li>
+<a href="http://www.argusint.com">Argus Interware Inc.<a NAME="Argus"></a></a>:
+<a href="http://www.argusint.com/MeshGeneration.html">MeshMaker</a>, 2D
+triangular and quadrilateral element mesh generation (structured and unstructured)
+for numerical simulations in computational geosciences. <a href="#NetCad">Tri></a>
+Geometry handling (generation, cleanup, watertight preparation, defeaturing), surface and volume meshing, geometry and mesh morphing, and direct interfaces to several CFD and FEA solvers
+<a href="#ansa">Qua></a>
+<a href="#NetCad">2str></a>
+
+<p><li>
+<a href="http://www.beaver-discovery.de/">Beaver Discovery, Inc.<a NAME="NetCad"></a></a>:
+<a href="http://www.beaver-discovery.de/">GridCAD</a> a powerful tool for
+2D and 3D structured or unstructured grid generation, in-static computation
+of 3D grids, aeroelastic phenomena and CAD modeling. <
+<a href="#ansa">Tri></a>
+<a href="#compass">2str></a>
+<a href="#ansa">Tet></a>
+<a href="#Catalpa">3str></a>
+
+<P><LI> 
+<A HREF="http://www.beta-cae.gr/">BETA CAE Systems</A><A NAME="ansa">:</A> 
+<A HREF="http://www.beta-cae.gr/ansa.htm">ANSA</A>, 
+automatic surface mesh generation and FEA preprocessing. 
+Geometry handling (generation, cleanup, watertight preparation, defeaturing), 
+surface and volume meshing, geometry and mesh morphing, and direct interfaces 
+to several CFD and FEA solvers.
+<a href="#centaur">Tri></a>
+<a href="#BUD">Qua></a>
+<a href="#calmar">Sur></a>
+<a href="#spider">Tet></a>
+<a href="#cei">Hex></a>
+
+<p><li>
+<a href="http://www.budmesh.com/index.html">BUD<a NAME="BUD"></a></a>:
+<a href="http://www.budmesh.com/budmesh.html">BudMesh2D</a>, an all quadrilateral
+2D mesh generator producing high mesh quality for rubber and tire manufacturers.
+<a href="#compass">Qua></a>
+
+<P><LI> 
+<A HREF="http://www.meshing.com/">CAE 
+Software Solutions</A><A NAME="spider">:</A> 
+<A HREF="http://www.meshing.at/Spiderhome/Spider.html">SPIDER</A>,
+qn octree based meshing method, that produces boudary
+fitted, local refined, conformal meshes with one or more boundary
+layers.
+<a href="#newt_mesh">Tet></a>
+
+<P><LI> 
+<A HREF="http://www.calmarresearch.com/">Calmar Research Corporation</A><A NAME="calmar">:</A> 
+<A HREF="http://www.calmarresearch.com/news.htm">AGPS</A>, 
+Aero-Grid Paneling System - a surface geometry system.
+<a href="#Catalpa">Sur></a>
+
+<P><LI> 
+<A HREF="http://www.cambridgeflowsolutions.com/">Cambridge Flow Solutions</A> 
+<A NAME="newt_mesh">:</A> <A HREF="http://www.cambridgeflowsolutions.com/en/products/boxer-mesh/">BOXERMesh</A>, a mesh generating system
+for CFD applications. 
+<a href="#centaur">Tet></a>
+
+<p><li>
+<a href="http://www.catalpa.net/">Catalpa Research Inc.<a NAME="Catalpa"></a></a>:
+<a href="http://www.eng.uab.edu/me/Faculty/bsoni/Research/tiger/index.html">TIGER</a>,
+3D structured grid generation for general turbomachinery configurations.
+<a href="#centaur">Sur></a>
+<a href="#CFDRC">3str></a>
+
+<P><LI> 
+<A HREF="http://www.sharc.co.uk/html/sharc.htm">Sharc</A><A NAME="cei">:</A> 
+<A HREF="http://www.sharc.co.uk/index.htm">harpoon</A>, 
+body-fitted Cartesian meshing (hex elements, hanging nodes). 
+<a href="#csimsoft">Hex></a>
+
+<p><li>
+<a href="http://www.centaursoft.com/">CentaurSoft<a NAME="centaur"></a></a>:
+<a href="http://www.centaursoft.com/features/">Centaur</a> is a complete
+unstructured grid generation package, containing a CAD conversion engine,
+a surface grid generator, a prismatic grid generator, a tetrahedral grid
+generator and a grid adapter.
+<a href="#compass">Tri></a>
+<a href="#mecm2meshtools">Sur></a>
+<a href="#compass">Tet></a>
+<a href="#twinmesh">3str></a>
+
+<P><LI> 
+<A HREF="http://www.cfx-berlin.de/">CFX Berlin</A><A NAME="twinmesh">:</A> 
+<A HREF="http://www.cfx-berlin.de/software/stroemungsmechanik/twinmesh-for-pd-machines.html">TwinMesh</A>, 
+automatically generates high quality structured meshes of the rotating parts of positive displacement (PD) machines.
+<a href="#compass">3str></a>
+
+
+<p><li>
+<a href="http://www.compassis.com/compass">Compass<a NAME="compass"></a></a>: 
+<a href="http://www.gidhome.com/">GID</a>,
+2D/3D structured and unstructured mesh generation and visualization. 
+<a href="#cle">2str></a>
+<a href="#csimsoft">3str></a>
+<a href="#Channel">Tri></a>
+<a href="#mecm2meshtools">Tet></a>
+<a href="#quadgen">Qua></a>
+
+<p><li>
+<a href="http://www.channel.bc.ca/">Channel Consulting Ltd.<a NAME="Channel"></a></a>:
+<a href="http://trigrid.sourceforge.net/">TriGrid</a> is
+a modelling system for building Triangular Grids. It was originally developed
+with oceanographic modellers specifically in mind, but is of general utility.
+<a href="#mecm2meshtools">Tri></a>
+
+<p><li>
+<a href="http://www.gridpro.com/index.html">Program Development Company<a NAME="cle"></a></a>:
+<a href="http://www.gridpro.com/gridpro/index.html">GridPro</a> is an elliptic,
+two-dimensional, single block, structured-grid generation and display software
+package for IBM/PC and compatible computers.
+<a href="#csimsoft">2str></a>
+
+<p><li>
+<a href="http://members.ozemail.com.au/~comecau/company.htm">Computational Mechanics
+Australia Pty. Ltd.<a NAME="quadgen"></a></a>: <a href="http://members.ozemail.com.au/~comecau/quad_gen.htm">QUAD-GEN</a>,
+automatic generator of quadrilateral meshes in non-homogeneous domains.
+<a href="http://members.ozemail.com.au/~comecau/aniso_quad.htm">ANISO-QUAD</a>
+is a quadrilateral mesher designed specifically for the generation of anisotropic
+quadrilateral meshes. Source code is provided. 
+<a href="#mecm2meshtools">Qua></a>
+
+<P><LI> 
+<A HREF="http://www.computing-objects.com/en/index.html">Computing 
+Objects</A><A NAME="mecm2meshtools">:</A> 
+<A HREF="http://www.computing-objects.com/content/view/4/14/lang,en/">CM2 MeshTools</A>
+includes a triangle Delaunay mesher, a
+quadrangle Delaunay mesher, a tetrahedron Delaunay mesher, 
+anisostropic meshers and surface meshers. 
+<a href="#agmd">Tri></a>
+<a href="#csimsoft">Qua></a>
+<a href="#medina">Sur></a>
+<a href="#cosmos">Tet></a>
+
+<P><LI> 
+<A HREF="http://www.eds.com/">EDS</A><A NAME="cosmos">:</A> 
+<A HREF="http://www.cosmosm.com/pages/products/cosmosdesignstar_features.html">COSMOS/AccuStress</A>, 
+a meshing control tool that is tightly coupled to a 
+stress calculation module. 
+<a href="#castnet">Tet></a>
+
+<P><LI> 
+<A HREF="http://www.csimsoft.com/">csimsoft</A><A NAME="csimsoft">:</A> 
+<A HREF="http://www.csimsoft.com/trelis.jsp">Trelis</A> is csimsoft's 
+high-end commercial pre-processor for FEA and CFD, based on the 
+time-proven Cubit™ software from Sandia National Laboratories.
+<a href="#medina">Qua></a>
+<a href="#EleGrid">2str></a>
+<a href="#Fluent">Hex></a>
+<a href="#csimsoft">3str></a>
+               
+<P><LI> 
+<A HREF="http://www.dhcae-tools.com/">DHCAE Tools</A><A NAME="castnet">:</A> 
+<A HREF="http://www.dhcae-tools.com/CastNet">CastNet</A>, an automated hybrid 
+mesher using hex, tets, prism and pyramid elements with direct interfaces to 
+CFD-solvers e.g. OpenFOAM (complete model setup) and Fluent. CastNet reads 
+CAD-kernel data as input, use curvature
+controlled element sizes and has advanced boundary layer features .
+<a href="#medina">Tet></a>
+
+<P><LI> 
+<A HREF="https://servicenet.t-systems.com/">T-Systems Digital Engineering 
+Solutions</A><A NAME="medina">:</A> 
+<A HREF="https://servicenet.t-systems.com/medina">MEDINA</A>
+is a universal CAE pre and post processing system. 
+<a href="#EDF">Tri></a>
+<a href="#EMRC">Qua></a>
+<a href="#EDF">Sur></a>
+<a href="#EDF">Tet></a>
+<a href="#EKK">3str></a>
+
+<p><li>
+<a href="http://www.edf.fr/index.php4?coe_i_id=1">Electricit&eacute; de France<a NAME="EDF"></a></a>:
+<a href="http://www.code-aster.org/outils/homard/menu_homard.en.htm">HOMARD</a>,
+adaptation of 2D/3D meshes by refinement and unrefinement techniques. 
+<a href="#EleGrid">Tri>Sur></a><a href="#EMRC">Tet></a>
+
+<p><li>
+<a href="http://www.ep-solutions.com/">Edinburgh Petroleum Services<a NAME="PanMesh"></a></a>:
+<a href="http://www.ep-solutions.com/Solutions/EPS/PanMesh.htm">PanMesh</a>,
+a mesh generator customized for modeling geometric structures.
+
+<p><li>
+<a href="http://ekkinc.com/">EKK<a NAME="EKK"></a></a>: 
+<a href="http://ekkinc.com/software/kent/kent.html">KENT</a>,
+a series of mesh generation tools designed specifically for the casting
+industry. <a href="#ECGL_sw">3str></a>
+
+<p><li>
+<a href="http://www.elesoft.com/">Elements Research<a NAME="EleGrid"></a></a>:
+<a href="http://www.elesoft.com/elegrid.htm">EleGrid</a>, generates structured
+and unstructured meshes on parametric surfaces. <a href="#EMRC">Tri>Sur></a><a href="#ECGL_sw">2str></a>
+
+<p><li>
+<a href="http://www.nisasoftware.com/">NISA<a NAME="EMRC"></a></a>: 
+<a href="http://www.nisasoftware.com/index.php/nisa-software/nisa-mechanical/display">DISPLAY
+IV</a>, automatic and mapped mesh generation for 2D and 3D geometries
+using shells and solids (structured and unstructured). <a href="#ECGL_sw">Tri></a><a href="#Enterprise">Qua>Sur></a><a href="#ECGL_sw">Tet></a>
+
+<p><li>
+<a href="http://www.emrl.byu.edu/">EMRL<a NAME="ECGL_sw"></a></a>: <a href="http://www.emrl.byu.edu/gms.htm">GMS</a>,
+a comprehensive software package for developing computer simulations of
+groundwater problems. <a href="http://www.emrl.byu.edu/sms.htm">SMS</a>
+is a surface water modeler. Both packages come with a meshing module. 
+<a href="#Enterprise">Tri>2str>Tet></a>
+<a href="#Femsys">3str></a>
+
+<p><li>
+<a href="http://www.plm.automation.siemens.com/en_us/">Siemens PLM<a NAME="Enterprise"></a></a>:
+<a href="http://www.plm.automation.siemens.com/en_us/products/velocity/femap/index.shtml">FEMAP</a>, a finite element
+preprocessor with 2D surface (triangles/quads) and 3D tet meshing. 
+<a href="#FEGS">Tri></a>
+<a href="#Femsys">Qua></a>
+<a href="#FEGS">Sur>Tet></a>
+<a href="#Femsys">2str></a>
+
+<p><li>
+<a href="http://www.fegs.co.uk/">FEGS<a NAME="FEGS"></a></a>: <a href="http://www.fegs.co.uk/cae.html">CADfix</a>,
+geometry repair and volume and surface meshing, based on the medial object
+technology. <a href="#Femsys">Tri>Sur>Tet></a>
+
+<p><li>
+<a href="http://www.tnodiana.com/">Femsys Ltd<a NAME="Femsys"></a></a>:
+<a href="http://www-h.eng.cam.ac.uk/help/amb/programs/fe/prepost/femgv.html">FEMGV</a>,
+a general-purpose pre- and post-processing program for use with Finite
+Element Analysis (FEA), Computational Fluid Dynamics (CFD) and finite difference
+applications.
+<a href="#fieldp">Tri></a>
+<a href="#fieldp">Qua></a>
+<a href="#fieldp">Sur>Tet>2str>3str></a>
+
+<P><LI> 
+<A HREF="http://www.fieldp.com/">Field Precision</A><A NAME="fieldp">:</A> 
+<A HREF="http://www.fieldp.com/metamesh.html">MetaMesh</A>, 3D 
+structured conformal mesh, hexadron elements.
+<A HREF="http://www.fieldp.com/mesh.html">Mesh 4.5</A>,
+2D structured conformal mesh, triangular elements.
+<a href="#Fluent">Tri></a>
+<a href="#ICEM">Qua></a>
+<a href="#Fluent">3str></a>
+<a href="#Fluent">Sur>Tet>2str></a>
+
+<p><li>
+<a href="http://www.fluent.com/">Fluent Inc.<a NAME="Fluent"></a></a>:
+<a href="http://www.ansys.com/products/turbogrid.asp">GAMBIT</a>,
+has a single interface for geometry creation and meshing that brings together
+all of Fluent's preprocessing technologies in one environment.
+<A HREF="http://www.fluent.com/software/gambit/index.htm">G/Turbo</A>, unstructured meshing for turbomachinery.
+<A HREF="http://www.fluent.com/software/tgrid/index.htm">TGrid</A>, advanced hybrid volume mesh generation using
+tetrahedra, pyramids, and prisms (wedges or hexahedra) and 2-D
+meshing with triangles and quadrilaterals. 
+<a href="#ICEM">2str></a>
+<a href="#CATIA">Tri></a>
+<a href="#CATIA">Sur></a>
+<a href="#ICEM">Tet></a>
+<a href="#ICEM">Hex></a>
+
+<p><li>
+<a href="http://www.ibm.com/us/">IBM<a NAME="CATIA"></a></a>: 
+<a href="http://www-306.ibm.com/software/applications/plm/catiav5/prods/fms/">CATIA
+Surface 2</a>, CATIA's powerfull surface mesher.
+<a href="#ICEM">Tri></a>
+<a href="#MSC">Sur></a>
+
+<p><li>
+<a href="http://www.ansys.com/">Ansys
+Inc.<a NAME="ICEM"></a></a>:<a href="http://www.ansys.com/products/icemcfd-mesh/hexa/index.htm">ICEM
+CFD Hexa</a>, a semi-automated hexahedral meshing module which provides
+rapid generation of multi-block structured or unstructured volume meshes;
+<a href="http://www.ansys.com/products/icemcfd-mesh/tetra/">ICEM CFD Tetra</a> is the object-based
+tetrahedral meshing module,
+<a href="http://www.ansys.com/products/icemcfd-mesh/autohexa.htm">ICEM
+CFD Autohexa</a> is the fully automatic object-oriented hexahedral mesh
+generator. There are also modules for unstructured triangular/quadrilateral
+surface meshing and hex meshing with semi-automated blocking. 
+<a href="#ISE">Tri></a>
+<a href="#midas">Qua></a>
+<a href="#itc">2str></a>
+<a href="#MSC">Sur></a>
+<a href="#ISE">Tet></a>
+<a href="#Numeca">Hex></a>
+<a href="#itc">3str></a>
+
+<p><li>
+<a href="http://www.ise.ch/welcome/index.html">ISE<a NAME="ISE"></a></a>: 
+<a href="http://www.ise.ch/products/mesh/index.html">MESH
+ISE</a>, a dimension independent Delaunay grid generator, suitable for
+the semiconductor device simulation. <a href="#MSC">Tri>Tet></a>
+
+<P><LI> 
+<A HREF="http://www.itc.com.tr/engl/comp.html">ITC</A><A NAME="itc">:</A> 
+<A HREF="http://www.itc.com.tr/engl/gems.html">GEMS</A>, geometric modeling and
+structured grid generation.
+<a href="#MSC">2str></a>
+<a href="#MSC">3str></a>
+
+<p><li>
+<a href="http://www.mscsoftware.com/">MacNeal-Schwendler Corporation<a NAME="MSC"></a></a>:
+MSC.AMS,  tool set for manual meshing and geometry creation. 
+<a href="#Numeca">Tri></a>
+<a href="#materialise">Sur></a>
+<a href="#materialise">Tet></a>
+<a href="#Numeca">2str></a>
+<a href="#Numeca">3str></a>
+
+<P><LI> 
+<A HREF="http://www.materialise.com/">Materialise</A><A NAME="materialise">:</A> 
+<A HREF="http://www.materialise.com/materialise/view/en/92458-Mimics.html">Mimics</A>, medical image processing 
+and mesh generation; 
+<A HREF="http://www.materialise.com/materialise/view/en/92263-3-matic.html">3-matic</A>, forward engineering including
+mesh generation.
+<a href="#midas">Sur></a>
+<a href="#Pointwise">Tet></a>
+
+<P><LI> 
+<A HREF="http://eng.midasuser.com/">MIDASoft</A><A NAME="midas">:</A> 
+<A HREF="http://eng.midasuser.com/products/products.asp?nCat=352&idx=29233">MIDAS/FX-Modeler</A>, 
+auto surface-meshing for structural engineering. 
+<a href="#SIMULOG">Qua></a>
+<a href="#Numeca">Sur></a>
+
+<p><li>
+<a href="http://www.numeca.be/">NUMECA<a NAME="Numeca"></a></a>:
+<A HREF="http://www.numeca.be/index.php?id=29">HexPress</A> is NUMECA's new 
+unstructured hexahedral mesh generator. 
+<a href="#pc-progress">Tri>
+<a href="#Pointwise">Sur>2str>3str></a>
+<a href="#Kubrix">Hex></a>
+
+<P><LI> 
+<A HREF="http://www.pc-progress.cz/">PC-Progress</A><A NAME="pc-progress">:</A> 
+<A HREF="http://www.pc-progress.cz/pg_products_meshgen.htm">Meshgen 2D</A>, 
+a Windows application for FEM data pre-processing and generating 
+triangular meshes.
+<a href="#Pointwise">Tri>
+
+<p><li>
+<a href="http://www.pointwise.com/">Pointwise Inc<a NAME="Pointwise"></a></a>:
+<a href="http://www.pointwise.com/pw/">Pointwise</a>, surface and
+volume grid generation (3D, multiple block, structured grids). 
+<a href="#CLE">2str>3str></a>
+<a href="#CLE">Sur></a>
+<a href="#agmd">Tri></a>
+<a href="#agmd">Tet></a>
+
+<p><li>
+<a href="http://www.gridpro.com/">Program Development Company<a NAME="CLE"></a></a>: 
+<a href="http://www.gridpro.com/gridpro/index.html">Grid
+Pro</a>, automatic surface and volume grid generator, multiblock-structured
+approach. 
+<a href="#SDRC">2str></a>
+<a href="#agmd">>Sur></a>
+<a href="#SDRC">3str></a>
+
+<P><LI> 
+<A HREF="http://www.scorec.rpi.edu/">SCOREC</A><A NAME="agmd">:</A> 
+<A HREF="http://www.scorec.rpi.edu/software_aomd.html">AGMD</A>, 
+the Algorithm Oriented Mesh Database (AOMD), is to serve as a
+mesh management library (or database) that will provide a variety of services
+for mesh users
+<a href="#SDRC">Tri></a>
+<a href="#SDRC">>Sur></a>
+<a href="#SDRC">Tet></a>
+
+<p><li>
+<a href="http://www.plm.automation.siemens.com/en_us/">Siemens PLM<a NAME="SDRC"></a></a>: 
+<a href="http://www.plm.automation.siemens.com/en_us/products/nx/">NX</a>,
+finite element preprocessing (surface and volume meshing). 
+<a href="#meshsim">Tri></a>
+<a href="#XYZ">2str></a>
+<a href="#meshsim">Sur></a>
+<a href="#meshsim">Tet></a>
+<a href="#Kubrix">3str></a>
+
+<P><LI>
+<A HREF="http://www.simmetrix.com/">Simmetrix Inc.</A><A NAME="meshsim">:</A>
+<A HREF="http://www.simmetrix.com/products/Products.html">MeshSim</A>, 
+component software for fully automatic mesh generation
+direct from CAD models.
+<a href="#SIMULOG">Tri>Sur></a>
+<a href="#simpleware">Tet></a>
+
+<P><LI> 
+<A HREF="http://www.simpleware.co.uk/">Simpleware Ltd.</A><A NAME="simpleware">:</A> 
+<A HREF="http://simpleware.com/software/fe-module/">+FE</A>, 
+generation of finite elemnent modols from scanned object data. 
+<a href="#SIMULOG">Tet></a>
+
+<p><li>
+<a href="http://www.siw.com">Simulation Works, Inc.<a NAME="Kubrix"></a></a>:
+<a href="http://www.siw.com">Kubrix</a>, all-hexahedral unstructured mesh
+generation based on a fuzzy logic approach. Also builds structured meshes.
+<a href="#SIMULOG">Hex></a>
+<a href="#symscape">3str></a>
+
+<p><li>
+<a href="http://www.simulog-technologies.com/">Distene<a NAME="SIMULOG"></a></a>: 
+<a href="http://www.simulog-technologies.com/build/meshing.html">TetMesh-GHS3D</a>,
+<A HREF="http://www.simulog-technologies.com/build/optimesh.html">Yams</A>,
+<A HREF="http://www.simulog-technologies.com/build/meshadapt.html">MeshAdapt</A>,
+<A HREF="http://www-roc.inria.fr/gamma/gamma/Logiciels/Hexotic/index.html">HEXOTIC</A>
+Most of the codes have been developed in the 
+<A HREF="http://www-roc.inria.fr/gamma/gamma/Accueil/index.en.html">GAMMA</A> project at INRIA. 
+<a href="#smile">Tri></a>
+<a href="#smile">Sur></a>
+<a href="#Clas">Qua></a>
+<a href="#symscape">Tet></a>
+<a href="#Clas">Hex></a>
+
+<P><LI> 
+<A HREF="http://www.smileconsult.de/">smile:)consult</A><A NAME="smile">:</A> 
+<A HREF="http://www.smileconsult.de/index.php?id=43&type=1">Janet</A>, an 
+efficient software package to generate model meshes for different numerical 
+methods.
+<a href="#Clas">Tri></a>
+<a href="#symscape">Sur></a>
+
+<P><LI> 
+<A HREF="http://www.symscape.com/">Symscape</A><A NAME="symscape">:</A> 
+<A HREF="http://www.symscape.com/node/306">SymLab Meshing Tools</A>, 
+integrated structured and unstructured volume meshing.
+<a href="#transsoft">Sur></a>
+<a href="#taitech">3str></a>
+<a href="#XYZ">Tet></a>
+
+<P><LI> 
+<A HREF="http://www.taitech.com/index.htm">Taitech</A><A NAME="taitech">:</A> 
+<A HREF="http://www.taitech.com/DragonGrid.htm">DragonGrid</A>, hybrid 
+grids for cfd simulation - unstructured at the boundary, structured in 
+the domain.
+<a href="#transsoft">3str></a>
+
+<P><LI> 
+<A HREF="http://www.fluidyn.com/">Transsoft International</A><A NAME="transsoft">:</A> 
+<A HREF="http://www.fluidyn.com/fluidyn/index.php?option=com_content&view=article&id=129&Itemid=210">fluidyn-CAD/GEN</A>, 
+a combined CAD package and mesh generator for CFD applications. 
+<a href="#XYZ">Sur></a>
+<a href="#XYZ">3str></a>
+
+<p><li>
+<a href="http://truegrid.com/xyz.html">XYZ Scientific Applications Inc.<a NAME="XYZ"></a></a>:
+<a href="http://truegrid.com/home.html">Truegrid</a>, multiblock structured
+grid generation. <a href="#Clas">2str>Sur>Tet>3str></a>
+</menu>
+
+<p><li>
+<a NAME="Review"></a><b>Review papers:</b>
+
+<menu>
+
+<p><li>
+<a href="http://www.andrew.cmu.edu/user/sowen/index.html">Steve Owen</a>
+has performed a <a href="http://www.andrew.cmu.edu/user/sowen/softsurv.html">meshing
+software survey</a>, currently containing details from about 70 software
+products.
+
+<br>&nbsp;
+<p>&nbsp;</menu>
+
+<p><li>
+<a NAME="Other_sources"></a><b>Other sources of interest:</b>
+
+<menu>
+
+<p>
+<LI>
+<A HREF="http://www.povray.org/resources/links/3D_Programs/Mesh_Utilities/">POV-Ray</A> list of mesh utilities (mesh modeling for computer graphics). 
+
+<p>
+<LI>
+<A HREF="http://www.gotmesh.org/">got mesh?</A> is a site 
+for showing and exchanging geometry and mesh models.
+
+<p><li>
+The <a href="http://www.cgns.org/">CFD General Notation System</a> is a
+collection of conventions, and software implementing those conventions,
+for the storage and retrieval of CFD (computational fluid dynamics) data.
+
+<p><li>
+Ian MacPhedrans list of public domain mesh generators can be found <a href="http://homepage.usask.ca/~ijm451/finite/fe_resources/mesh.html">here</a>.
+
+<p>
+<LI>
+The <A HREF="http://www.meshfactory.com/">Mesh Factory</A> is a source for 
+high resolution, polygonal 3D models in MAX, 3DS, Maya MB, OBJ and LWS
+formats.
+
+</menu>
+
+
+<a href="index.html">Back</a> to the mesh generation homepage.
+<p>
+<hr>
+<address>
+<a href="http://www-users.informatik.rwth-aachen.de/~roberts/" Robert Schneiders>Robert
+Schneiders</a></address>
+
+<pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+
+</body>
+</html>

@@ -1,0 +1,5 @@
+
+blue noise
+
+http://github.prideout.net/recursive-wang-tiles/
+https://github.com/prideout/parg/blob/master/src/bluenoise.c

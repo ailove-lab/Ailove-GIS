@@ -7,6 +7,7 @@
 #include "shapes.h"
 #include "mesh.h"
 
+
 static void error_callback(int error, const char* description);
 static void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods);
 static void cursorpos_callback(GLFWwindow* window, double x, double y);
@@ -15,8 +16,11 @@ static void mouse_button_callback(GLFWwindow* window, int button, int action, in
 
 static void draw_shapes();
 static void draw_grid();
+static void draw_mesh();
+static void reproject(double lng, double lat);
 
 double zoom = 1.3e7;
+int shape_id = 135;
 
 double lat = 90.0, lng = 90.0;
 
@@ -28,8 +32,9 @@ int main(void) {
     // load_shapes("../data/russia_110m");
     load_shapes("../data/earth_110m");
     init_grid(10, 10);
-    project_shapes(90, 90);
-    project_grid(90, 90);
+    mesh_shape(shape_id);
+    
+    reproject(90, 90);
 
     glfwSetErrorCallback(error_callback);
 
@@ -71,6 +76,7 @@ int main(void) {
         float t = (float) glfwGetTime();
 
         draw_grid();
+        draw_mesh();
         draw_shapes();
 
         glfwSwapBuffers(window);
@@ -84,9 +90,61 @@ int main(void) {
     // clear shapes
     free_grid();
     free_shapes();
+    
+    mesh_free();
 
     exit(EXIT_SUCCESS);
 }
+
+static void draw_mesh() {
+    // glBegin(GL_LINES);
+    // for (int i = 0; i < mesh.numberofsegments; i++) {
+    //     int p1i = mesh.segmentlist[i * 2    ];
+    //     int p2i = mesh.segmentlist[i * 2 + 1];
+
+    //     glColor3f(1.0f,1.0f,1.0f); 
+    //     glVertex3f(mesh.pointlist[p1i * 2    ]/180.0,
+    //                mesh.pointlist[p1i * 2 + 1]/ 90.0,
+    //                0);
+    //     glColor3f(1.0f,1.0f,1.0f); 
+    //     glVertex3f(mesh.pointlist[p2i * 2    ]/180.0,
+    //                mesh.pointlist[p2i * 2 + 1]/ 90.0,
+    //                0);
+
+    // }
+    // glEnd();    
+    glPolygonMode( GL_FRONT_AND_BACK, GL_LINE );
+    glBegin(GL_TRIANGLES);
+    for (int i = 0; i < mesh.numberoftriangles; i++) {
+        int p1i = mesh.trianglelist[i * 3    ];
+        int p2i = mesh.trianglelist[i * 3 + 1];
+        int p3i = mesh.trianglelist[i * 3 + 2];
+
+        glColor3f(0.25f,0.25f,0.25f); 
+        glVertex3f(pr_meshX[p1i]/zoom,
+                   pr_meshY[p1i]/zoom,
+                   0);
+        glColor3f(0.25f,0.25f,0.25f); 
+        glVertex3f(pr_meshX[p2i]/zoom,
+                   pr_meshY[p2i]/zoom,
+                   0);
+        glColor3f(0.25f,0.25f,0.25f); 
+        glVertex3f(pr_meshX[p3i]/zoom,
+                   pr_meshY[p3i]/zoom,
+                   0);
+    }
+    glEnd();    
+
+    glBegin(GL_POINTS);
+    for (int i = 0; i < mesh.numberofpoints; i++) {
+        glColor3f(1.0f,1.0f,1.0f); 
+        glVertex3f(pr_meshX[i]/zoom,
+                   pr_meshY[i]/zoom,
+                   0);
+    }
+    glEnd();
+}
+
 
 static void draw_shapes(){
 
@@ -94,7 +152,11 @@ static void draw_shapes(){
 
     for(int i=0; i<shapesCount; i++) {
         
+<<<<<<< HEAD
         // if (i!=135) continue;
+=======
+        if (i!=shape_id) continue;
+>>>>>>> e5158b77b243366138bb2803dfd08497110dacf0
 
         glBegin(GL_LINE_LOOP);
         for (int j=0, sp=1; j<shapeLengths[i]; j++) {
@@ -109,7 +171,7 @@ static void draw_shapes(){
             //            shapesY[i][j]/ 90.0,
             //            shapesZ[i][j]);
 
-            glColor3f(1.0f,1.0f,1.0f); 
+            glColor3f(0.8f,0.8f,0.8f); 
             glVertex3f(pr_shapesX[i][j]/zoom,
                        pr_shapesY[i][j]/zoom,
                        pr_shapesZ[i][j]);
@@ -166,11 +228,20 @@ static void key_callback(GLFWwindow* window, int key, int scancode, int action, 
     if (key == GLFW_KEY_KP_4 && action == GLFW_PRESS) lng-=5.0f;
     if (key == GLFW_KEY_KP_8 && action == GLFW_PRESS) lat+=5.0f;
     if (key == GLFW_KEY_KP_2 && action == GLFW_PRESS) lat-=5.0f;
+    
+    if (key == GLFW_KEY_KP_1 && action == GLFW_PRESS) shape_id-=1;
+    if (key == GLFW_KEY_KP_3 && action == GLFW_PRESS) shape_id+=1;
 
     printf("lng: %f\tlat:%f\n", lng, lat);
+    printf("shape id: %d\n", shape_id);
+
+    reproject(lng, lat);
+}
+
+static void reproject(double lng, double lat) {
     project_shapes(lng, lat);
     project_grid(lng, lat);
-
+    mesh_project(lng, lat);
 }
 
 static void error_callback(int error, const char* description) {
@@ -195,8 +266,7 @@ static void cursorpos_callback(GLFWwindow* window, double x, double y) {
         start_x = x;
         start_y = y;
 
-        project_shapes(lng, lat);
-        project_grid(lng, lat);
+        reproject(lng, lat);
         // printf("lng: %f\tlat:%f\n", lng, lat);
 
     }
