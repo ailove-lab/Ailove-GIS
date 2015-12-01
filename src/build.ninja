@@ -1,7 +1,7 @@
 
 cc = clang
 ll = safileio.o shpopen.o 
-cf = -fcolor-diagnostics
+cf = -fcolor-diagnostics -O3
 lf = -lglfw3 -lGLU -lGL -lm -lrt -lX11 -lpthread -lXrandr -lXinerama -lXi -lXxf86vm -lXcursor -ldl -lGL -lm -lproj
 
 shp = ../lib/shapelib-1.3.0

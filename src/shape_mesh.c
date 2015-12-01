@@ -15,9 +15,11 @@ static void scroll_callback(GLFWwindow* window, double x, double y);
 static void mouse_button_callback(GLFWwindow* window, int button, int action, int mods);
 
 static void draw_shapes();
+static void draw_screen_grid();
 static void draw_grid();
 static void draw_mesh();
 static void reproject(double lng, double lat);
+static void save_mesh();
 
 double zoom = 1.3e7;
 int shape_id = 135;
@@ -75,6 +77,7 @@ int main(void) {
         glLoadIdentity();
         float t = (float) glfwGetTime();
 
+        draw_screen_grid();
         draw_grid();
         draw_mesh();
         draw_shapes();
@@ -94,6 +97,42 @@ int main(void) {
     mesh_free();
 
     exit(EXIT_SUCCESS);
+}
+
+static void save_mesh() {
+    
+    FILE *f = fopen("mesh.txt","w");
+    
+    if(f == NULL) {
+        printf("Can't open file\n");
+        return;
+    }
+
+    for (int i = 0; i < mesh.numberoftriangles; i++) {
+        int p1i = mesh.trianglelist[i * 3    ];
+        int p2i = mesh.trianglelist[i * 3 + 1];
+        int p3i = mesh.trianglelist[i * 3 + 2];
+
+        fprintf(f, "%f %f %f\n", pr_meshX[p1i]/zoom, pr_meshY[p1i]/zoom, 0.0f);
+        fprintf(f, "%f %f %f\n", pr_meshX[p2i]/zoom, pr_meshY[p2i]/zoom, 0.0f);
+        fprintf(f, "%f %f %f\n", pr_meshX[p3i]/zoom, pr_meshY[p3i]/zoom, 0.0f);
+    }
+    fclose(f);
+}
+
+static void draw_screen_grid() {
+    float a = 0.1f;
+    for (int i=-10; i<=10; i++) {
+        glBegin(GL_LINES);
+        if(!i) a = 0.4f;
+        else   a = 0.1f;
+        glColor3f(a, a, a); glVertex3f(   -1.0, i/10.0, 0.0);
+        glColor3f(a, a, a); glVertex3f(    1.0, i/10.0, 0.0);
+        glColor3f(a, a, a); glVertex3f( i/10.0,    1.0, 0.0);
+        glColor3f(a, a, a); glVertex3f( i/10.0,   -1.0, 0.0);
+
+        glEnd();
+    }
 }
 
 static void draw_mesh() {
@@ -227,6 +266,8 @@ static void key_callback(GLFWwindow* window, int key, int scancode, int action, 
     
     if (key == GLFW_KEY_KP_1 && action == GLFW_PRESS) shape_id-=1;
     if (key == GLFW_KEY_KP_3 && action == GLFW_PRESS) shape_id+=1;
+
+    if (key == GLFW_KEY_S && action == GLFW_PRESS) save_mesh();
 
     printf("lng: %f\tlat:%f\n", lng, lat);
     printf("shape id: %d\n", shape_id);
