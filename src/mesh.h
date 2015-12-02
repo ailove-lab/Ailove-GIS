@@ -12,7 +12,7 @@
 typedef struct triangulateio triangulateio;
 
 triangulateio in, mid, mesh;
-double *meshX, *meshY, *pr_meshX, *pr_meshY;
+double *meshX, *meshY, *mesh_prX, *mesh_prY;
 void mesh_shape(int shape_id);
 void mesh_project(double lat, double lng);
 void mesh_free();

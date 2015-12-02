@@ -34,9 +34,9 @@ int main(void) {
     // shapes_load("../data/russia_110m");
     shapes_load("../data/earth_110m");
     grid_init(10, 10);
-    mesh_shape(shape_id);
     
     reproject(90, 90);
+    mesh_shape(shape_id);
 
     glfwSetErrorCallback(error_callback);
 
@@ -113,9 +113,9 @@ static void save_mesh() {
         int p2i = mesh.trianglelist[i * 3 + 1];
         int p3i = mesh.trianglelist[i * 3 + 2];
 
-        fprintf(f, "%f %f %f\n", pr_meshX[p1i]/zoom, pr_meshY[p1i]/zoom, 0.0f);
-        fprintf(f, "%f %f %f\n", pr_meshX[p2i]/zoom, pr_meshY[p2i]/zoom, 0.0f);
-        fprintf(f, "%f %f %f\n", pr_meshX[p3i]/zoom, pr_meshY[p3i]/zoom, 0.0f);
+        fprintf(f, "%f %f %f\n", mesh_prX[p1i]/zoom, mesh_prY[p1i]/zoom, 0.0f);
+        fprintf(f, "%f %f %f\n", mesh_prX[p2i]/zoom, mesh_prY[p2i]/zoom, 0.0f);
+        fprintf(f, "%f %f %f\n", mesh_prX[p3i]/zoom, mesh_prY[p3i]/zoom, 0.0f);
     }
     fclose(f);
 }
@@ -145,16 +145,16 @@ static void draw_mesh() {
         int p3i = mesh.trianglelist[i * 3 + 2];
 
         glColor3f(0.25f,0.25f,0.25f); 
-        glVertex3f(pr_meshX[p1i]/zoom,
-                   pr_meshY[p1i]/zoom,
+        glVertex3f(meshX[p1i],//zoom,
+                   meshY[p1i],//zoom,
                    0);
         glColor3f(0.25f,0.25f,0.25f); 
-        glVertex3f(pr_meshX[p2i]/zoom,
-                   pr_meshY[p2i]/zoom,
+        glVertex3f(meshX[p2i],//zoom,
+                   meshY[p2i],//zoom,
                    0);
         glColor3f(0.25f,0.25f,0.25f); 
-        glVertex3f(pr_meshX[p3i]/zoom,
-                   pr_meshY[p3i]/zoom,
+        glVertex3f(meshX[p3i],//zoom,
+                   meshY[p3i],//zoom,
                    0);
     }
     glEnd();    
@@ -162,8 +162,8 @@ static void draw_mesh() {
     glBegin(GL_POINTS);
     for (int i = 0; i < mesh.numberofpoints; i++) {
         glColor3f(1.0f,1.0f,1.0f); 
-        glVertex3f(pr_meshX[i]/zoom,
-                   pr_meshY[i]/zoom,
+        glVertex3f(meshX[i],//zoom,
+                   meshY[i],//zoom,
                    0);
     }
     glEnd();
@@ -272,7 +272,7 @@ static void key_callback(GLFWwindow* window, int key, int scancode, int action, 
 static void reproject(double lng, double lat) {
     shapes_project(lng, lat);
     grid_project(lng, lat);
-    mesh_project(lng, lat);
+    // mesh_project(lng, lat);
     dirty = 1;
 }
 

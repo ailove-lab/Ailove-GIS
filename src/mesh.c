@@ -42,8 +42,8 @@ void mesh_shape(int shape_id) {
     int sp = 1;
     for(int i=0; i<l; i++) {
         
-        in.pointlist[i*2  ] = shapesX[shape_id][i];
-        in.pointlist[i*2+1] = shapesY[shape_id][i];
+        in.pointlist[i*2  ] = shapes_prX[shape_id][i]/5e6;
+        in.pointlist[i*2+1] = shapes_prY[shape_id][i]/5e6;
         in.pointmarkerlist[i] = sp;
         in.pointattributelist[i] = 1.0;
         
@@ -59,27 +59,6 @@ void mesh_shape(int shape_id) {
         }
     }
 
-    // REGIONS
-    // in.numberofregions = sp;
-    // in.regionlist = (double *) malloc(sp * 4 * sizeof(double));
-    
-    // mid.pointlist             = (REAL *) NULL; /* Not needed if -N switch used. */
-    // mid.pointattributelist    = (REAL *) NULL;
-    // mid.pointmarkerlist       = (int  *) NULL; /* Not needed if -N or -B switch used. */
-    // mid.trianglelist          = (int  *) NULL; /* Not needed if -E switch used. */
-    // mid.triangleattributelist = (REAL *) NULL;
-    // mid.neighborlist          = (int  *) NULL; /* Needed only if -n switch used. */
-    // mid.segmentlist           = (int  *) NULL;
-    // mid.segmentmarkerlist     = (int  *) NULL;
-    // mid.edgelist              = (int  *) NULL; /* Needed only if -e switch used. */
-    // mid.edgemarkerlist        = (int  *) NULL; /* Needed if -e used and -B not used. */
-    
-    // triangulate("pzen", &in , &mid , (struct triangulateio *) NULL);
-
-    // // OUT
-    // mid.trianglearealist = (REAL *) malloc(mid.numberoftriangles * sizeof(REAL));
-    // mid.trianglearealist[0] = 3.0;
-    // mid.trianglearealist[1] = 1.0;
 
     mesh.pointlist             = (REAL *) NULL; /* Not needed if -N switch used. */
     mesh.pointattributelist    = (REAL *) NULL;
@@ -94,12 +73,13 @@ void mesh_shape(int shape_id) {
 
     // triangulate("pczAevn", &in, &mid, &vorout);
 
-    triangulate("pzq30a10", &in, &mesh, (struct triangulateio *) NULL);
+    // triangulate("pzq30a10", &in, &mesh, (struct triangulateio *) NULL);
+    triangulate("pza.0001", &in, &mesh, (struct triangulateio *) NULL);
 
     meshX    = (double *) malloc(mesh.numberofpoints * sizeof(double));
     meshY    = (double *) malloc(mesh.numberofpoints * sizeof(double));
-    pr_meshX = (double *) malloc(mesh.numberofpoints * sizeof(double));
-    pr_meshY = (double *) malloc(mesh.numberofpoints * sizeof(double));
+    mesh_prX = (double *) malloc(mesh.numberofpoints * sizeof(double));
+    mesh_prY = (double *) malloc(mesh.numberofpoints * sizeof(double));
 
     for (int i = 0; i < mesh.numberofpoints; i++) {
         meshX[i] = mesh.pointlist[i * 2    ];
@@ -117,16 +97,16 @@ void mesh_project(double lng, double lat) {
     projPJ old_prj = pj_init_plus(pj_old_str);
     projPJ new_prj = pj_init_plus(pj_new_str);
 
-    memcpy(pr_meshX, meshX, mesh.numberofpoints * sizeof(double));
-    memcpy(pr_meshY, meshY, mesh.numberofpoints * sizeof(double));
+    memcpy(mesh_prX, meshX, mesh.numberofpoints * sizeof(double));
+    memcpy(mesh_prY, meshY, mesh.numberofpoints * sizeof(double));
     
     for (int j=0; j<mesh.numberofpoints; j++) {
-        pr_meshX[j] *= DEG_TO_RAD;
-        pr_meshY[j] *= DEG_TO_RAD;
+        mesh_prX[j] *= DEG_TO_RAD;
+        mesh_prY[j] *= DEG_TO_RAD;
     }
     pj_transform(old_prj, new_prj, mesh.numberofpoints, 0, 
-                 pr_meshX,
-                 pr_meshY, NULL);
+                 mesh_prX,
+                 mesh_prY, NULL);
 
     pj_free(new_prj);
     pj_free(old_prj);
@@ -168,6 +148,6 @@ void mesh_free() {
 
     free(meshX);
     free(meshY);    
-    free(pr_meshX);
-    free(pr_meshY);
+    free(mesh_prX);
+    free(mesh_prY);
 }
