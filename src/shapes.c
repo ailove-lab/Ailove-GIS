@@ -15,38 +15,38 @@ double  adfMinBound[4], adfMaxBound[4];
 // Shape loader
 static int lng_step, lat_step;
 
-void init_grid(int lng_s, int lat_s) {
+void grid_init(int lng_s, int lat_s) {
     
     lng_step = lng_s;
     lat_step = lat_s;
     horizontalCount = 360/lng_step;
     verticalCount   = 180/lat_step;
 
-    vertical_gridX = (double **) calloc (horizontalCount, sizeof(double *));
-    vertical_gridY = (double **) calloc (horizontalCount, sizeof(double *));
-    assert(vertical_gridX!=NULL && vertical_gridY!=NULL);
+    grid_verticalX = (double **) calloc (horizontalCount, sizeof(double *));
+    grid_verticalY = (double **) calloc (horizontalCount, sizeof(double *));
+    assert(grid_verticalX!=NULL && grid_verticalY!=NULL);
     for (int lng=-180, i=0; lng<180; lng+=lng_step, i++) {
-        vertical_gridX[i] = (double *) calloc(verticalCount, sizeof(double));
-        vertical_gridY[i] = (double *) calloc(verticalCount, sizeof(double));
+        grid_verticalX[i] = (double *) calloc(verticalCount, sizeof(double));
+        grid_verticalY[i] = (double *) calloc(verticalCount, sizeof(double));
         for (int lat=-90, j=0;lat<90; lat+=lat_step, j++) {
-            vertical_gridX[i][j] = lng;
-            vertical_gridY[i][j] = lat;
+            grid_verticalX[i][j] = lng;
+            grid_verticalY[i][j] = lat;
         }
     }
 
-    horizontal_gridX = (double **) calloc (verticalCount, sizeof(double *));
-    horizontal_gridY = (double **) calloc (verticalCount, sizeof(double *));
+    grid_horizontalX = (double **) calloc (verticalCount, sizeof(double *));
+    grid_horizontalY = (double **) calloc (verticalCount, sizeof(double *));
     for (int lat=-90, i=0; lat<90; lat+=lat_step, i++) {
-        horizontal_gridX[i] = (double *) calloc(horizontalCount, sizeof(double));
-        horizontal_gridY[i] = (double *) calloc(horizontalCount, sizeof(double));
+        grid_horizontalX[i] = (double *) calloc(horizontalCount, sizeof(double));
+        grid_horizontalY[i] = (double *) calloc(horizontalCount, sizeof(double));
         for (int lng=-180, j=0; lng<180; lng+=lng_step, j++) {
-            horizontal_gridX[i][j] = lng;
-            horizontal_gridY[i][j] = lat;
+            grid_horizontalX[i][j] = lng;
+            grid_horizontalY[i][j] = lat;
         }
     }
 }
 
-void project_grid(double lng, double lat) {
+void grid_project(double lng, double lat) {
 
 
     char* pj_old_str = "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs";
@@ -58,44 +58,44 @@ void project_grid(double lng, double lat) {
 
     for (int lng=-180, i=0; lng<180; lng+=lng_step, i++) {
         for (int lat=-90, j=0;lat<90; lat+=lat_step, j++) {
-            vertical_gridX[i][j] = lng*DEG_TO_RAD;
-            vertical_gridY[i][j] = lat*DEG_TO_RAD;
+            grid_verticalX[i][j] = lng*DEG_TO_RAD;
+            grid_verticalY[i][j] = lat*DEG_TO_RAD;
         }
         pj_transform(old_prj, new_prj, verticalCount, 0, 
-             vertical_gridX[i],
-             vertical_gridY[i], NULL);
+             grid_verticalX[i],
+             grid_verticalY[i], NULL);
     }
 
     for (int lat=-90, i=0; lat<90; lat+=lat_step, i++) {
         for (int lng=-180, j=0; lng<180; lng+=lng_step, j++) {
-            horizontal_gridX[i][j] = lng*DEG_TO_RAD;
-            horizontal_gridY[i][j] = lat*DEG_TO_RAD;
+            grid_horizontalX[i][j] = lng*DEG_TO_RAD;
+            grid_horizontalY[i][j] = lat*DEG_TO_RAD;
         }
         pj_transform(old_prj, new_prj, horizontalCount, 0, 
-             horizontal_gridX[i],
-             horizontal_gridY[i], NULL);
+             grid_horizontalX[i],
+             grid_horizontalY[i], NULL);
     }
     pj_free(new_prj);
     pj_free(old_prj);
 }
 
-void free_grid() {
+void grid_free() {
     for (int i=0; i<horizontalCount; i++) {
-        free(vertical_gridX[i]);
-        free(vertical_gridY[i]);
+        free(grid_verticalX[i]);
+        free(grid_verticalY[i]);
     }
-    free(vertical_gridX);
-    free(vertical_gridY);
+    free(grid_verticalX);
+    free(grid_verticalY);
 
     for (int i=0; i<verticalCount; i++) {
-        free(horizontal_gridX[i]);
-        free(horizontal_gridY[i]);
+        free(grid_horizontalX[i]);
+        free(grid_horizontalY[i]);
     }
-    free(horizontal_gridX);
-    free(horizontal_gridY);
+    free(grid_horizontalX);
+    free(grid_horizontalY);
 }
 
-void load_shapes(char* filename){
+void shapes_load(char* filename){
     
     int nShapeType;
 
@@ -130,9 +130,9 @@ void load_shapes(char* filename){
     shapesX      = (double **) calloc(shapesCount, sizeof(double*));
     shapesY      = (double **) calloc(shapesCount, sizeof(double*));
     shapesZ      = (double **) calloc(shapesCount, sizeof(double*));
-    pr_shapesX   = (double **) calloc(shapesCount, sizeof(double*));
-    pr_shapesY   = (double **) calloc(shapesCount, sizeof(double*));
-    pr_shapesZ   = (double **) calloc(shapesCount, sizeof(double*));
+    shapes_prX   = (double **) calloc(shapesCount, sizeof(double*));
+    shapes_prY   = (double **) calloc(shapesCount, sizeof(double*));
+    shapes_prZ   = (double **) calloc(shapesCount, sizeof(double*));
 
     shapeLengths = (int*)      calloc(shapesCount, sizeof(int));
     shapeParts   = (int**)     calloc(shapesCount, sizeof(int*));
@@ -169,9 +169,9 @@ void load_shapes(char* filename){
         shapesY[i]    = (double *)calloc(psShape->nVertices, sizeof(double));
         shapesZ[i]    = (double *)calloc(psShape->nVertices, sizeof(double));
 
-        pr_shapesX[i] = (double *)calloc(psShape->nVertices, sizeof(double));
-        pr_shapesY[i] = (double *)calloc(psShape->nVertices, sizeof(double));
-        pr_shapesZ[i] = (double *)calloc(psShape->nVertices, sizeof(double));
+        shapes_prX[i] = (double *)calloc(psShape->nVertices, sizeof(double));
+        shapes_prY[i] = (double *)calloc(psShape->nVertices, sizeof(double));
+        shapes_prZ[i] = (double *)calloc(psShape->nVertices, sizeof(double));
 
         shapeParts[i] = (int *)calloc(psShape->nParts, sizeof(int));
         
@@ -181,16 +181,16 @@ void load_shapes(char* filename){
             shapesY[i][j] = psShape->padfY[j];
             shapesZ[i][j] = psShape->padfZ[j];
         }
-        memcpy(pr_shapesX[i], shapesX[i], shapeLengths[i]*sizeof(double));
-        memcpy(pr_shapesY[i], shapesY[i], shapeLengths[i]*sizeof(double));
-        memcpy(pr_shapesZ[i], shapesZ[i], shapeLengths[i]*sizeof(double));
+        memcpy(shapes_prX[i], shapesX[i], shapeLengths[i]*sizeof(double));
+        memcpy(shapes_prY[i], shapesY[i], shapeLengths[i]*sizeof(double));
+        memcpy(shapes_prZ[i], shapesZ[i], shapeLengths[i]*sizeof(double));
 
         SHPDestroyObject( psShape );
     }
     SHPClose( hSHP );
 }
 
-void project_shapes(double lng, double lat) {
+void shapes_project(double lng, double lat) {
 
 
     char* pj_old_str = "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs";
@@ -202,25 +202,25 @@ void project_shapes(double lng, double lat) {
 
     for(int i=0; i<shapesCount; i++) {
         
-        memcpy(pr_shapesX[i], shapesX[i], shapeLengths[i]*sizeof(double));
-        memcpy(pr_shapesY[i], shapesY[i], shapeLengths[i]*sizeof(double));
-        memcpy(pr_shapesZ[i], shapesZ[i], shapeLengths[i]*sizeof(double));
+        memcpy(shapes_prX[i], shapesX[i], shapeLengths[i]*sizeof(double));
+        memcpy(shapes_prY[i], shapesY[i], shapeLengths[i]*sizeof(double));
+        memcpy(shapes_prZ[i], shapesZ[i], shapeLengths[i]*sizeof(double));
         
         for (int j=0; j<shapeLengths[i]; j++) {
-            pr_shapesX[i][j] *= DEG_TO_RAD;
-            pr_shapesY[i][j] *= DEG_TO_RAD;
-            pr_shapesZ[i][j]  = 0; 
+            shapes_prX[i][j] *= DEG_TO_RAD;
+            shapes_prY[i][j] *= DEG_TO_RAD;
+            shapes_prZ[i][j]  = 0; 
         }
         pj_transform(old_prj, new_prj, shapeLengths[i], 0, 
-                 pr_shapesX[i],
-                 pr_shapesY[i], NULL);
+                 shapes_prX[i],
+                 shapes_prY[i], NULL);
     }
-    // printf("%f, %f\n", pr_shapesX[0][0]/4e6, pr_shapesY[0][0]/4e6);
+    // printf("%f, %f\n", shapes_prX[0][0]/4e6, shapes_prY[0][0]/4e6);
     pj_free(new_prj);
     pj_free(old_prj);
 }
 
-void free_shapes() {
+void shapes_free() {
 
     for(int i=0; i<shapesCount; i++) {
 
@@ -228,9 +228,9 @@ void free_shapes() {
         free(shapesY[i]);
         free(shapesZ[i]);
         
-        free(pr_shapesX[i]);
-        free(pr_shapesY[i]);
-        free(pr_shapesZ[i]);
+        free(shapes_prX[i]);
+        free(shapes_prY[i]);
+        free(shapes_prZ[i]);
 
         free(shapeParts[i]);
     }
@@ -239,9 +239,9 @@ void free_shapes() {
     free(shapesY);
     free(shapesZ);
     
-    free(pr_shapesX);
-    free(pr_shapesY);
-    free(pr_shapesZ);
+    free(shapes_prX);
+    free(shapes_prY);
+    free(shapes_prZ);
 
     free(shapeLengths);
     free(shapeParts);

@@ -25,15 +25,15 @@ double zoom = 1.3e7;
 int shape_id = 135;
 
 double lat = 90.0, lng = 90.0;
-
+int dirty = 1;
 
 int main(void) {
 
     GLFWwindow* window;
 
-    // load_shapes("../data/russia_110m");
-    load_shapes("../data/earth_110m");
-    init_grid(10, 10);
+    // shapes_load("../data/russia_110m");
+    shapes_load("../data/earth_110m");
+    grid_init(10, 10);
     mesh_shape(shape_id);
     
     reproject(90, 90);
@@ -58,31 +58,32 @@ int main(void) {
     glfwSetMouseButtonCallback(window, mouse_button_callback);
 
     while (!glfwWindowShouldClose(window)) {
-        
         float ratio;
         int width, height;
 
-        glfwGetFramebufferSize(window, &width, &height);
-        ratio = width / (float) height;
+        if (dirty) {
+            glfwGetFramebufferSize(window, &width, &height);
+            ratio = width / (float) height;
 
-        glViewport(0, 0, width, height);
-        glClear(GL_COLOR_BUFFER_BIT);
+            glViewport(0, 0, width, height);
+            glClear(GL_COLOR_BUFFER_BIT);
 
-        glMatrixMode(GL_PROJECTION);
-        
-        glLoadIdentity();
-        glOrtho(-ratio, ratio, -1.f, 1.f, 1.f, -1.f);
-        glMatrixMode(GL_MODELVIEW);
+            glMatrixMode(GL_PROJECTION);
+            
+            glLoadIdentity();
+            glOrtho(-ratio, ratio, -1.f, 1.f, 1.f, -1.f);
+            glMatrixMode(GL_MODELVIEW);
 
-        glLoadIdentity();
-        float t = (float) glfwGetTime();
+            glLoadIdentity();
 
-        draw_screen_grid();
-        draw_grid();
-        draw_mesh();
-        draw_shapes();
+            draw_screen_grid();
+            draw_grid();
+            draw_mesh();
+            draw_shapes();
+            glfwSwapBuffers(window);
+            dirty = 0;
+        }
 
-        glfwSwapBuffers(window);
         glfwPollEvents();
     }
 
@@ -91,8 +92,8 @@ int main(void) {
     glfwTerminate();
 
     // clear shapes
-    free_grid();
-    free_shapes();
+    grid_free();
+    shapes_free();
     
     mesh_free();
 
@@ -213,9 +214,9 @@ static void draw_shapes(){
             else 
                 glColor4f(1.0f,1.0f,1.0f,0.2f); 
 
-            glVertex3f(pr_shapesX[i][j]/zoom,
-                       pr_shapesY[i][j]/zoom,
-                       pr_shapesZ[i][j]);
+            glVertex3f(shapes_prX[i][j]/zoom,
+                       shapes_prY[i][j]/zoom,
+                       shapes_prZ[i][j]);
 
         }
         glEnd();
@@ -236,8 +237,8 @@ static void draw_grid(){
                 glColor3f(0.10f, 0.10f, 0.10f);
             
             glVertex3f(
-                vertical_gridX[i][j]/zoom,
-                vertical_gridY[i][j]/zoom,
+                grid_verticalX[i][j]/zoom,
+                grid_verticalY[i][j]/zoom,
                 0);
         }
         glEnd();
@@ -251,8 +252,8 @@ static void draw_grid(){
             else    
                 glColor3f(0.10f, 0.10f, 0.10f);
             glVertex3f(
-                horizontal_gridX[i][j]/zoom,
-                horizontal_gridY[i][j]/zoom,
+                grid_horizontalX[i][j]/zoom,
+                grid_horizontalY[i][j]/zoom,
                 0);
         }
         glEnd();
@@ -279,14 +280,16 @@ static void key_callback(GLFWwindow* window, int key, int scancode, int action, 
 
     printf("lng: %f\tlat:%f\n", lng, lat);
     printf("shape id: %d\n", shape_id);
+    
 
     reproject(lng, lat);
 }
 
 static void reproject(double lng, double lat) {
-    project_shapes(lng, lat);
-    project_grid(lng, lat);
+    shapes_project(lng, lat);
+    grid_project(lng, lat);
     mesh_project(lng, lat);
+    dirty = 1;
 }
 
 static void error_callback(int error, const char* description) {
@@ -320,6 +323,7 @@ static void cursorpos_callback(GLFWwindow* window, double x, double y) {
 static void scroll_callback(GLFWwindow* window, double x, double y) {
     // printf("%f, %f\n", x, y); 
     if (y>0) zoom/=1.2; else zoom*=1.2;
+    dirty = 1;
     // if (key == GLFW_KEY_KP_SUBTRACT && action == GLFW_PRESS) zoom*=1.2;
 }
 
