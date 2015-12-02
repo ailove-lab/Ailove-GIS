@@ -9,9 +9,9 @@
 
 void mesh_shape(int shape_id) {
     
-    if(shape_id>=shapesCount) return;
+    if(shape_id>=shapes_count) return;
 
-    int l = shapeLengths[shape_id];
+    int l = shapes_length[shape_id];
     
     // POINTS
     in.numberofpoints = l;
@@ -50,7 +50,7 @@ void mesh_shape(int shape_id) {
         in.segmentlist[i*2] = i;             // first point
         in.segmentmarkerlist[i] = sp;
         // TODO: Check if segment has parts
-        if(sp == l-1 || shapeParts[shape_id][sp] == i+1) { // if next point is start one
+        if(sp == l-1 || shapes_parts[shape_id][sp] == i+1) { // if next point is start one
             in.segmentlist[i*2+1] = close_id;// close path
             close_id = i+1;                  // new start point id
             sp++;

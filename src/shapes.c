@@ -108,10 +108,10 @@ void shapes_load(char* filename){
     }
         
     // Print shape bounds
-    SHPGetInfo( hSHP, &shapesCount, &nShapeType, adfMinBound, adfMaxBound );
+    SHPGetInfo( hSHP, &shapes_count, &nShapeType, adfMinBound, adfMaxBound );
     
     printf( "Shapefile Type: %s   # of Shapes: %d\n\n",
-            SHPTypeName( nShapeType ), shapesCount );
+            SHPTypeName( nShapeType ), shapes_count );
     
     printf( "File Bounds: (%.15g,%.15g,%.15g,%.15g)\n"
             "         to  (%.15g,%.15g,%.15g,%.15g)\n",
@@ -127,17 +127,17 @@ void shapes_load(char* filename){
     // Iterate through entries
     const char  *pszPlus;
 
-    shapesX      = (double **) calloc(shapesCount, sizeof(double*));
-    shapesY      = (double **) calloc(shapesCount, sizeof(double*));
-    shapesZ      = (double **) calloc(shapesCount, sizeof(double*));
-    shapes_prX   = (double **) calloc(shapesCount, sizeof(double*));
-    shapes_prY   = (double **) calloc(shapesCount, sizeof(double*));
-    shapes_prZ   = (double **) calloc(shapesCount, sizeof(double*));
+    shapesX      = (double **) calloc(shapes_count, sizeof(double*));
+    shapesY      = (double **) calloc(shapes_count, sizeof(double*));
+    shapesZ      = (double **) calloc(shapes_count, sizeof(double*));
+    shapes_prX   = (double **) calloc(shapes_count, sizeof(double*));
+    shapes_prY   = (double **) calloc(shapes_count, sizeof(double*));
+    shapes_prZ   = (double **) calloc(shapes_count, sizeof(double*));
 
-    shapeLengths = (int*)      calloc(shapesCount, sizeof(int));
-    shapeParts   = (int**)     calloc(shapesCount, sizeof(int*));
+    shapes_length = (int*)      calloc(shapes_count, sizeof(int));
+    shapes_parts   = (int**)     calloc(shapes_count, sizeof(int*));
     
-    for( int i = 0; i < shapesCount; i++ ) {
+    for( int i = 0; i < shapes_count; i++ ) {
 
         int j, iPart;
         SHPObject   *psShape;
@@ -163,7 +163,7 @@ void shapes_load(char* filename){
                      psShape->panPartStart[0] );
         }
         
-        shapeLengths[i] = psShape->nVertices;
+        shapes_length[i] = psShape->nVertices;
 
         shapesX[i]    = (double *)calloc(psShape->nVertices, sizeof(double));
         shapesY[i]    = (double *)calloc(psShape->nVertices, sizeof(double));
@@ -173,17 +173,17 @@ void shapes_load(char* filename){
         shapes_prY[i] = (double *)calloc(psShape->nVertices, sizeof(double));
         shapes_prZ[i] = (double *)calloc(psShape->nVertices, sizeof(double));
 
-        shapeParts[i] = (int *)calloc(psShape->nParts, sizeof(int));
+        shapes_parts[i] = (int *)calloc(psShape->nParts, sizeof(int));
         
-        for (j =0; j< psShape->nParts; j++) shapeParts[i][j] = psShape->panPartStart[j];
+        for (j =0; j< psShape->nParts; j++) shapes_parts[i][j] = psShape->panPartStart[j];
         for( j = 0, iPart = 1; j < psShape->nVertices; j++ ) {
             shapesX[i][j] = psShape->padfX[j];
             shapesY[i][j] = psShape->padfY[j];
             shapesZ[i][j] = psShape->padfZ[j];
         }
-        memcpy(shapes_prX[i], shapesX[i], shapeLengths[i]*sizeof(double));
-        memcpy(shapes_prY[i], shapesY[i], shapeLengths[i]*sizeof(double));
-        memcpy(shapes_prZ[i], shapesZ[i], shapeLengths[i]*sizeof(double));
+        memcpy(shapes_prX[i], shapesX[i], shapes_length[i]*sizeof(double));
+        memcpy(shapes_prY[i], shapesY[i], shapes_length[i]*sizeof(double));
+        memcpy(shapes_prZ[i], shapesZ[i], shapes_length[i]*sizeof(double));
 
         SHPDestroyObject( psShape );
     }
@@ -200,18 +200,18 @@ void shapes_project(double lng, double lat) {
     projPJ old_prj = pj_init_plus(pj_old_str);
     projPJ new_prj = pj_init_plus(pj_new_str);
 
-    for(int i=0; i<shapesCount; i++) {
+    for(int i=0; i<shapes_count; i++) {
         
-        memcpy(shapes_prX[i], shapesX[i], shapeLengths[i]*sizeof(double));
-        memcpy(shapes_prY[i], shapesY[i], shapeLengths[i]*sizeof(double));
-        memcpy(shapes_prZ[i], shapesZ[i], shapeLengths[i]*sizeof(double));
+        memcpy(shapes_prX[i], shapesX[i], shapes_length[i]*sizeof(double));
+        memcpy(shapes_prY[i], shapesY[i], shapes_length[i]*sizeof(double));
+        memcpy(shapes_prZ[i], shapesZ[i], shapes_length[i]*sizeof(double));
         
-        for (int j=0; j<shapeLengths[i]; j++) {
+        for (int j=0; j<shapes_length[i]; j++) {
             shapes_prX[i][j] *= DEG_TO_RAD;
             shapes_prY[i][j] *= DEG_TO_RAD;
             shapes_prZ[i][j]  = 0; 
         }
-        pj_transform(old_prj, new_prj, shapeLengths[i], 0, 
+        pj_transform(old_prj, new_prj, shapes_length[i], 0, 
                  shapes_prX[i],
                  shapes_prY[i], NULL);
     }
@@ -222,7 +222,7 @@ void shapes_project(double lng, double lat) {
 
 void shapes_free() {
 
-    for(int i=0; i<shapesCount; i++) {
+    for(int i=0; i<shapes_count; i++) {
 
         free(shapesX[i]);
         free(shapesY[i]);
@@ -232,7 +232,7 @@ void shapes_free() {
         free(shapes_prY[i]);
         free(shapes_prZ[i]);
 
-        free(shapeParts[i]);
+        free(shapes_parts[i]);
     }
 
     free(shapesX);
@@ -243,7 +243,7 @@ void shapes_free() {
     free(shapes_prY);
     free(shapes_prZ);
 
-    free(shapeLengths);
-    free(shapeParts);
+    free(shapes_length);
+    free(shapes_parts);
 
 }

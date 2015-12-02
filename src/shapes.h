@@ -6,7 +6,7 @@
 #define GRID_LNG 36
 #define GRID_LAT 18
 
-int shapesCount;
+int shapes_count;
 
 double ** shapesX;
 double ** shapesY;
@@ -16,8 +16,8 @@ double ** shapes_prX;
 double ** shapes_prY;
 double ** shapes_prZ;
 
-int * shapeLengths;
-int ** shapeParts;
+int * shapes_length;
+int ** shapes_parts;
 
 void shapes_load(char*);
 void shapes_project(double lng, double lat);

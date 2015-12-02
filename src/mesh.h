@@ -14,6 +14,7 @@ typedef struct triangulateio triangulateio;
 triangulateio in, mid, mesh;
 double *meshX, *meshY, *pr_meshX, *pr_meshY;
 void mesh_shape(int shape_id);
+void mesh_projected(int zoom, int shape_id);
 void mesh_project(double lat, double lng);
 void mesh_free();
 

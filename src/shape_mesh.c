@@ -94,7 +94,6 @@ int main(void) {
     // clear shapes
     grid_free();
     shapes_free();
-    
     mesh_free();
 
     exit(EXIT_SUCCESS);
@@ -137,22 +136,7 @@ static void draw_screen_grid() {
 }
 
 static void draw_mesh() {
-    // glBegin(GL_LINES);
-    // for (int i = 0; i < mesh.numberofsegments; i++) {
-    //     int p1i = mesh.segmentlist[i * 2    ];
-    //     int p2i = mesh.segmentlist[i * 2 + 1];
-
-    //     glColor3f(1.0f,1.0f,1.0f); 
-    //     glVertex3f(mesh.pointlist[p1i * 2    ]/180.0,
-    //                mesh.pointlist[p1i * 2 + 1]/ 90.0,
-    //                0);
-    //     glColor3f(1.0f,1.0f,1.0f); 
-    //     glVertex3f(mesh.pointlist[p2i * 2    ]/180.0,
-    //                mesh.pointlist[p2i * 2 + 1]/ 90.0,
-    //                0);
-
-    // }
-    // glEnd();    
+   
     glPolygonMode( GL_FRONT_AND_BACK, GL_LINE );
     glBegin(GL_TRIANGLES);
     for (int i = 0; i < mesh.numberoftriangles; i++) {
@@ -193,12 +177,12 @@ static void draw_shapes(){
     glEnable (GL_BLEND);
     glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-    for(int i=0; i<shapesCount; i++) {
+    for(int i=0; i<shapes_count; i++) {
         
 
         glBegin(GL_LINE_LOOP);
-        for (int j=0, sp=1; j<shapeLengths[i]; j++) {
-            if(shapeParts[i][sp]==j){
+        for (int j=0, sp=1; j<shapes_length[i]; j++) {
+            if(shapes_parts[i][sp]==j){
                 glEnd();
                 glBegin(GL_LINE_LOOP);
                 sp++;
