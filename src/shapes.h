@@ -23,7 +23,14 @@ int *  shapes_length;
 int *  shapes_parts_count;
 int ** shapes_parts;
 
-void shapes_load(char*);
+// char** shape_continent;
+// char** shape_subregion;
+char** shape_name_long;
+// int*   shape_pop_est;
+
+void shapes_load(char* filename);
+void shapes_load_shp(char* filename);
+void shapes_load_dbf(char* filename);
 void shapes_project(double lng, double lat);
 void shapes_project_shape(int shape_id, double lng, double lat);
 void shapes_free();

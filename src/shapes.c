@@ -95,7 +95,66 @@ void grid_free() {
     free(grid_horizontalY);
 }
 
+
 void shapes_load(char* filename){
+    
+    char buf[256];
+    
+    strcpy(buf,filename);
+    strcat(buf,".shp");
+    shapes_load_shp(buf);
+    
+    strcpy(buf,filename);
+    strcat(buf,".dbf");
+    shapes_load_dbf(buf);
+
+}
+
+void shapes_load_dbf(char* filename){
+
+    DBFHandle   hDBF;
+    int     *panWidth, i, iRecord;
+    char    szFormat[32], szField[1024];
+    char    ftype[15], cTitle[32], nTitle[32];
+    int     nWidth, nDecimals;
+    int     cnWidth, cnDecimals;
+    DBFHandle   cDBF;
+    DBFFieldType    hType,cType;
+    int     ci, ciRecord;
+
+    hDBF = DBFOpen( filename, "rb" );
+    if( hDBF == NULL ) {
+        printf( "DBFOpen(%s,\"r\") failed.\n", filename );
+        return;
+    }
+
+    // printf ("Info for %s\n", filename);
+
+    // i = DBFGetFieldCount(hDBF);
+    // printf ("%d Columns,  %d Records in file\n",i,DBFGetRecordCount(hDBF));
+    
+    // panWidth = (int *) malloc( DBFGetFieldCount( hDBF ) * sizeof(int) );
+    // for( int i = 0; i < DBFGetFieldCount(hDBF); i++ ) {
+    //     DBFFieldType    eType;
+    //     char szTitle[256];
+    //     eType = DBFGetFieldInfo( hDBF, i, szTitle, &nWidth, &nDecimals );
+    //     printf( "%4d: %10s %c", i, szTitle, i%4 ? '|':'\n');
+    // }
+    // printf("\n");
+    
+    shape_name_long = malloc(DBFGetRecordCount(hDBF) * sizeof(char*));
+    int nl_i = DBFGetFieldIndex( hDBF, "name_long");
+    for(int rec = 0; rec < DBFGetRecordCount(hDBF); rec++ ) {
+        char* name_long = (char *) DBFReadStringAttribute(hDBF, rec, nl_i);
+        shape_name_long[rec] = malloc(strlen(name_long)+1);
+        strcpy(shape_name_long[rec], name_long);
+        printf("%s\n", shape_name_long[rec]);
+    }
+    DBFClose( hDBF );
+
+}
+
+void shapes_load_shp(char* filename){
     
     int nShapeType;
 
@@ -109,7 +168,7 @@ void shapes_load(char* filename){
         
     // Print shape bounds
     SHPGetInfo( hSHP, &shapes_count, &nShapeType, adfMinBound, adfMaxBound );
-    
+
     printf( "Shapefile Type: %s   # of Shapes: %d\n\n",
             SHPTypeName( nShapeType ), shapes_count );
     
@@ -266,8 +325,11 @@ void shapes_free() {
         free(shapes_prZ[i]);
 
         free(shapes_parts[i]);
-    }
 
+        free(shape_name_long[i]);
+        // free(shape_continent[i]);
+        // free(shape_subregion[i]);
+    }
     free(shapesX);
     free(shapesY);
     free(shapesZ);
@@ -282,4 +344,10 @@ void shapes_free() {
 
     free(shape_centers_X);
     free(shape_centers_Y);
+
+    free(shape_name_long);
+    // free(shape_continent);
+    // free(shape_subregion);
+    // free(shape_pop_est);
+
 }

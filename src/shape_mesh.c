@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+#include <ctype.h>
 
 #include "shapes.h"
 #include "mesh.h"
@@ -87,8 +88,11 @@ int main(void) {
             
             sprintf(buf,"\nLNG:%6.1f\nLAT:%6.1f", lng, lat);
             draw_text(buf, -1.0+margin, 1.0-margin);
+
             sprintf(buf,"\nPNT: %d\nTRI: %d", mesh_points_count, mesh_triangles_count);
             draw_text(buf, -1.0+margin+0.4, 1.0-margin);
+            
+            draw_text(shape_name_long[shape_id], -1.0+margin, -1.0+margin);
 
             glfwSwapBuffers(window);
             dirty = 0;
@@ -180,8 +184,8 @@ static void draw_text(char* text, float x, float y) {
                 continue;
         }
         // get 0xFF char if char is empty
+        // if (isalpha(c) && islower(c)) c=(char)toupper(c);
         if(!font[c].l) c = 0xFF;
-
         for (int j=0; j<font[c].l; j++) {
             int p1 = font[c].e[j*2  ];
             int p2 = font[c].e[j*2+1];

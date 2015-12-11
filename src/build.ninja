@@ -19,11 +19,12 @@ rule cct
 build main           : cc main.c safileio.o shpopen.o
 build shape_load     : cc shape_load.c safileio.o shpopen.o
 build shape_reproject: cc shape_reproject.c safileio.o shpopen.o shpgeo.o
-build shape_mesh     : cc shape_mesh.c shapes.c mesh.c safileio.o shpopen.o shpgeo.o triangle.o
+build shape_mesh     : cc shape_mesh.c shapes.c mesh.c safileio.o shpopen.o dbfopen.o shpgeo.o triangle.o
 
 build safileio.o : ccl $shp/safileio.c
-build shpopen.o  : ccl $shp/shpopen.c 
-build shpgeo.o   : ccl $shp/contrib/shpgeo.c 
+build shpopen.o  : ccl $shp/shpopen.c
+build dbfopen.o  : ccl $shp/dbfopen.c
+build shpgeo.o   : ccl $shp/contrib/shpgeo.c
 build triangle.o : cct $tri/triangle.c
 
 default shape_mesh
