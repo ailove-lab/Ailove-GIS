@@ -3,10 +3,11 @@
 
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 
 #include "shapes.h"
 #include "mesh.h"
-
+#include "font.h"
 
 static void error_callback(int error, const char* description);
 static void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods);
@@ -16,13 +17,14 @@ static void mouse_button_callback(GLFWwindow* window, int button, int action, in
 
 static void draw_shapes();
 static void draw_screen_grid();
+static void draw_text(char* text, float x, float y);
 static void draw_grid();
 static void draw_mesh();
 static void reproject(double lng, double lat);
-static void save_mesh();
 
 double zoom = 1.3e7;
-int shape_id = 135;
+// int shape_id = 135;
+int shape_id = 1;
 
 double lat = 90.0, lng = 90.0;
 int dirty = 1;
@@ -32,10 +34,9 @@ int main(void) {
     GLFWwindow* window;
 
     // shapes_load("../data/russia_110m");
-    shapes_load("../data/earth_110m");
+    shapes_load("../data/earth_50m");
     grid_init(10, 10);
-    mesh_shape(shape_id);
-    
+
     reproject(90, 90);
 
     glfwSetErrorCallback(error_callback);
@@ -80,6 +81,15 @@ int main(void) {
             draw_grid();
             draw_mesh();
             draw_shapes();
+            
+            char buf[256];
+            float margin = 0.05;
+            
+            sprintf(buf,"\nLNG:%6.1f\nLAT:%6.1f", lng, lat);
+            draw_text(buf, -1.0+margin, 1.0-margin);
+            sprintf(buf,"\nPNT: %d\nTRI: %d", mesh_points_count, mesh_triangles_count);
+            draw_text(buf, -1.0+margin+0.4, 1.0-margin);
+
             glfwSwapBuffers(window);
             dirty = 0;
         }
@@ -99,27 +109,6 @@ int main(void) {
     exit(EXIT_SUCCESS);
 }
 
-static void save_mesh() {
-    
-    FILE *f = fopen("mesh.txt","w");
-    
-    if(f == NULL) {
-        printf("Can't open file\n");
-        return;
-    }
-
-    for (int i = 0; i < mesh.numberoftriangles; i++) {
-        int p1i = mesh.trianglelist[i * 3    ];
-        int p2i = mesh.trianglelist[i * 3 + 1];
-        int p3i = mesh.trianglelist[i * 3 + 2];
-
-        fprintf(f, "%f %f %f\n", pr_meshX[p1i]/zoom, pr_meshY[p1i]/zoom, 0.0f);
-        fprintf(f, "%f %f %f\n", pr_meshX[p2i]/zoom, pr_meshY[p2i]/zoom, 0.0f);
-        fprintf(f, "%f %f %f\n", pr_meshX[p3i]/zoom, pr_meshY[p3i]/zoom, 0.0f);
-    }
-    fclose(f);
-}
-
 static void draw_screen_grid() {
     float a = 0.1f;
     for (int i=-10; i<=10; i++) {
@@ -136,39 +125,80 @@ static void draw_screen_grid() {
 }
 
 static void draw_mesh() {
-   
+    
+    if(mesh_triangles == NULL) return;
+
     glPolygonMode( GL_FRONT_AND_BACK, GL_LINE );
     glBegin(GL_TRIANGLES);
-    for (int i = 0; i < mesh.numberoftriangles; i++) {
-        int p1i = mesh.trianglelist[i * 3    ];
-        int p2i = mesh.trianglelist[i * 3 + 1];
-        int p3i = mesh.trianglelist[i * 3 + 2];
+    for (int i = 0; i < mesh_triangles_count; i++) {
+        int p1i = mesh_triangles[i * 3    ];
+        int p2i = mesh_triangles[i * 3 + 1];
+        int p3i = mesh_triangles[i * 3 + 2];
 
         glColor3f(0.25f,0.25f,0.25f); 
-        glVertex3f(pr_meshX[p1i]/zoom,
-                   pr_meshY[p1i]/zoom,
+        glVertex3f(mesh_X[p1i],
+                   mesh_Y[p1i],
                    0);
         glColor3f(0.25f,0.25f,0.25f); 
-        glVertex3f(pr_meshX[p2i]/zoom,
-                   pr_meshY[p2i]/zoom,
+        glVertex3f(mesh_X[p2i],
+                   mesh_Y[p2i],
                    0);
         glColor3f(0.25f,0.25f,0.25f); 
-        glVertex3f(pr_meshX[p3i]/zoom,
-                   pr_meshY[p3i]/zoom,
+        glVertex3f(mesh_X[p3i],
+                   mesh_Y[p3i],
                    0);
     }
     glEnd();    
 
-    glBegin(GL_POINTS);
-    for (int i = 0; i < mesh.numberofpoints; i++) {
-        glColor3f(1.0f,1.0f,1.0f); 
-        glVertex3f(pr_meshX[i]/zoom,
-                   pr_meshY[i]/zoom,
-                   0);
-    }
-    glEnd();
+    // glBegin(GL_POINTS);
+    // for (int i = 0; i < mesh.numberofpoints; i++) {
+    //     glColor3f(1.0f,1.0f,1.0f); 
+    //     glVertex3f(mesh_pr_X[i]/zoom,
+    //                mesh_pr_Y[i]/zoom,
+    //                0);
+    // }
+    // glEnd();
 }
 
+static void draw_text(char* text, float x, float y) {
+
+    float scale = 80.0;
+    int x_cnt = 0;
+    int y_cnt = 0;
+    for (int i=0; i<strlen(text); i++) {
+
+        glBegin(GL_LINES);
+        
+        unsigned char c = text[i];
+        switch(c){
+            case '\n':
+                x_cnt=0;
+                y_cnt++;
+                continue;
+            case ' ':
+                x_cnt++;
+                continue;
+        }
+        // get 0xFF char if char is empty
+        if(!font[c].l) c = 0xFF;
+
+        for (int j=0; j<font[c].l; j++) {
+            int p1 = font[c].e[j*2  ];
+            int p2 = font[c].e[j*2+1];
+            
+            float x1 = font[c].p[p1*2  ]/scale+(x_cnt/scale*2.5)+x;
+            float x2 = font[c].p[p2*2  ]/scale+(x_cnt/scale*2.5)+x;
+            float y1 = font[c].p[p1*2+1]/scale-(y_cnt/scale*4.5)+y;
+            float y2 = font[c].p[p2*2+1]/scale-(y_cnt/scale*4.5)+y;
+
+            glColor3f(0.50f, 0.50f, 0.50f);
+            glVertex3f(x1,y1,0.0);
+            glVertex3f(x2,y2,0.0);
+        }
+        glEnd();
+        x_cnt++;
+    } 
+}
 
 static void draw_shapes(){
 
@@ -179,6 +209,7 @@ static void draw_shapes(){
 
     for(int i=0; i<shapes_count; i++) {
         
+        if(shape_id != i) continue;
 
         glBegin(GL_LINE_LOOP);
         for (int j=0, sp=1; j<shapes_length[i]; j++) {
@@ -244,9 +275,18 @@ static void draw_grid(){
     }
 }
 
+static void incr_shape_id(int v) {
+    shape_id = (shape_id +v) % shapes_count;
+    if(shape_id<0) shape_id = shapes_count-1;
+    lng = shape_centers_X[shape_id];
+    lat = shape_centers_Y[shape_id];
+
+    printf("lng lat: %f %f", lng, lat);
+}
+
 static void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods) {
     
-    if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS) 
+    if ((key == GLFW_KEY_ESCAPE || key == GLFW_KEY_Q) && action == GLFW_PRESS) 
         glfwSetWindowShouldClose(window, GL_TRUE);
     
     if (key == GLFW_KEY_KP_ADD      && action == GLFW_PRESS) zoom/=1.2;
@@ -257,11 +297,21 @@ static void key_callback(GLFWwindow* window, int key, int scancode, int action, 
     if (key == GLFW_KEY_KP_8 && action == GLFW_PRESS) lat+=5.0f;
     if (key == GLFW_KEY_KP_2 && action == GLFW_PRESS) lat-=5.0f;
     
-    if (key == GLFW_KEY_KP_1 && action == GLFW_PRESS) shape_id-=1;
-    if (key == GLFW_KEY_KP_3 && action == GLFW_PRESS) shape_id+=1;
+    if (key == GLFW_KEY_KP_9 && action == GLFW_PRESS) incr_shape_id( 1);
+    if (key == GLFW_KEY_KP_3 && action == GLFW_PRESS) incr_shape_id(-1);
+    
+    if (key == GLFW_KEY_S && action == GLFW_PRESS) mesh_save_ply(lng, lat, zoom);
+    
 
-    if (key == GLFW_KEY_S && action == GLFW_PRESS) save_mesh();
-
+    if (key == GLFW_KEY_A && action == GLFW_PRESS) { 
+        mesh_free();
+        mesh_file(shape_id, zoom); 
+        // mesh_project(lng, lat);
+    };
+    if (key == GLFW_KEY_L && action == GLFW_PRESS) { 
+        mesh_load();
+    }
+    
     printf("lng: %f\tlat:%f\n", lng, lat);
     printf("shape id: %d\n", shape_id);
     
@@ -270,9 +320,9 @@ static void key_callback(GLFWwindow* window, int key, int scancode, int action, 
 }
 
 static void reproject(double lng, double lat) {
-    shapes_project(lng, lat);
+    shapes_project_shape(shape_id, lng, lat);
     grid_project(lng, lat);
-    mesh_project(lng, lat);
+    // mesh_project(lng, lat);
     dirty = 1;
 }
 

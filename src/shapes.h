@@ -16,11 +16,16 @@ double ** shapes_prX;
 double ** shapes_prY;
 double ** shapes_prZ;
 
-int * shapes_length;
+double* shape_centers_X;
+double* shape_centers_Y;
+
+int *  shapes_length;
+int *  shapes_parts_count;
 int ** shapes_parts;
 
 void shapes_load(char*);
 void shapes_project(double lng, double lat);
+void shapes_project_shape(int shape_id, double lng, double lat);
 void shapes_free();
 
 int verticalCount, horizontalCount;

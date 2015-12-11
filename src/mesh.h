@@ -9,12 +9,16 @@
 
 #include "triangle.h"
 
-typedef struct triangulateio triangulateio;
+double *mesh_X, *mesh_Y, *mesh_pr_X, *mesh_pr_Y;
 
-triangulateio in, mid, mesh;
-double *meshX, *meshY, *pr_meshX, *pr_meshY;
+int  mesh_points_count;
+int  mesh_triangles_count;
+int* mesh_triangles;
+
 void mesh_shape(int shape_id);
-void mesh_project(double lat, double lng);
+void mesh_file(int shape_id, double zoom);
+void mesh_load();
+void mesh_project(double lng, double lat);
 void mesh_free();
-
+void mesh_save_ply(double lng, double lat, double zoom);
 #endif

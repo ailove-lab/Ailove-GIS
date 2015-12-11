@@ -1,7 +1,7 @@
 
 cc = clang
 ll = safileio.o shpopen.o 
-cf = -fcolor-diagnostics -O3
+cf = -g -fcolor-diagnostics -O0
 lf = -lglfw3 -lGLU -lGL -lm -lrt -lX11 -lpthread -lXrandr -lXinerama -lXi -lXxf86vm -lXcursor -ldl -lGL -lm -lproj
 
 shp = ../lib/shapelib-1.3.0
@@ -14,7 +14,7 @@ rule ccl
     command = $cc -I$shp -I$shp/contrib -DPROJ4 -c $in -Wall -o $out
 
 rule cct
-    command = $cc -I$tri -DTRILIBRARY -O -c $in -o $out
+    command = $cc $cf -I$tri -DTRILIBRARY -c $in -o $out
 
 build main           : cc main.c safileio.o shpopen.o
 build shape_load     : cc shape_load.c safileio.o shpopen.o
