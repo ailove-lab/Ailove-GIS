@@ -35,7 +35,7 @@ int main(void) {
     GLFWwindow* window;
 
     // shapes_load("../data/russia_110m");
-    shapes_load("../data/earth_50m");
+    shapes_load("../data/earth_110m");
     grid_init(10, 10);
 
     reproject(90, 90);
@@ -250,10 +250,8 @@ static void draw_grid(){
         
         for (int j=1; j<verticalCount; j++) {
             
-            if(i%2) 
-                glColor3f(0.20f, 0.20f, 0.20f);
-            else    
-                glColor3f(0.10f, 0.10f, 0.10f);
+            if(i%2) glColor3f(0.20f, 0.20f, 0.20f);
+            else glColor3f(0.10f, 0.10f, 0.10f);
             
             glVertex3f(
                 grid_verticalX[i][j]/zoom,
@@ -266,10 +264,8 @@ static void draw_grid(){
     for (int i=0; i<verticalCount; i++) {
         glBegin(GL_LINE_LOOP);
         for (int j=0; j<horizontalCount; j++) {
-            if(i%2) 
-                glColor3f(0.20f, 0.20f, 0.20f);
-            else    
-                glColor3f(0.10f, 0.10f, 0.10f);
+            if(i%2) glColor3f(0.20f, 0.20f, 0.20f);
+            else glColor3f(0.10f, 0.10f, 0.10f);
             glVertex3f(
                 grid_horizontalX[i][j]/zoom,
                 grid_horizontalY[i][j]/zoom,
@@ -304,9 +300,9 @@ static void key_callback(GLFWwindow* window, int key, int scancode, int action, 
     if (key == GLFW_KEY_KP_9 && action == GLFW_PRESS) incr_shape_id( 1);
     if (key == GLFW_KEY_KP_3 && action == GLFW_PRESS) incr_shape_id(-1);
     
-    if (key == GLFW_KEY_S && action == GLFW_PRESS) mesh_save_ply(lng, lat, zoom);
+    // if (key == GLFW_KEY_S && action == GLFW_PRESS) mesh_save_ply(lng, lat, zoom);
+    if (key == GLFW_KEY_S && action == GLFW_PRESS) mesh_save_sphere_ply(lng, lat, zoom);
     
-
     if (key == GLFW_KEY_A && action == GLFW_PRESS) { 
         mesh_free();
         mesh_file(shape_id, zoom); 

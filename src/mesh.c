@@ -169,6 +169,97 @@ void mesh_save_ply(double lng, double lat, double zoom) {
     fclose(f);    
 }
 
+void mesh_save_sphere_ply(double lng, double lat, double zoom) {
+    
+    printf("Save sphere mesh\n");
+
+    if(mesh_triangles == NULL) return;
+
+    // REPROJECT //
+
+    char pj_old_str[256];
+    sprintf(pj_old_str, "+proj=laea +lat_0=%f +lon_0=%f +x_0=0 +y_0=0 +ellps=WGS84 +datum=WGS84 +units=m +no_defs",lat,lng);
+    char* pj_new_str = "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs";
+    
+    projPJ old_prj = pj_init_plus(pj_old_str);
+    projPJ new_prj = pj_init_plus(pj_new_str);
+
+    // ALLOCATE  SPACE FOR MESH
+    double* mesh_sphere_X = malloc(mesh_points_count * sizeof(double));
+    double* mesh_sphere_Y = malloc(mesh_points_count * sizeof(double));
+    double* mesh_sphere_Z = malloc(mesh_points_count * sizeof(double));
+
+    // COPY MESH DATA
+    memcpy(mesh_sphere_X, mesh_X, mesh_points_count * sizeof(double));
+    memcpy(mesh_sphere_Y, mesh_Y, mesh_points_count * sizeof(double));
+    
+    // ZOOM MESH BACK
+    for (int j=0; j<mesh_points_count; j++) {
+        mesh_sphere_X[j] *= zoom;
+        mesh_sphere_Y[j] *= zoom;
+    }
+
+    // PROJECT LAEA to WGS84
+    pj_transform(old_prj, new_prj, mesh_points_count, 0, 
+                 mesh_sphere_X,
+                 mesh_sphere_Y, NULL);
+    pj_free(new_prj);
+    pj_free(old_prj);
+    
+    // CONVERT lat lng to X Y Z //
+    double R = 1.0;
+    double sin_lat, sin_lng, cos_lat, cos_lng;
+    for (int j=0; j<mesh_points_count; j++) {
+        
+        sin_lat = sin(mesh_sphere_Y[j]);
+        cos_lat = cos(mesh_sphere_Y[j]);
+        sin_lng = sin(mesh_sphere_X[j]);
+        cos_lng = cos(mesh_sphere_X[j]);
+
+        mesh_sphere_X[j] = R * cos_lat * cos_lng;
+        mesh_sphere_Y[j] = R * cos_lat * sin_lng;
+        mesh_sphere_Z[j] = R * sin_lat;
+    }
+
+    // WRITE MESH TO PLY
+
+    FILE* f = fopen("mesh_sphere.ply", "w");
+    
+    if(f == NULL) { printf("Can't open file\n"); goto clear; }
+
+    fprintf(f, "ply\n");
+    fprintf(f, "format ascii 1.0\n");
+    fprintf(f, "element vertex %d\n", mesh_points_count);
+    fprintf(f, "property float x\n");
+    fprintf(f, "property float y\n");
+    fprintf(f, "property float z\n");
+    fprintf(f, "element face %d\n", mesh_triangles_count);
+    fprintf(f, "property list uchar int vertex_indices\n");
+    fprintf(f, "end_header\n");
+
+    for(int i=0; i<mesh_points_count   ; i++) 
+        fprintf(f, 
+            "%f %f %f\n", 
+            mesh_sphere_X[i], 
+            mesh_sphere_Y[i], 
+            mesh_sphere_Z[i]);
+
+    for(int i=0; i<mesh_triangles_count; i++) 
+        fprintf(f, "3 %d %d %d\n", 
+            mesh_triangles[i*3  ], 
+            mesh_triangles[i*3+1],
+            mesh_triangles[i*3+2]);
+
+    fclose(f);    
+
+clear:
+
+    free(mesh_sphere_X);
+    free(mesh_sphere_Y);
+    free(mesh_sphere_Z);
+
+}
+
 void mesh_shape(int shape_id) {
     
     struct triangulateio in, out;

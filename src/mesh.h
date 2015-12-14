@@ -21,4 +21,5 @@ void mesh_load();
 void mesh_project(double lng, double lat);
 void mesh_free();
 void mesh_save_ply(double lng, double lat, double zoom);
+void mesh_save_sphere_ply(double lng, double lat, double zoom);
 #endif
